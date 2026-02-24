@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenStinger — Grounding the Autonomous Era</title>
+  <meta name="description" content="We don't pinch. We sting. Memory, Reasoning, and Empathy harnesses for autonomous AI agents.">
+  <meta property="og:title" content="OpenStinger — We don't pinch. We sting.">
+  <meta property="og:description" content="While the world dreams of God Mode automation, we build the harnesses that sting agents back to reality.">
+  <meta property="og:image" content="logo.png">
+  <style>
+    :root {
+      --black:       #080808;
+      --surface:     #111111;
+      --surface2:    #181818;
+      --border:      #242424;
+      --yellow:      #f5c400;
+      --yellow-dim:  #c49e00;
+      --yellow-glow: rgba(245,196,0,0.12);
+      --white:       #efefef;
+      --grey:        #777;
+      --grey-dim:    #3a3a3a;
+      --orange:      #ff7a00;
+      --red:         #ff3232;
+      --font:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── TYPOGRAPHY ─────────────────────────────────────────── */
+    h1, h2, h3 { line-height: 1.12; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; }
+    h3 { font-size: 1.2rem; font-weight: 600; }
+    p  { color: #999; }
+
+    /* ── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 2.5rem;
+      background: rgba(8,8,8,0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { height: 30px; display: block; }
+    .nav-links { display:flex; gap:2rem; align-items:center; }
+    .nav-links a {
+      color: var(--grey); text-decoration:none;
+      font-size: 0.88rem; font-weight:500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--yellow); color: #000 !important;
+      padding: 0.4rem 1rem; border-radius: 6px;
+      font-size: 0.82rem; font-weight:700; text-decoration:none;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--yellow-dim) !important; }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* grid + glow backgrounds */
+    .hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(245,196,0,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 35% at 85% 90%, rgba(245,196,0,0.04) 0%, transparent 55%);
+      pointer-events:none;
+    }
+    .hero-grid {
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 110% 75% at 50% 0%, black 0%, transparent 75%);
+      pointer-events:none;
+    }
+
+    /* LOGO — no cropping, natural aspect ratio */
+    .hero-logo {
+      width: min(560px, 84vw);
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 0 40px rgba(245,196,0,0.15));
+      position: relative; z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(245,196,0,0.08);
+      border: 1px solid rgba(245,196,0,0.25);
+      color: var(--yellow); padding: 0.3rem 1rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 1.75rem;
+      position: relative; z-index:1;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4.2vw, 3.2rem);
+      font-weight: 900; max-width: 860px;
+      margin: 0 auto 1.5rem;
+      position: relative; z-index:1;
+    }
+    .hero h1 .y { color: var(--yellow); }
+
+    /* THE EXACT PHILOSOPHY TEXT */
+    .hero-manifesto {
+      max-width: 700px; margin: 0 auto 0.75rem;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: #777; line-height: 1.75;
+      position: relative; z-index:1;
+    }
+    .hero-manifesto em { color: #bbb; font-style: normal; }
+
+    .hero-actions {
+      display:flex; gap:1rem; flex-wrap:wrap;
+      justify-content:center; margin-top:2.25rem;
+      position: relative; z-index:1;
+    }
+    .btn-y {
+      background: var(--yellow); color: #000;
+      padding: 0.8rem 2rem; border-radius: 8px;
+      font-weight:700; font-size:0.95rem;
+      text-decoration:none; transition: all .2s;
+      display:inline-flex; align-items:center; gap:0.5rem;
+    }
+    .btn-y:hover { background: var(--yellow-dim); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: 0.8rem 2rem; border-radius: 8px;
+      font-weight:600; font-size:0.95rem;
+      text-decoration:none;
+      border: 1px solid var(--border);
+      transition: all .2s;
+      display:inline-flex; align-items:center; gap:0.5rem;
+    }
+    .btn-outline:hover { border-color: #555; background: var(--surface); }
+
+    .hero-scroll {
+      position:absolute; bottom:2.5rem;
+      display:flex; flex-direction:column; align-items:center;
+      gap:0.4rem; color:#2a2a2a; font-size:0.7rem;
+      letter-spacing:0.1em; text-transform:uppercase;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(7px); }
+    }
+
+    /* ── THE STING STRIP ────────────────────────────────────── */
+    /* This is where the "pinch me" narrative lands */
+    .sting-strip {
+      width: 100%;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .sting-setup {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: #666;
+      max-width: 680px; margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+    .sting-setup strong { color: #aaa; font-weight: 500; }
+    .sting-moment {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 900;
+      max-width: 700px; margin: 0 auto;
+      line-height: 1.15; letter-spacing: -0.025em;
+    }
+    .sting-moment .strike {
+      text-decoration: line-through;
+      color: #444;
+    }
+    .sting-moment .land {
+      color: var(--yellow);
+    }
+
+    /* ── FULL-WIDTH WRAPPER (for strips) ────────────────────── */
+    .full { width:100%; }
+
+    /* ── SECTIONS ───────────────────────────────────────────── */
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5.5rem 2rem;
+    }
+    .section-inner.tight { padding-top: 2.5rem; }
+    .slabel {
+      display: inline-block;
+      font-size: 0.72rem; font-weight:700; letter-spacing:0.12em;
+      text-transform:uppercase; color: var(--yellow);
+      margin-bottom: 0.65rem;
+    }
+    .stitle { margin-bottom: 0.9rem; }
+    .sdesc {
+      font-size: 1.05rem; color: #777;
+      max-width: 580px; margin-bottom: 3rem;
+    }
+
+    /* ── STATS BAR ──────────────────────────────────────────── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    .stat {
+      background: var(--surface);
+      padding: 1.4rem; text-align: center;
+    }
+    .stat-n {
+      font-size: 2rem; font-weight:900; line-height:1;
+      color: var(--yellow); font-family: var(--mono);
+    }
+    .stat-l { font-size:0.78rem; color: var(--grey); margin-top:0.4rem; }
+
+    /* ── HARNESSES ──────────────────────────────────────────── */
+    .harnesses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .hcard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .25s;
+    }
+    .hcard::after {
+      content:'';
+      position:absolute; top:0; left:0; right:0; height:2px;
+    }
+    .hcard.t1::after { background: var(--yellow); }
+    .hcard.t2::after { background: var(--orange); }
+    .hcard.t3::after { background: var(--red); }
+    .hcard:hover { border-color: #3a3a3a; transform: translateY(-3px); }
+
+    .htier {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.1em;
+      text-transform:uppercase; margin-bottom:0.6rem;
+    }
+    .t1 .htier { color: var(--yellow); }
+    .t2 .htier { color: var(--orange); }
+    .t3 .htier { color: var(--red);    }
+
+    .hcard h3 { font-size:1.3rem; margin-bottom:0.2rem; color: var(--white); }
+    .hpkg {
+      font-family: var(--mono); font-size:0.8rem;
+      color: var(--grey); margin-bottom:1rem;
+    }
+    .hcard > p { font-size:0.92rem; color:#777; margin-bottom:1.25rem; }
+
+    .hrow {
+      display:flex; align-items:flex-start; gap:0.7rem;
+      background: var(--surface2);
+      border-radius: 7px; padding: 0.65rem 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+    .hrow:last-of-type { margin-bottom:0; }
+    .hl {
+      font-size:0.66rem; font-weight:700; letter-spacing:0.1em;
+      text-transform:uppercase; min-width:68px; padding-top:0.12rem;
+    }
+    .t1 .hl { color: var(--yellow); }
+    .t2 .hl { color: var(--orange); }
+    .t3 .hl { color: var(--red);    }
+    .hv { font-size:0.88rem; color:#bbb; line-height:1.5; }
+
+    .tool-pill {
+      display:inline-flex; align-items:center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px; padding:0.22rem 0.7rem;
+      font-size:0.75rem; color: var(--grey);
+      font-family: var(--mono); margin-top:1rem;
+    }
+
+    /* ── LOVE EQUATION ──────────────────────────────────────── */
+    .love-box {
+      text-align:center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3.5rem 2rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .love-formula {
+      font-family: var(--mono);
+      font-size: clamp(1.05rem, 3vw, 1.85rem);
+      font-weight: 700; color: var(--yellow);
+      padding: 1.25rem 2rem;
+      background: rgba(245,196,0,0.05);
+      border: 1px solid rgba(245,196,0,0.18);
+      border-radius: 10px;
+      display: inline-block;
+      margin: 1.75rem 0;
+      word-break: break-word;
+    }
+    .love-sub {
+      font-size:1rem; color:#777;
+      max-width:580px; margin:0 auto 2rem; line-height:1.7;
+    }
+    .love-map {
+      display:flex; justify-content:center; gap:2rem;
+      flex-wrap:wrap; margin-top:2rem;
+    }
+    .lm-item {
+      display:flex; flex-direction:column;
+      align-items:center; gap:0.35rem;
+    }
+    .lm-var {
+      font-family: var(--mono); font-size:1rem;
+      font-weight:700; color: var(--yellow);
+    }
+    .lm-arr { font-size:0.65rem; color:#333; }
+    .lm-name { font-size:0.82rem; color:#bbb; font-weight:500; }
+    .lm-tier { font-size:0.72rem; color:#555; }
+    .lm-plus { font-size:1.6rem; color:#2a2a2a; align-self:center; }
+
+    /* ── CODE BLOCK ─────────────────────────────────────────── */
+    .cblock {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .cblock-head {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 0.55rem 1rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+    }
+    .cdots { display:flex; gap:0.4rem; }
+    .cdots span { width:12px; height:12px; border-radius:50%; }
+    .cdots span:nth-child(1){ background:#ff5f57; }
+    .cdots span:nth-child(2){ background:#febc2e; }
+    .cdots span:nth-child(3){ background:#28c840; }
+    .clang { font-size:0.72rem; color: var(--grey); font-family: var(--mono); }
+    .ccode {
+      padding: 1.4rem 1.5rem;
+      font-family: var(--mono); font-size:0.85rem;
+      line-height: 2; color:#ccc;
+      overflow-x: auto;
+    }
+    .ccode pre { white-space: pre; margin: 0; }
+    .cc { color:#444; }
+    .ck { color: var(--yellow); }
+    .cs { color:#7ec8a0; }
+    /* arch colors */
+    .at1 { color: var(--yellow); }
+    .at2 { color: var(--orange); }
+    .at3 { color: var(--red); }
+
+    /* ── BOTTOM MANIFESTO STRIP ─────────────────────────────── */
+    .manifesto-strip {
+      background: var(--yellow);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .manifesto-strip h2 {
+      color: #000;
+      font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+      font-weight: 900;
+      max-width: 700px; margin: 0 auto 0.75rem;
+    }
+    .manifesto-strip p {
+      color: rgba(0,0,0,0.65);
+      font-size: 1rem;
+      max-width: 580px; margin: 0 auto;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    footer img { height: 36px; margin-bottom:1.5rem; opacity:0.75; }
+    .flinks {
+      display:flex; justify-content:center; gap:2rem;
+      flex-wrap:wrap; margin-bottom:1.75rem;
+    }
+    .flinks a {
+      color: var(--grey); text-decoration:none; font-size:0.88rem;
+      transition: color .2s;
+    }
+    .flinks a:hover { color: var(--white); }
+    .fcopy { font-size:0.78rem; color:#333; }
+
+    /* ── FADE-IN ─────────────────────────────────────────────── */
+    .fi {
+      opacity:0; transform:translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .fi.on { opacity:1; transform:translateY(0); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width:680px) {
+      .nav-links { display:none; }
+      .hero h1 { font-size:2rem; }
+      .section-inner { padding: 3.5rem 1.25rem; }
+      .love-formula { font-size:0.95rem; padding:1rem; }
+      .hero-logo { width: min(320px, 80vw); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav>
+  <a href="#">
+    <img src="logo.png" alt="OpenStinger" class="nav-logo">
+  </a>
+  <div class="nav-links">
+    <a href="#harnesses">Harnesses</a>
+    <a href="#quickstart">Quick Start</a>
+    <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+    <a href="https://openstinger.com" class="nav-cta">openstinger.com ↗</a>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+
+  <div class="hero-badge fi">⚡ v0.3 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
+
+  <img src="logo.png" alt="OpenStinger" class="hero-logo fi">
+
+  <!-- EXACT PHILOSOPHY DOC MAIN MESSAGE -->
+  <h1 class="fi">
+    OpenClaw gave agents <span class="y">hands.</span><br>
+    OpenStinger gives them a <span class="y">pulse.</span>
+  </h1>
+
+  <p class="hero-manifesto fi">
+    While the world is <em>dreaming of "God Mode" automation</em>, we're building
+    the memory and reasoning harnesses that keep agents from hallucinating.
+    We don't just watch them dream —
+    <em style="color:var(--yellow); font-weight:700;">we sting them into reality.</em>
+  </p>
+  <p class="hero-manifesto fi" style="margin-top:0.5rem; font-size:0.95rem; color:#555;">
+    OpenStinger: <em>Grounding the Autonomous Era.</em>
+  </p>
+
+  <div class="hero-actions fi">
+    <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">★&nbsp; Star on GitHub</a>
+    <a href="#quickstart" class="btn-outline">Quick Start →</a>
+  </div>
+
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 2v10M2 8l5 4 5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── THE STING MOMENT ──────────────────────────────────────── -->
+<!-- This is the core brand narrative — dream → pinch → STING -->
+<div class="full sting-strip">
+  <p class="sting-setup fi">
+    Autonomous agents are waking up — but they're still <strong>sleepwalking.</strong><br>
+    They hallucinate facts. They drift from their values. They forget who they are.<br>
+    When AI goes wrong, people say: <strong>"Pinch me. I must be dreaming."</strong>
+  </p>
+  <h2 class="sting-moment fi">
+    <span class="strike">Pinch me.</span><br>
+    <span class="land">We don't pinch. We sting.</span>
+  </h2>
+  <p class="sting-setup fi" style="margin-top:1.75rem; margin-bottom:0;">
+    Hallucinations aren't just errors. They're liabilities.<br>
+    We provide the harnesses that <strong>force agents to face reality</strong> —
+    so you don't have to face the consequences.
+  </p>
+</div>
+
+<!-- ── STATS ─────────────────────────────────────────────────── -->
+<div class="full">
+  <div class="section-inner" style="padding-top:3.5rem; padding-bottom:2rem;">
+    <div class="stats fi">
+      <div class="stat"><div class="stat-n">20</div><div class="stat-l">MCP Tools</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Harness Tiers</div></div>
+      <div class="stat"><div class="stat-n">80</div><div class="stat-l">Tests Passing</div></div>
+      <div class="stat"><div class="stat-n">1</div><div class="stat-l">Graph Backend</div></div>
+      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Vendor Lock-in</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── THREE HARNESSES ───────────────────────────────────────── -->
+<div class="full" id="harnesses">
+  <div class="section-inner">
+    <div class="fi">
+      <span class="slabel">The Three Stings</span>
+      <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
+      <p class="sdesc">
+        Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
+        We engineered a harness for each — additive, non-breaking, deployable one tier at a time.
+      </p>
+    </div>
+
+    <div class="harnesses fi">
+
+      <!-- T1: MEMORY HARNESS -->
+      <div class="hcard t1">
+        <div class="htier">Tier 1 · Open Source · Temporal Engine</div>
+        <h3>Memory Harness</h3>
+        <div class="hpkg">pip install openstinger</div>
+        <p>Bi-temporal episodic memory on FalkorDB. Every conversation, fact, and decision your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.</p>
+        <div class="hrow">
+          <span class="hl">Dream</span>
+          <span class="hv">Agents forget everything between sessions. No continuity, no learning, no history.</span>
+        </div>
+        <div class="hrow">
+          <span class="hl">Harness</span>
+          <span class="hv">Memory Harness — persistent knowledge graph, BM25 + vector hybrid search.</span>
+        </div>
+        <div class="hrow">
+          <span class="hl">Sting</span>
+          <span class="hv">Your agent remembers what matters. Forever.</span>
+        </div>
+        <div class="tool-pill">9 MCP tools</div>
+      </div>
+
+      <!-- T2: REASONING HARNESS -->
+      <div class="hcard t2">
+        <div class="htier">Tier 2 · StingerVault · Reasoning Engine</div>
+        <h3>Reasoning Harness</h3>
+        <div class="hpkg">pip install openstinger-scaffold</div>
+        <p>Autonomous distillation of sessions into structured self-knowledge. Identity, domain expertise, methodology, preferences, constraints — classified and vaulted from your agent's own history.</p>
+        <div class="hrow">
+          <span class="hl">Dream</span>
+          <span class="hv">Agents can't reason about themselves. No structured self-model. No introspection.</span>
+        </div>
+        <div class="hrow">
+          <span class="hl">Harness</span>
+          <span class="hv">Reasoning Harness — StingerVault builds a living, self-updating knowledge base.</span>
+        </div>
+        <div class="hrow">
+          <span class="hl">Sting</span>
+          <span class="hv">Your agent knows who it is — and why it made every past decision.</span>
+        </div>
+        <div class="tool-pill">+6 MCP tools &nbsp;·&nbsp; 15 total</div>
+      </div>
+
+      <!-- T3: EMPATHY HARNESS -->
+      <div class="hcard t3">
+        <div class="htier">Tier 3 · Gradient · Alignment Engine</div>
+        <h3>Empathy Harness</h3>
+        <div class="hpkg">pip install openstinger-gradient</div>
+        <p>Synchronous behavioral alignment before every response. Value coherence, identity consistency, constraint compliance, content safety — scored in real time. Drift detected. Corrections applied.</p>
+        <div class="hrow">
+          <span class="hl">Dream</span>
+          <span class="hv">Agents drift. They hallucinate values they never had. No behavioral guardrails.</span>
+        </div>
+        <div class="hrow">
+          <span class="hl">Harness</span>
+          <span class="hv">Empathy Harness — Gradient intercepts, evaluates, and corrects every output.</span>
+        </div>
+        <div class="hrow">
+          <span class="hl">Sting</span>
+          <span class="hv">Your agent stays true to its values — even under adversarial pressure.</span>
+        </div>
+        <div class="tool-pill">+5 MCP tools &nbsp;·&nbsp; 20 total</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── LOVE EQUATION ──────────────────────────────────────────── -->
+<div class="full">
+  <div class="section-inner tight">
+    <div class="love-box fi">
+      <span class="slabel">The Equation</span>
+      <h2 style="margin-bottom:0.5rem;">Love, Formalized.</h2>
+      <p style="color:#555; font-size:0.95rem;">
+        Brian Roemmele's love equation isn't poetry.<br>It's an engineering spec.
+        <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
+           style="color:var(--yellow); text-decoration:none; font-size:0.8rem;"> ↗ source</a>
+      </p>
+
+      <div class="love-formula">Love = ( Knowledge + Empathy + Time ) / Effort</div>
+
+      <p class="love-sub">
+        An agent with persistent memory, structured self-knowledge, and aligned values doesn't just complete tasks —
+        it builds trust. OpenStinger engineers all three variables directly into your agent's stack.
+      </p>
+
+      <div class="love-map">
+        <div class="lm-item">
+          <span class="lm-var">Knowledge</span>
+          <span class="lm-arr">↓</span>
+          <span class="lm-name">Memory Harness</span>
+          <span class="lm-tier">Tier 1 · Temporal</span>
+        </div>
+        <span class="lm-plus">+</span>
+        <div class="lm-item">
+          <span class="lm-var">Empathy</span>
+          <span class="lm-arr">↓</span>
+          <span class="lm-name">Reasoning Harness</span>
+          <span class="lm-tier">Tier 2 · StingerVault</span>
+        </div>
+        <span class="lm-plus">+</span>
+        <div class="lm-item">
+          <span class="lm-var">Time</span>
+          <span class="lm-arr">↓</span>
+          <span class="lm-name">Empathy Harness</span>
+          <span class="lm-tier">Tier 3 · Gradient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── QUICK START ────────────────────────────────────────────── -->
+<div class="full" id="quickstart">
+  <div class="section-inner">
+    <div class="fi">
+      <span class="slabel">Get Running</span>
+      <h2 class="stitle">Sting in 3 commands.</h2>
+      <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API. That's all.</p>
+    </div>
+
+    <div class="cblock fi">
+      <div class="cblock-head">
+        <div class="cdots"><span></span><span></span><span></span></div>
+        <span class="clang">bash</span>
+      </div>
+      <div class="ccode">
+<pre><span class="cc"># 1. Clone and install</span>
+<span class="ck">git clone</span> <span class="cs">https://github.com/srikanthbellary/openstinger.git</span>
+<span class="ck">cd</span> openstinger &amp;&amp; <span class="ck">pip install</span> -e <span class="cs">".[dev]"</span>
+
+<span class="cc"># 2. Configure — copy examples and fill in your API keys</span>
+<span class="ck">cp</span> .env.example .env &amp;&amp; <span class="ck">cp</span> config.yaml.example config.yaml
+
+<span class="cc"># 3. Launch — FalkorDB + browser UI + MCP server</span>
+<span class="ck">docker compose up</span> -d
+<span class="ck">python</span> -m openstinger.mcp.server</pre>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:1.25rem;">
+      <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
+        Full documentation →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
+<div class="full">
+  <div class="section-inner tight">
+    <div class="fi">
+      <span class="slabel">Architecture</span>
+      <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
+      <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK lock-in, no framework dependency.</p>
+    </div>
+    <div class="cblock fi">
+      <div class="cblock-head">
+        <div class="cdots"><span></span><span></span><span></span></div>
+        <span class="clang">topology</span>
+      </div>
+      <div class="ccode">
+<pre>Your Agent  (OpenClaw / Claude Code / any MCP-compatible runtime)
+    │
+    │  Model Context Protocol  ·  SSE  ·  http://localhost:8765/sse
+    ▼
+<span class="at1">OpenStinger MCP Server  (Python process, runs on your machine)</span>
+<span class="at1">    ├── Tier 1  memory_query · memory_add · memory_search  ·····  9 tools</span>
+<span class="at2">    ├── Tier 2  vault_status · vault_promote_now  ···············  +6 tools</span>
+<span class="at3">    └── Tier 3  gradient_alignment_score · gradient_alert  ·····  +5 tools</span>
+         │
+         ├── FalkorDB  (graph DB · episodic memory · knowledge vault)
+         └── SQLite    (operational DB · jobs · alignment events)</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOTTOM MANIFESTO — exact secondary philosophy text ──────── -->
+<div class="full manifesto-strip">
+  <h2>We don't pinch. We sting.</h2>
+  <p>
+    Precision over hype. Memory over amnesia. Alignment over drift.<br>
+    <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
+  </p>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <img src="logo.png" alt="OpenStinger">
+  <div class="flinks">
+    <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+    <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
+    <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
+    <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
+    <a href="https://openstinger.com">openstinger.com</a>
+  </div>
+  <p class="fcopy">© 2026 OpenStinger &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built for the autonomous era</p>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(
+    es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
