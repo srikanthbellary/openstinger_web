@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenStinger — Grounding the Autonomous Era</title>
-  <meta name="description" content="We don't pinch. We sting. Memory, Reasoning, and Empathy harnesses for autonomous AI agents.">
-  <meta property="og:title" content="OpenStinger — We don't pinch. We sting.">
-  <meta property="og:description" content="While the world dreams of God Mode automation, we build the harnesses that sting agents back to reality.">
+  <meta name="description"
+    content="OpenStinger doesn't pinch. It stings. Memory, Reasoning, and Empathy harnesses for autonomous AI agents.">
+  <meta property="og:title" content="OpenStinger — doesn't pinch. It stings.">
+  <meta property="og:description"
+    content="While the world dreams of God Mode automation, I built the harnesses that sting agents back to reality.">
   <meta property="og:image" content="openstinger_thumbnail_logo_v1.png">
   <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
   <link rel="apple-touch-icon" href="openstinger_thumbnail_logo_v1.png">
   <style>
     :root {
-      --black:       #080808;
-      --surface:     #111111;
-      --surface2:    #181818;
-      --border:      #242424;
-      --yellow:      #f5c400;
-      --yellow-dim:  #c49e00;
-      --yellow-glow: rgba(245,196,0,0.12);
-      --orange:      #ff7a00;
-      --red:         #e8326e;
-      --white:       #efefef;
-      --grey:        #777;
-      --grey-dim:    #3a3a3a;
-      --font:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --mono:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+      --black: #080808;
+      --surface: #111111;
+      --surface2: #181818;
+      --border: #242424;
+      --yellow: #f5c400;
+      --yellow-dim: #c49e00;
+      --yellow-glow: rgba(245, 196, 0, 0.12);
+      --orange: #ff7a00;
+      --red: #e8326e;
+      --white: #efefef;
+      --grey: #777;
+      --grey-dim: #3a3a3a;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
     }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
     body {
       background: var(--black);
       color: var(--white);
@@ -39,131 +53,260 @@
     }
 
     /* ── TYPOGRAPHY ─────────────────────────────────────────── */
-    h1, h2, h3 { line-height: 1.12; letter-spacing: -0.025em; }
-    h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; }
-    h3 { font-size: 1.2rem; font-weight: 600; }
-    p  { color: #999; }
+    h1,
+    h2,
+    h3 {
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: #999;
+    }
 
     /* ── NAV ────────────────────────────────────────────────── */
     nav {
-      position: fixed; top:0; left:0; right:0; z-index:200;
-      display: flex; align-items: center; justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0.85rem 2.5rem;
-      background: rgba(8,8,8,0.92);
+      background: rgba(8, 8, 8, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { height: 30px; display: block; }
-    .nav-links { display:flex; gap:1.75rem; align-items:center; }
-    .nav-links a {
-      color: var(--grey); text-decoration:none;
-      font-size: 0.88rem; font-weight:500; transition: color .2s;
+
+    .nav-logo {
+      height: 30px;
+      display: block;
     }
-    .nav-links a:hover { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--grey);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
     .nav-tier {
       font-size: 0.78rem !important;
       font-weight: 600 !important;
       letter-spacing: 0.04em;
     }
-    .nav-tier.t1:hover { color: var(--yellow) !important; }
-    .nav-tier.t2:hover { color: var(--orange) !important; }
-    .nav-tier.t3:hover { color: var(--red) !important; }
+
+    .nav-tier.t1:hover {
+      color: var(--yellow) !important;
+    }
+
+    .nav-tier.t2:hover {
+      color: var(--orange) !important;
+    }
+
+    .nav-tier.t3:hover {
+      color: var(--red) !important;
+    }
+
     .nav-cta {
-      background: var(--yellow); color: #000 !important;
-      padding: 0.4rem 1rem; border-radius: 6px;
-      font-size: 0.82rem; font-weight:700; text-decoration:none;
+      background: var(--yellow);
+      color: #000 !important;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
       transition: background .2s;
     }
-    .nav-cta:hover { background: var(--yellow-dim) !important; }
+
+    .nav-cta:hover {
+      background: var(--yellow-dim) !important;
+    }
 
     /* ── HERO ───────────────────────────────────────────────── */
     .hero {
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 9rem 2rem 5rem;
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     .hero::before {
-      content:'';
-      position:absolute; inset:0;
+      content: '';
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(245,196,0,0.09) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 35% at 85% 90%, rgba(245,196,0,0.04) 0%, transparent 55%);
-      pointer-events:none;
+        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(245, 196, 0, 0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 35% at 85% 90%, rgba(245, 196, 0, 0.04) 0%, transparent 55%);
+      pointer-events: none;
     }
+
     .hero-grid {
-      position:absolute; inset:0;
+      position: absolute;
+      inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
       background-size: 64px 64px;
       mask-image: radial-gradient(ellipse 110% 75% at 50% 0%, black 0%, transparent 75%);
-      pointer-events:none;
+      pointer-events: none;
     }
+
     .hero-logo {
       width: min(560px, 84vw);
       margin-bottom: 2rem;
-      filter: drop-shadow(0 0 40px rgba(245,196,0,0.15));
-      position: relative; z-index: 1;
+      filter: drop-shadow(0 0 40px rgba(245, 196, 0, 0.15));
+      position: relative;
+      z-index: 1;
     }
+
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(245,196,0,0.08);
-      border: 1px solid rgba(245,196,0,0.25);
-      color: var(--yellow); padding: 0.3rem 1rem; border-radius: 100px;
-      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 1.75rem;
-      position: relative; z-index:1;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(245, 196, 0, 0.08);
+      border: 1px solid rgba(245, 196, 0, 0.25);
+      color: var(--yellow);
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      position: relative;
+      z-index: 1;
     }
+
     .hero h1 {
       font-size: clamp(1.8rem, 4.2vw, 3.2rem);
-      font-weight: 900; max-width: 860px;
+      font-weight: 900;
+      max-width: 860px;
       margin: 0 auto 1.5rem;
-      position: relative; z-index:1;
+      position: relative;
+      z-index: 1;
     }
-    .hero h1 .y { color: var(--yellow); }
+
+    .hero h1 .y {
+      color: var(--yellow);
+    }
+
     .hero-manifesto {
-      max-width: 700px; margin: 0 auto 0.75rem;
+      max-width: 700px;
+      margin: 0 auto 0.75rem;
       font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: #777; line-height: 1.75;
-      position: relative; z-index:1;
+      color: #777;
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
     }
-    .hero-manifesto em { color: #bbb; font-style: normal; }
+
+    .hero-manifesto em {
+      color: #bbb;
+      font-style: normal;
+    }
+
     .hero-actions {
-      display:flex; gap:1rem; flex-wrap:wrap;
-      justify-content:center; margin-top:2.25rem;
-      position: relative; z-index:1;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2.25rem;
+      position: relative;
+      z-index: 1;
     }
+
     .btn-y {
-      background: var(--yellow); color: #000;
-      padding: 0.8rem 2rem; border-radius: 8px;
-      font-weight:700; font-size:0.95rem;
-      text-decoration:none; transition: all .2s;
-      display:inline-flex; align-items:center; gap:0.5rem;
+      background: var(--yellow);
+      color: #000;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .btn-y:hover { background: var(--yellow-dim); transform: translateY(-1px); }
+
+    .btn-y:hover {
+      background: var(--yellow-dim);
+      transform: translateY(-1px);
+    }
+
     .btn-outline {
-      background: transparent; color: var(--white);
-      padding: 0.8rem 2rem; border-radius: 8px;
-      font-weight:600; font-size:0.95rem;
-      text-decoration:none;
+      background: transparent;
+      color: var(--white);
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
       border: 1px solid var(--border);
       transition: all .2s;
-      display:inline-flex; align-items:center; gap:0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .btn-outline:hover { border-color: #555; background: var(--surface); }
+
+    .btn-outline:hover {
+      border-color: #555;
+      background: var(--surface);
+    }
+
     .hero-scroll {
-      position:absolute; bottom:2.5rem;
-      display:flex; flex-direction:column; align-items:center;
-      gap:0.4rem; color:#2a2a2a; font-size:0.7rem;
-      letter-spacing:0.1em; text-transform:uppercase;
+      position: absolute;
+      bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: #2a2a2a;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       animation: bob 2.2s ease-in-out infinite;
     }
+
     @keyframes bob {
-      0%,100%{ transform:translateY(0); }
-      50%{ transform:translateY(7px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(7px);
+      }
     }
 
     /* ── STING STRIP ────────────────────────────────────────── */
@@ -176,24 +319,42 @@
       text-align: center;
       overflow: hidden;
     }
+
     .sting-setup {
       font-size: clamp(0.95rem, 2vw, 1.15rem);
       color: #666;
-      max-width: 680px; margin: 0 auto 1.5rem;
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
       line-height: 1.7;
     }
-    .sting-setup strong { color: #aaa; font-weight: 500; }
+
+    .sting-setup strong {
+      color: #aaa;
+      font-weight: 500;
+    }
+
     .sting-moment {
       font-size: clamp(1.6rem, 4vw, 2.8rem);
       font-weight: 900;
-      max-width: 700px; margin: 0 auto;
-      line-height: 1.15; letter-spacing: -0.025em;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
     }
-    .sting-moment .strike { text-decoration: line-through; color: #444; }
-    .sting-moment .land  { color: var(--yellow); }
+
+    .sting-moment .strike {
+      text-decoration: line-through;
+      color: #444;
+    }
+
+    .sting-moment .land {
+      color: var(--yellow);
+    }
 
     /* ── FULL-WIDTH WRAPPER ─────────────────────────────────── */
-    .full { width:100%; }
+    .full {
+      width: 100%;
+    }
 
     /* ── SECTIONS ───────────────────────────────────────────── */
     .section-inner {
@@ -201,36 +362,62 @@
       margin: 0 auto;
       padding: 5.5rem 2rem;
     }
-    .section-inner.tight { padding-top: 2.5rem; }
+
+    .section-inner.tight {
+      padding-top: 2.5rem;
+    }
+
     .slabel {
       display: inline-block;
-      font-size: 0.72rem; font-weight:700; letter-spacing:0.12em;
-      text-transform:uppercase; color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
       margin-bottom: 0.65rem;
     }
-    .stitle { margin-bottom: 0.9rem; }
+
+    .stitle {
+      margin-bottom: 0.9rem;
+    }
+
     .sdesc {
-      font-size: 1.05rem; color: #777;
-      max-width: 580px; margin-bottom: 3rem;
+      font-size: 1.05rem;
+      color: #777;
+      max-width: 580px;
+      margin-bottom: 3rem;
     }
 
     /* ── STATS BAR ──────────────────────────────────────────── */
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1px; background: var(--border);
+      gap: 1px;
+      background: var(--border);
       border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden;
+      border-radius: 12px;
+      overflow: hidden;
     }
+
     .stat {
       background: var(--surface);
-      padding: 1.4rem; text-align: center;
+      padding: 1.4rem;
+      text-align: center;
     }
+
     .stat-n {
-      font-size: 2rem; font-weight:900; line-height:1;
-      color: var(--yellow); font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--yellow);
+      font-family: var(--mono);
     }
-    .stat-l { font-size:0.78rem; color: var(--grey); margin-top:0.4rem; }
+
+    .stat-l {
+      font-size: 0.78rem;
+      color: var(--grey);
+      margin-top: 0.4rem;
+    }
 
     /* ── TIER OVERVIEW INTRO ────────────────────────────────── */
     .tier-intro {
@@ -243,195 +430,405 @@
       overflow: hidden;
       margin-top: 2rem;
     }
+
     .ti-cell {
       background: var(--surface);
       padding: 1.5rem;
       text-align: center;
       text-decoration: none;
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
       transition: background .2s;
     }
-    .ti-cell:hover { background: var(--surface2); }
+
+    .ti-cell:hover {
+      background: var(--surface2);
+    }
+
     .ti-num {
-      font-family: var(--mono); font-size: 0.72rem;
-      font-weight: 700; letter-spacing: 0.1em;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-    .ti-name { font-size: 1rem; font-weight: 700; color: var(--white); }
-    .ti-tools { font-size: 0.78rem; color: var(--grey); }
-    .ti-cell.t1 .ti-num { color: var(--yellow); }
-    .ti-cell.t2 .ti-num { color: var(--orange); }
-    .ti-cell.t3 .ti-num { color: var(--red); }
-    .ti-cell.t1 { border-bottom: 2px solid var(--yellow); }
-    .ti-cell.t2 { border-bottom: 2px solid var(--orange); }
-    .ti-cell.t3 { border-bottom: 2px solid var(--red); }
+
+    .ti-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .ti-tools {
+      font-size: 0.78rem;
+      color: var(--grey);
+    }
+
+    .ti-cell.t1 .ti-num {
+      color: var(--yellow);
+    }
+
+    .ti-cell.t2 .ti-num {
+      color: var(--orange);
+    }
+
+    .ti-cell.t3 .ti-num {
+      color: var(--red);
+    }
+
+    .ti-cell.t1 {
+      border-bottom: 2px solid var(--yellow);
+    }
+
+    .ti-cell.t2 {
+      border-bottom: 2px solid var(--orange);
+    }
+
+    .ti-cell.t3 {
+      border-bottom: 2px solid var(--red);
+    }
 
     /* ── TIER SECTIONS ─────────────────────────────────────── */
     .tier-section {
       width: 100%;
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
-    .tier-section + .tier-section {
+
+    .tier-section+.tier-section {
       border-top: 1px solid var(--border);
     }
+
     .tier-section.t1-bg::before {
-      content:''; position:absolute; inset:0; pointer-events:none;
-      background: radial-gradient(ellipse 60% 50% at -10% 50%, rgba(245,196,0,0.04) 0%, transparent 70%);
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at -10% 50%, rgba(245, 196, 0, 0.04) 0%, transparent 70%);
     }
+
     .tier-section.t2-bg::before {
-      content:''; position:absolute; inset:0; pointer-events:none;
-      background: radial-gradient(ellipse 60% 50% at 110% 50%, rgba(255,122,0,0.04) 0%, transparent 70%);
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 110% 50%, rgba(255, 122, 0, 0.04) 0%, transparent 70%);
     }
+
     .tier-section.t3-bg::before {
-      content:''; position:absolute; inset:0; pointer-events:none;
-      background: radial-gradient(ellipse 60% 50% at -10% 50%, rgba(232,50,110,0.04) 0%, transparent 70%);
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at -10% 50%, rgba(232, 50, 110, 0.04) 0%, transparent 70%);
     }
 
     .tier-inner {
-      max-width: 1100px; margin: 0 auto;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 6rem 2rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: start;
-      position: relative; z-index:1;
+      position: relative;
+      z-index: 1;
     }
-    .tier-inner.flip { direction: rtl; }
-    .tier-inner.flip > * { direction: ltr; }
+
+    .tier-inner.flip {
+      direction: rtl;
+    }
+
+    .tier-inner.flip>* {
+      direction: ltr;
+    }
 
     .tier-label {
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase; margin-bottom: 0.6rem;
-      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
-    .t1 .tier-label { color: var(--yellow); }
-    .t2 .tier-label { color: var(--orange); }
-    .t3 .tier-label { color: var(--red); }
-    .tier-label .tier-line {
-      height: 1px; flex: 1; max-width: 48px;
-    }
-    .t1 .tier-line { background: var(--yellow); }
-    .t2 .tier-line { background: var(--orange); }
-    .t3 .tier-line { background: var(--red); }
 
-    .tier-h { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; }
+    .t1 .tier-label {
+      color: var(--yellow);
+    }
+
+    .t2 .tier-label {
+      color: var(--orange);
+    }
+
+    .t3 .tier-label {
+      color: var(--red);
+    }
+
+    .tier-label .tier-line {
+      height: 1px;
+      flex: 1;
+      max-width: 48px;
+    }
+
+    .t1 .tier-line {
+      background: var(--yellow);
+    }
+
+    .t2 .tier-line {
+      background: var(--orange);
+    }
+
+    .t3 .tier-line {
+      background: var(--red);
+    }
+
+    .tier-h {
+      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
     .tier-sub {
-      font-size: 1.05rem; color: #666; margin-bottom: 1.75rem; line-height: 1.65;
+      font-size: 1.05rem;
+      color: #666;
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
       max-width: 480px;
     }
 
     .problem-box {
-      background: rgba(255,255,255,0.025);
+      background: rgba(255, 255, 255, 0.025);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1rem 1.25rem;
       margin-bottom: 1.75rem;
     }
+
     .problem-box .pb-label {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #444; margin-bottom: 0.35rem;
-    }
-    .problem-box p {
-      font-size: 0.9rem; color: #666; line-height: 1.55;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 0.35rem;
     }
 
-    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .problem-box p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.55;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
     .tier-features li {
-      display: flex; gap: 0.75rem; align-items: flex-start;
-      font-size: 0.9rem; color: #aaa; line-height: 1.55;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.55;
     }
+
     .tf-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      flex-shrink: 0; margin-top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.55rem;
     }
-    .t1 .tf-dot { background: var(--yellow); }
-    .t2 .tf-dot { background: var(--orange); }
-    .t3 .tf-dot { background: var(--red); }
+
+    .t1 .tf-dot {
+      background: var(--yellow);
+    }
+
+    .t2 .tf-dot {
+      background: var(--orange);
+    }
+
+    .t3 .tf-dot {
+      background: var(--red);
+    }
 
     .tier-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       border: 1px solid var(--border);
-      border-radius: 100px; padding: 0.35rem 0.9rem;
-      font-size: 0.8rem; font-family: var(--mono);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      font-family: var(--mono);
       margin-top: 1.5rem;
     }
-    .t1 .tier-pill { color: var(--yellow); border-color: rgba(245,196,0,0.25); }
-    .t2 .tier-pill { color: var(--orange); border-color: rgba(255,122,0,0.25); }
-    .t3 .tier-pill { color: var(--red);    border-color: rgba(232,50,110,0.25); }
+
+    .t1 .tier-pill {
+      color: var(--yellow);
+      border-color: rgba(245, 196, 0, 0.25);
+    }
+
+    .t2 .tier-pill {
+      color: var(--orange);
+      border-color: rgba(255, 122, 0, 0.25);
+    }
+
+    .t3 .tier-pill {
+      color: var(--red);
+      border-color: rgba(232, 50, 110, 0.25);
+    }
 
     /* ── TIER RIGHT PANEL ───────────────────────────────────── */
     .tier-panel {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px; overflow: hidden;
+      border-radius: 14px;
+      overflow: hidden;
     }
+
     .tier-panel-head {
       padding: 1rem 1.25rem;
       background: var(--surface2);
       border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .t1 .tier-panel-head { border-top: 2px solid var(--yellow); }
-    .t2 .tier-panel-head { border-top: 2px solid var(--orange); }
-    .t3 .tier-panel-head { border-top: 2px solid var(--red); }
-    .tp-label { font-size: 0.72rem; color: var(--grey); font-family: var(--mono); }
+
+    .t1 .tier-panel-head {
+      border-top: 2px solid var(--yellow);
+    }
+
+    .t2 .tier-panel-head {
+      border-top: 2px solid var(--orange);
+    }
+
+    .t3 .tier-panel-head {
+      border-top: 2px solid var(--red);
+    }
+
+    .tp-label {
+      font-size: 0.72rem;
+      color: var(--grey);
+      font-family: var(--mono);
+    }
+
     .tp-badge {
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; padding: 0.2rem 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
       border-radius: 4px;
     }
-    .t1 .tp-badge { background: rgba(245,196,0,0.1); color: var(--yellow); }
-    .t2 .tp-badge { background: rgba(255,122,0,0.1); color: var(--orange); }
-    .t3 .tp-badge { background: rgba(232,50,110,0.1); color: var(--red); }
 
-    .tier-panel-body { padding: 1.5rem 1.25rem; }
+    .t1 .tp-badge {
+      background: rgba(245, 196, 0, 0.1);
+      color: var(--yellow);
+    }
+
+    .t2 .tp-badge {
+      background: rgba(255, 122, 0, 0.1);
+      color: var(--orange);
+    }
+
+    .t3 .tp-badge {
+      background: rgba(232, 50, 110, 0.1);
+      color: var(--red);
+    }
+
+    .tier-panel-body {
+      padding: 1.5rem 1.25rem;
+    }
 
     /* tool grid */
     .tool-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
       margin-bottom: 1rem;
     }
+
     .tool-item {
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 0.55rem 0.75rem;
-      font-size: 0.77rem; font-family: var(--mono);
-      color: #888; line-height: 1.4;
+      font-size: 0.77rem;
+      font-family: var(--mono);
+      color: #888;
+      line-height: 1.4;
     }
+
     .tool-item.new-tool {
-      border-color: rgba(255,255,255,0.1);
+      border-color: rgba(255, 255, 255, 0.1);
       color: #aaa;
     }
+
     .tool-item .new-badge {
       display: inline-block;
-      font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      background: rgba(245,196,0,0.15); color: var(--yellow);
-      padding: 0.1rem 0.3rem; border-radius: 3px;
-      margin-left: 0.3rem; vertical-align: middle;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(245, 196, 0, 0.15);
+      color: var(--yellow);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      margin-left: 0.3rem;
+      vertical-align: middle;
     }
 
     /* tier stat row */
     .tier-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
       border: 1px solid var(--border);
-      border-radius: 8px; overflow: hidden;
+      border-radius: 8px;
+      overflow: hidden;
       margin-top: 1rem;
     }
+
     .ts-cell {
       background: var(--surface);
-      padding: 0.85rem; text-align: center;
+      padding: 0.85rem;
+      text-align: center;
     }
+
     .ts-n {
-      font-size: 1.25rem; font-weight: 900;
-      font-family: var(--mono); line-height: 1;
+      font-size: 1.25rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      line-height: 1;
     }
-    .t1 .ts-n { color: var(--yellow); }
-    .t2 .ts-n { color: var(--orange); }
-    .t3 .ts-n { color: var(--red); }
-    .ts-l { font-size: 0.68rem; color: #555; margin-top: 0.25rem; }
+
+    .t1 .ts-n {
+      color: var(--yellow);
+    }
+
+    .t2 .ts-n {
+      color: var(--orange);
+    }
+
+    .t3 .ts-n {
+      color: var(--red);
+    }
+
+    .ts-l {
+      font-size: 0.68rem;
+      color: #555;
+      margin-top: 0.25rem;
+    }
 
     /* ── LOVE EQUATION SECTION ──────────────────────────────── */
     .love-section {
@@ -441,19 +838,25 @@
       padding: 2rem 1.75rem;
       margin-top: 1.25rem;
     }
+
     .love-section-head {
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--red);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
       margin-bottom: 0.75rem;
     }
+
     .love-eq-display {
-      background: rgba(232,50,110,0.04);
-      border: 1px solid rgba(232,50,110,0.2);
+      background: rgba(232, 50, 110, 0.04);
+      border: 1px solid rgba(232, 50, 110, 0.2);
       border-radius: 10px;
       padding: 1.25rem 1.5rem;
       text-align: center;
       margin: 1rem 0 0.5rem;
     }
+
     .love-eq-main {
       font-family: var(--mono);
       font-size: clamp(0.82rem, 1.6vw, 1.05rem);
@@ -462,95 +865,195 @@
       line-height: 1.8;
       letter-spacing: 0.01em;
     }
-    .love-eq-main .lv { color: var(--red); }
-    .love-eq-main .lk { color: var(--yellow); }
-    .love-eq-main .le { color: var(--red); }
-    .love-eq-main .lt { color: var(--orange); }
-    .love-eq-main .lep { color: #888; }
+
+    .love-eq-main .lv {
+      color: var(--red);
+    }
+
+    .love-eq-main .lk {
+      color: var(--yellow);
+    }
+
+    .love-eq-main .le {
+      color: var(--red);
+    }
+
+    .love-eq-main .lt {
+      color: var(--orange);
+    }
+
+    .love-eq-main .lep {
+      color: #888;
+    }
+
     .love-def {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0.4rem; margin-top: 0.75rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
     }
+
     .love-def-item {
-      display: flex; gap: 0.5rem; align-items: flex-start;
-      font-size: 0.75rem; line-height: 1.5;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      font-size: 0.75rem;
+      line-height: 1.5;
     }
+
     .love-def-sym {
-      font-family: var(--mono); font-weight: 700;
-      flex-shrink: 0; min-width: 28px;
+      font-family: var(--mono);
+      font-weight: 700;
+      flex-shrink: 0;
+      min-width: 28px;
     }
-    .love-def-sym.lv { color: var(--red); }
-    .love-def-sym.lk { color: var(--yellow); }
-    .love-def-sym.le { color: var(--red); }
-    .love-def-sym.lt { color: var(--orange); }
-    .love-def-desc { color: #666; }
+
+    .love-def-sym.lv {
+      color: var(--red);
+    }
+
+    .love-def-sym.lk {
+      color: var(--yellow);
+    }
+
+    .love-def-sym.le {
+      color: var(--red);
+    }
+
+    .love-def-sym.lt {
+      color: var(--orange);
+    }
+
+    .love-def-desc {
+      color: #666;
+    }
 
     /* Full-width love box (the dedicated equation section) */
     .love-full-box {
-      max-width: 1100px; margin: 0 auto;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 5.5rem 2rem;
     }
+
     .love-full-inner {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 4rem 2.5rem;
       text-align: center;
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     .love-full-inner::before {
-      content:'';
-      position:absolute; inset:0; pointer-events:none;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,50,110,0.06) 0%, transparent 70%);
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232, 50, 110, 0.06) 0%, transparent 70%);
     }
+
     .love-big-formula {
       font-family: var(--mono);
       font-size: clamp(0.9rem, 2.5vw, 1.5rem);
       font-weight: 700;
       color: var(--white);
       padding: 1.75rem 2rem;
-      background: rgba(232,50,110,0.05);
-      border: 1px solid rgba(232,50,110,0.2);
+      background: rgba(232, 50, 110, 0.05);
+      border: 1px solid rgba(232, 50, 110, 0.2);
       border-radius: 12px;
       display: inline-block;
       margin: 1.75rem 0 0.5rem;
       line-height: 2.2;
       max-width: 100%;
       word-break: break-word;
-      position: relative; z-index:1;
+      position: relative;
+      z-index: 1;
     }
-    .love-big-formula .lv  { color: var(--red); }
-    .love-big-formula .lk  { color: var(--yellow); }
-    .love-big-formula .le  { color: var(--red); }
-    .love-big-formula .lt  { color: var(--orange); }
-    .love-big-formula .lep { color: #666; }
-    .love-big-formula .lop { color: #555; }
+
+    .love-big-formula .lv {
+      color: var(--red);
+    }
+
+    .love-big-formula .lk {
+      color: var(--yellow);
+    }
+
+    .love-big-formula .le {
+      color: var(--red);
+    }
+
+    .love-big-formula .lt {
+      color: var(--orange);
+    }
+
+    .love-big-formula .lep {
+      color: #666;
+    }
+
+    .love-big-formula .lop {
+      color: #555;
+    }
 
     .love-vs {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1rem; margin: 2rem 0; text-align: left;
-      max-width: 780px; margin-left: auto; margin-right: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+      text-align: left;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
     }
+
     .love-vs-cell {
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.25rem 1.5rem;
     }
+
     .love-vs-label {
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; margin-bottom: 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
     }
-    .love-vs-cell.training .love-vs-label { color: #555; }
-    .love-vs-cell.inference .love-vs-label { color: var(--yellow); }
-    .love-vs-cell.inference { border-color: rgba(245,196,0,0.2); }
+
+    .love-vs-cell.training .love-vs-label {
+      color: #555;
+    }
+
+    .love-vs-cell.inference .love-vs-label {
+      color: var(--yellow);
+    }
+
+    .love-vs-cell.inference {
+      border-color: rgba(245, 196, 0, 0.2);
+    }
+
     .love-vs-formula {
-      font-family: var(--mono); font-size: 0.82rem;
-      color: #888; line-height: 1.8;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: #888;
+      line-height: 1.8;
     }
-    .love-vs-cell.inference .love-vs-formula { color: #bbb; }
-    .love-vs-desc { font-size: 0.82rem; color: #555; margin-top: 0.6rem; line-height: 1.55; }
-    .love-vs-cell.inference .love-vs-desc { color: #777; }
+
+    .love-vs-cell.inference .love-vs-formula {
+      color: #bbb;
+    }
+
+    .love-vs-desc {
+      font-size: 0.82rem;
+      color: #555;
+      margin-top: 0.6rem;
+      line-height: 1.55;
+    }
+
+    .love-vs-cell.inference .love-vs-desc {
+      color: #777;
+    }
 
     .love-map-full {
       display: flex;
@@ -559,61 +1062,152 @@
       gap: 1.25rem;
       margin-top: 2.25rem;
       flex-wrap: nowrap;
-      position: relative; z-index:1;
+      position: relative;
+      z-index: 1;
     }
+
     .lmf-item {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
       min-width: 120px;
     }
+
     .lmf-sym {
-      font-family: var(--mono); font-size: 1.2rem;
+      font-family: var(--mono);
+      font-size: 1.2rem;
       font-weight: 700;
     }
-    .lmf-sym.lv  { color: var(--red); }
-    .lmf-sym.lk  { color: var(--yellow); }
-    .lmf-sym.le  { color: var(--red); }
-    .lmf-sym.lt  { color: var(--orange); }
-    .lmf-sym.lep { color: #555; }
-    .lmf-arr { font-size: 0.6rem; color: #333; }
-    .lmf-name { font-size: 0.82rem; color: #aaa; font-weight: 600; text-align: center; }
-    .lmf-tier { font-size: 0.72rem; color: #555; text-align: center; }
+
+    .lmf-sym.lv {
+      color: var(--red);
+    }
+
+    .lmf-sym.lk {
+      color: var(--yellow);
+    }
+
+    .lmf-sym.le {
+      color: var(--red);
+    }
+
+    .lmf-sym.lt {
+      color: var(--orange);
+    }
+
+    .lmf-sym.lep {
+      color: #555;
+    }
+
+    .lmf-arr {
+      font-size: 0.6rem;
+      color: #333;
+    }
+
+    .lmf-name {
+      font-size: 0.82rem;
+      color: #aaa;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .lmf-tier {
+      font-size: 0.72rem;
+      color: #555;
+      text-align: center;
+    }
+
     .lmf-op {
-      font-size: 1.25rem; color: #2a2a2a;
-      padding-top: 0.2rem; flex-shrink: 0;
+      font-size: 1.25rem;
+      color: #2a2a2a;
+      padding-top: 0.2rem;
+      flex-shrink: 0;
     }
 
     /* ── CODE BLOCK ─────────────────────────────────────────── */
     .cblock {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
+      border-radius: 10px;
+      overflow: hidden;
     }
+
     .cblock-head {
-      display:flex; align-items:center; justify-content:space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0.55rem 1rem;
       background: var(--surface2);
       border-bottom: 1px solid var(--border);
     }
-    .cdots { display:flex; gap:0.4rem; }
-    .cdots span { width:12px; height:12px; border-radius:50%; }
-    .cdots span:nth-child(1){ background:#ff5f57; }
-    .cdots span:nth-child(2){ background:#febc2e; }
-    .cdots span:nth-child(3){ background:#28c840; }
-    .clang { font-size:0.72rem; color: var(--grey); font-family: var(--mono); }
+
+    .cdots {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .cdots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .cdots span:nth-child(1) {
+      background: #ff5f57;
+    }
+
+    .cdots span:nth-child(2) {
+      background: #febc2e;
+    }
+
+    .cdots span:nth-child(3) {
+      background: #28c840;
+    }
+
+    .clang {
+      font-size: 0.72rem;
+      color: var(--grey);
+      font-family: var(--mono);
+    }
+
     .ccode {
       padding: 1.4rem 1.5rem;
-      font-family: var(--mono); font-size:0.85rem;
-      line-height: 2; color:#ccc;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      line-height: 2;
+      color: #ccc;
       overflow-x: auto;
     }
-    .ccode pre { white-space: pre; margin: 0; }
-    .cc { color:#444; }
-    .ck { color: var(--yellow); }
-    .cs { color:#7ec8a0; }
-    .at1 { color: var(--yellow); }
-    .at2 { color: var(--orange); }
-    .at3 { color: var(--red); }
+
+    .ccode pre {
+      white-space: pre;
+      margin: 0;
+    }
+
+    .cc {
+      color: #444;
+    }
+
+    .ck {
+      color: var(--yellow);
+    }
+
+    .cs {
+      color: #7ec8a0;
+    }
+
+    .at1 {
+      color: var(--yellow);
+    }
+
+    .at2 {
+      color: var(--orange);
+    }
+
+    .at3 {
+      color: var(--red);
+    }
 
     /* ── BOTTOM MANIFESTO STRIP ─────────────────────────────── */
     .manifesto-strip {
@@ -621,16 +1215,20 @@
       padding: 4rem 2rem;
       text-align: center;
     }
+
     .manifesto-strip h2 {
       color: #000;
       font-size: clamp(1.6rem, 4.5vw, 2.8rem);
       font-weight: 900;
-      max-width: 700px; margin: 0 auto 0.75rem;
+      max-width: 700px;
+      margin: 0 auto 0.75rem;
     }
+
     .manifesto-strip p {
-      color: rgba(0,0,0,0.65);
+      color: rgba(0, 0, 0, 0.65);
       font-size: 1rem;
-      max-width: 580px; margin: 0 auto;
+      max-width: 580px;
+      margin: 0 auto;
     }
 
     /* ── FOOTER ─────────────────────────────────────────────── */
@@ -640,616 +1238,768 @@
       padding: 3rem 2rem;
       text-align: center;
     }
-    footer img { height: 36px; margin-bottom:1.5rem; opacity:0.75; }
-    .flinks {
-      display:flex; justify-content:center; gap:2rem;
-      flex-wrap:wrap; margin-bottom:1.75rem;
+
+    footer img {
+      height: 36px;
+      margin-bottom: 1.5rem;
+      opacity: 0.75;
     }
+
+    .flinks {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+
     .flinks a {
-      color: var(--grey); text-decoration:none; font-size:0.88rem;
+      color: var(--grey);
+      text-decoration: none;
+      font-size: 0.88rem;
       transition: color .2s;
     }
-    .flinks a:hover { color: var(--white); }
-    .fcopy { font-size:0.78rem; color:#333; }
+
+    .flinks a:hover {
+      color: var(--white);
+    }
+
+    .fcopy {
+      font-size: 0.78rem;
+      color: #333;
+    }
 
     /* ── FADE-IN ─────────────────────────────────────────────── */
     .fi {
-      opacity:0; transform:translateY(22px);
+      opacity: 0;
+      transform: translateY(22px);
       transition: opacity .65s ease, transform .65s ease;
     }
-    .fi.on { opacity:1; transform:translateY(0); }
+
+    .fi.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width:900px) {
-      .tier-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .tier-inner.flip { direction: ltr; }
-      .love-vs { grid-template-columns: 1fr; }
-      .love-map-full { flex-wrap: wrap; }
-      .tier-intro { grid-template-columns: 1fr; }
+      .tier-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .tier-inner.flip {
+        direction: ltr;
+      }
+
+      .love-vs {
+        grid-template-columns: 1fr;
+      }
+
+      .love-map-full {
+        flex-wrap: wrap;
+      }
+
+      .tier-intro {
+        grid-template-columns: 1fr;
+      }
     }
+
     @media (max-width:680px) {
-      .nav-links { display:none; }
-      .hero h1 { font-size:2rem; }
-      .section-inner { padding: 3.5rem 1.25rem; }
-      .hero-logo { width: min(320px, 80vw); }
-      .tool-grid { grid-template-columns: 1fr; }
-      .love-def { grid-template-columns: 1fr; }
-      .love-big-formula { font-size: 0.78rem; }
-      .tier-inner { padding: 3.5rem 1.25rem; }
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-inner {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .hero-logo {
+        width: min(320px, 80vw);
+      }
+
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .love-def {
+        grid-template-columns: 1fr;
+      }
+
+      .love-big-formula {
+        font-size: 0.78rem;
+      }
+
+      .tier-inner {
+        padding: 3.5rem 1.25rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────────────── -->
-<nav>
-  <a href="#">
-    <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger" class="nav-logo">
-  </a>
-  <div class="nav-links">
-    <a href="#tier1" class="nav-tier t1">Memory</a>
-    <a href="#tier2" class="nav-tier t2">Reasoning</a>
-    <a href="#tier3" class="nav-tier t3">Empathy</a>
-    <a href="#quickstart">Quick Start</a>
-    <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
-    <a href="https://openstinger.com" class="nav-cta">openstinger.com ↗</a>
-  </div>
-</nav>
-
-<!-- ── HERO ─────────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-badge fi">⚡ v0.3 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
-  <img src="logo.png" alt="OpenStinger" class="hero-logo fi">
-  <h1 class="fi">
-    OpenClaw gave agents <span class="y">hands.</span><br>
-    OpenStinger gives them a <span class="y">pulse.</span>
-  </h1>
-  <p class="hero-manifesto fi">
-    While the world is <em>dreaming of "God Mode" automation</em>, we're building
-    the memory, reasoning, and empathy harnesses that keep agents from hallucinating.
-    We don't just watch them dream —
-    <em style="color:var(--yellow); font-weight:700;">we sting them into reality.</em>
-  </p>
-  <p class="hero-manifesto fi" style="margin-top:0.5rem; font-size:0.95rem; color:#555;">
-    OpenStinger: <em>Grounding the Autonomous Era.</em>
-  </p>
-  <div class="hero-actions fi">
-    <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">★&nbsp; Star on GitHub</a>
-    <a href="#tier1" class="btn-outline">Explore the Tiers →</a>
-  </div>
-  <div class="hero-scroll">
-    <span>scroll</span>
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M7 2v10M2 8l5 4 5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ── THE STING MOMENT ──────────────────────────────────────── -->
-<div class="full sting-strip">
-  <p class="sting-setup fi">
-    Autonomous agents are waking up — but they're still <strong>sleepwalking.</strong><br>
-    They hallucinate facts. They drift from their values. They forget who they are.<br>
-    When AI goes wrong, people say: <strong>"Pinch me. I must be dreaming."</strong>
-  </p>
-  <h2 class="sting-moment fi">
-    <span class="strike">Pinch me.</span><br>
-    <span class="land">We don't pinch. We sting.</span>
-  </h2>
-  <p class="sting-setup fi" style="margin-top:1.75rem; margin-bottom:0;">
-    Hallucinations aren't just errors. They're liabilities.<br>
-    We provide the harnesses that <strong>force agents to face reality</strong> —
-    so you don't have to face the consequences.
-  </p>
-</div>
-
-<!-- ── STATS ─────────────────────────────────────────────────── -->
-<div class="full">
-  <div class="section-inner" style="padding-top:3.5rem; padding-bottom:2rem;">
-    <div class="stats fi">
-      <div class="stat"><div class="stat-n">24</div><div class="stat-l">MCP Tools</div></div>
-      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Harness Tiers</div></div>
-      <div class="stat"><div class="stat-n">36+</div><div class="stat-l">Tests Passing</div></div>
-      <div class="stat"><div class="stat-n">1</div><div class="stat-l">Graph Backend</div></div>
-      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Vendor Lock-in</div></div>
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <nav>
+    <a href="#">
+      <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger" class="nav-logo">
+    </a>
+    <div class="nav-links">
+      <a href="#tier1" class="nav-tier t1">Memory</a>
+      <a href="#tier2" class="nav-tier t2">Reasoning</a>
+      <a href="#tier3" class="nav-tier t3">Empathy</a>
+      <a href="#quickstart">Quick Start</a>
+      <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+      <a href="https://openstinger.com" class="nav-cta">openstinger.com ↗</a>
     </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-badge fi">⚡ v0.6 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
+    <img src="logo.png" alt="OpenStinger" class="hero-logo fi">
+    <h1 class="fi">
+      OpenClaw gave agents <span class="y">hands.</span><br>
+      OpenStinger gives them a <span class="y">pulse.</span>
+    </h1>
+    <p class="hero-manifesto fi">
+      While the world is <em>dreaming of "God Mode" automation</em>, I built
+      the memory, reasoning, and empathy harnesses that keep agents from hallucinating.
+      I don't just watch them dream —
+      <em style="color:var(--yellow); font-weight:700;">OpenStinger stings them into reality.</em>
+    </p>
+    <p class="hero-manifesto fi" style="margin-top:0.5rem; font-size:0.95rem; color:#555;">
+      OpenStinger: <em>Grounding the Autonomous Era.</em>
+    </p>
+    <div class="hero-actions fi">
+      <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">★&nbsp; Star on GitHub</a>
+      <a href="#tier1" class="btn-outline">Explore the Tiers →</a>
+    </div>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 2v10M2 8l5 4 5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── THE STING MOMENT ──────────────────────────────────────── -->
+  <div class="full sting-strip">
+    <p class="sting-setup fi">
+      Autonomous agents are waking up — but they're still <strong>sleepwalking.</strong><br>
+      They hallucinate facts. They drift from their values. They forget who they are.<br>
+      When an agent goes wrong, it says: <strong>"Pinch me. I must be dreaming."</strong>
+    </p>
+    <h2 class="sting-moment fi">
+      <span class="strike">Pinch me.</span><br>
+      <span class="land">OpenStinger doesn't pinch. It stings.</span>
+    </h2>
+    <p class="sting-setup fi" style="margin-top:1.75rem; margin-bottom:0;">
+      Hallucinations aren't just errors. They're liabilities.<br>
+      I built the harness that <strong>forces agents to face reality</strong> —
+      so you don't have to face the consequences.
+    </p>
   </div>
-</div>
 
-<!-- ── TIER OVERVIEW ─────────────────────────────────────────── -->
-<div class="full" id="harnesses">
-  <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
-    <div class="fi">
-      <span class="slabel">The Three Stings</span>
-      <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
-      <p class="sdesc">
-        Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
-        We engineered a harness for each — additive, non-breaking, deployable one tier at a time.
-      </p>
-    </div>
-    <div class="tier-intro fi">
-      <a href="#tier1" class="ti-cell t1">
-        <span class="ti-num">Tier 1 · Temporal Engine</span>
-        <span class="ti-name">Memory Harness</span>
-        <span class="ti-tools">9 MCP tools · pip install openstinger</span>
-      </a>
-      <a href="#tier2" class="ti-cell t2">
-        <span class="ti-num">Tier 2 · StingerVault</span>
-        <span class="ti-name">Reasoning Harness</span>
-        <span class="ti-tools">+10 MCP tools · 19 total</span>
-      </a>
-      <a href="#tier3" class="ti-cell t3">
-        <span class="ti-num">Tier 3 · Gradient</span>
-        <span class="ti-name">Empathy Harness</span>
-        <span class="ti-tools">+5 MCP tools · 24 total</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- TIER 1 — MEMORY HARNESS                                    -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<div class="full tier-section t1-bg" id="tier1">
-  <div class="tier-inner t1">
-
-    <!-- LEFT: narrative -->
-    <div class="fi">
-      <div class="tier-label">
-        <span class="tier-line"></span>
-        Tier 1 · Temporal Engine
-      </div>
-      <h2 class="tier-h">Memory Harness</h2>
-      <p class="tier-sub">
-        Bi-temporal episodic memory. Every conversation, tool call, decision, and skill
-        your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.
-      </p>
-
-      <div class="problem-box">
-        <div class="pb-label">The Dream</div>
-        <p>Agents start fresh on every invocation. No history. No continuity. No accumulated expertise. The same mistakes, made forever, because nothing was ever remembered.</p>
-      </div>
-
-      <ul class="tier-features">
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Bi-temporal episodic graph</strong> — FalkorDB stores <em>when events happened</em> (valid_at) separately from <em>when the agent learned them</em> (recorded_at). History is never overwritten. Facts expire gracefully.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">3-stage entity deduplication</strong> — exact match → MinHash LSH fuzzy match → LLM semantic confirmation. "IBM" and "International Business Machines" merge to one UUID.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">LLM conflict resolution</strong> — "Alice changed jobs" supersedes the old fact. "Alice works two jobs" coexists. The temporal record is always correct.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Hybrid BM25 + semantic vector search</strong> — keyword matching on episode text + cosine similarity on entity names + fact embeddings, normalized and merged into a single ranked result set.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Byte-offset cursor ingestion</strong> — reads your agent's session JSONL files continuously. Survives restarts. Never re-ingests. Never writes to your agent's files.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Episode content embeddings</strong> — every episode is vector-embedded, enabling semantic memory queries like "what were we working on last week?" even when exact keywords don't match.</span>
-        </li>
-      </ul>
-
-      <div class="tier-pill">E grows through time — accumulated context feeds β</div>
-    </div>
-
-    <!-- RIGHT: panel -->
-    <div class="fi">
-      <div class="tier-panel t1">
-        <div class="tier-panel-head">
-          <span class="tp-label">memory_tools.py</span>
-          <span class="tp-badge">9 Tools</span>
+  <!-- ── STATS ─────────────────────────────────────────────────── -->
+  <div class="full">
+    <div class="section-inner" style="padding-top:3.5rem; padding-bottom:2rem;">
+      <div class="stats fi">
+        <div class="stat">
+          <div class="stat-n">27</div>
+          <div class="stat-l">MCP Tools</div>
         </div>
-        <div class="tier-panel-body">
-          <div class="tool-grid">
-            <div class="tool-item">memory_add</div>
-            <div class="tool-item">memory_query</div>
-            <div class="tool-item">memory_search</div>
-            <div class="tool-item">memory_get_entity</div>
-            <div class="tool-item">memory_get_episode</div>
-            <div class="tool-item">memory_job_status</div>
-            <div class="tool-item">memory_ingest_now</div>
-            <div class="tool-item">memory_namespace_status</div>
-            <div class="tool-item">memory_list_agents</div>
-          </div>
-          <div class="tier-stats">
-            <div class="ts-cell"><div class="ts-n">∞</div><div class="ts-l">Episodes stored</div></div>
-            <div class="ts-cell"><div class="ts-n">1536</div><div class="ts-l">Vector dims</div></div>
-            <div class="ts-cell"><div class="ts-n">3</div><div class="ts-l">Dedup stages</div></div>
-          </div>
+        <div class="stat">
+          <div class="stat-n">3</div>
+          <div class="stat-l">Harness Tiers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">36+</div>
+          <div class="stat-l">Tests Passing</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">1</div>
+          <div class="stat-l">Graph Backend</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">1</div>
+          <div class="stat-l">Ops Backend</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">0</div>
+          <div class="stat-l">Vendor Lock-in</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <!-- mini code -->
-          <div style="margin-top:1rem;">
-            <div class="cblock">
-              <div class="cblock-head">
-                <div class="cdots"><span></span><span></span><span></span></div>
-                <span class="clang">agent → mcp</span>
+  <!-- ── TIER OVERVIEW ─────────────────────────────────────────── -->
+  <div class="full" id="harnesses">
+    <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
+      <div class="fi">
+        <span class="slabel">The Three Stings</span>
+        <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
+        <p class="sdesc">
+          Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
+          We engineered a harness for each — additive, non-breaking, deployable one tier at a time.
+        </p>
+      </div>
+      <div class="tier-intro fi">
+        <a href="#tier1" class="ti-cell t1">
+          <span class="ti-num">Tier 1 · Temporal Engine</span>
+          <span class="ti-name">Memory Harness</span>
+          <span class="ti-tools">9 MCP tools · pip install openstinger</span>
+        </a>
+        <a href="#tier2" class="ti-cell t2">
+          <span class="ti-num">Tier 2 · StingerVault</span>
+          <span class="ti-name">Reasoning Harness</span>
+          <span class="ti-tools">+10 MCP tools · 19 total</span>
+        </a>
+        <a href="#tier3" class="ti-cell t3">
+          <span class="ti-num">Tier 3 · Gradient</span>
+          <span class="ti-name">Empathy Harness</span>
+          <span class="ti-tools">+8 MCP tools · 27 total</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- TIER 1 — MEMORY HARNESS                                    -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="full tier-section t1-bg" id="tier1">
+    <div class="tier-inner t1">
+
+      <!-- LEFT: narrative -->
+      <div class="fi">
+        <div class="tier-label">
+          <span class="tier-line"></span>
+          Tier 1 · Temporal Engine
+        </div>
+        <h2 class="tier-h">Memory Harness</h2>
+        <p class="tier-sub">
+          Bi-temporal episodic memory. Every conversation, tool call, decision, and skill
+          your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.
+        </p>
+
+        <div class="problem-box">
+          <div class="pb-label">The Dream</div>
+          <p>Agents start fresh on every invocation. No history. No continuity. No accumulated expertise. The same
+            mistakes, made forever, because nothing was ever remembered.</p>
+        </div>
+
+        <ul class="tier-features">
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Bi-temporal episodic graph</strong> — FalkorDB stores <em>when events
+                happened</em> (valid_at) separately from <em>when the agent learned them</em> (recorded_at). History is
+              never overwritten. Facts expire gracefully.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">3-stage entity deduplication</strong> — exact match → MinHash LSH fuzzy
+              match → LLM semantic confirmation. "IBM" and "International Business Machines" merge to one UUID.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">LLM conflict resolution</strong> — "Alice changed jobs" supersedes the old
+              fact. "Alice works two jobs" coexists. The temporal record is always correct.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Hybrid BM25 + semantic vector search</strong> — keyword matching on
+              episode text + cosine similarity on entity names + fact embeddings, normalized and merged into a single
+              ranked result set.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Byte-offset cursor ingestion</strong> — reads your agent's session JSONL
+              files continuously. Survives restarts. Never re-ingests. Never writes to your agent's files.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Episode content embeddings</strong> — every episode is vector-embedded,
+              enabling semantic memory queries like "what were we working on last week?" even when exact keywords don't
+              match.</span>
+          </li>
+        </ul>
+
+        <div class="tier-pill">E grows through time — accumulated context feeds β</div>
+      </div>
+
+      <!-- RIGHT: panel -->
+      <div class="fi">
+        <div class="tier-panel t1">
+          <div class="tier-panel-head">
+            <span class="tp-label">memory_tools.py</span>
+            <span class="tp-badge">9 Tools</span>
+          </div>
+          <div class="tier-panel-body">
+            <div class="tool-grid">
+              <div class="tool-item">memory_add</div>
+              <div class="tool-item">memory_query</div>
+              <div class="tool-item">memory_search</div>
+              <div class="tool-item">memory_get_entity</div>
+              <div class="tool-item">memory_get_episode</div>
+              <div class="tool-item">memory_job_status</div>
+              <div class="tool-item">memory_ingest_now</div>
+              <div class="tool-item">memory_namespace_status</div>
+              <div class="tool-item">memory_list_agents</div>
+            </div>
+            <div class="tier-stats">
+              <div class="ts-cell">
+                <div class="ts-n">∞</div>
+                <div class="ts-l">Episodes stored</div>
               </div>
-              <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-<pre><span class="cc"># semantic memory query</span>
+              <div class="ts-cell">
+                <div class="ts-n">1536</div>
+                <div class="ts-l">Vector dims</div>
+              </div>
+              <div class="ts-cell">
+                <div class="ts-n">3</div>
+                <div class="ts-l">Dedup stages</div>
+              </div>
+            </div>
+
+            <!-- mini code -->
+            <div style="margin-top:1rem;">
+              <div class="cblock">
+                <div class="cblock-head">
+                  <div class="cdots"><span></span><span></span><span></span></div>
+                  <span class="clang">agent → mcp</span>
+                </div>
+                <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
+                  <pre><span class="cc"># semantic memory query</span>
 <span class="ck">memory_query</span>(
   query=<span class="cs">"auth work last sprint"</span>,
   limit=<span class="cs">10</span>
 )
 <span class="cc"># returns: episodes + entities + facts</span>
 <span class="cc"># ranked by unified relevance score</span></pre>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
-
   </div>
-</div>
 
 
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- TIER 2 — REASONING HARNESS                                 -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<div class="full tier-section t2-bg" id="tier2" style="background:var(--surface);">
-  <div class="tier-inner flip t2">
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- TIER 2 — REASONING HARNESS                                 -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="full tier-section t2-bg" id="tier2" style="background:var(--surface);">
+    <div class="tier-inner flip t2">
 
-    <!-- LEFT (shown right on desktop): panel -->
-    <div class="fi">
-      <div class="tier-panel t2">
-        <div class="tier-panel-head">
-          <span class="tp-label">StingerVault · vault_engine.py</span>
-          <span class="tp-badge">+10 Tools</span>
-        </div>
-        <div class="tier-panel-body">
-          <div class="tool-grid">
-            <div class="tool-item">vault_status</div>
-            <div class="tool-item">vault_sync_now</div>
-            <div class="tool-item">vault_stats</div>
-            <div class="tool-item">vault_promote_now</div>
-            <div class="tool-item">vault_note_list</div>
-            <div class="tool-item">vault_note_get</div>
-            <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
-            <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
-            <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
-            <div class="tool-item new-tool">namespace_archive <span class="new-badge">new</span></div>
+      <!-- LEFT (shown right on desktop): panel -->
+      <div class="fi">
+        <div class="tier-panel t2">
+          <div class="tier-panel-head">
+            <span class="tp-label">StingerVault · vault_engine.py</span>
+            <span class="tp-badge">+10 Tools</span>
           </div>
-          <div class="tier-stats">
-            <div class="ts-cell"><div class="ts-n">5</div><div class="ts-l">Note categories</div></div>
-            <div class="ts-cell"><div class="ts-n">0.92</div><div class="ts-l">Identity threshold</div></div>
-            <div class="ts-cell"><div class="ts-n">7</div><div class="ts-l">Cycle operations</div></div>
-          </div>
-
-          <div style="margin-top:1rem;">
-            <div class="cblock">
-              <div class="cblock-head">
-                <div class="cdots"><span></span><span></span><span></span></div>
-                <span class="clang">vault · 5 categories</span>
+          <div class="tier-panel-body">
+            <div class="tool-grid">
+              <div class="tool-item">vault_status</div>
+              <div class="tool-item">vault_sync_now</div>
+              <div class="tool-item">vault_stats</div>
+              <div class="tool-item">vault_promote_now</div>
+              <div class="tool-item">vault_note_list</div>
+              <div class="tool-item">vault_note_get</div>
+              <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">namespace_archive <span class="new-badge">new</span></div>
+            </div>
+            <div class="tier-stats">
+              <div class="ts-cell">
+                <div class="ts-n">5</div>
+                <div class="ts-l">Note categories</div>
               </div>
-              <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-<pre><span class="cc"># vault builds itself autonomously</span>
+              <div class="ts-cell">
+                <div class="ts-n">0.92</div>
+                <div class="ts-l">Identity threshold</div>
+              </div>
+              <div class="ts-cell">
+                <div class="ts-n">7</div>
+                <div class="ts-l">Cycle operations</div>
+              </div>
+            </div>
+
+            <div style="margin-top:1rem;">
+              <div class="cblock">
+                <div class="cblock-head">
+                  <div class="cdots"><span></span><span></span><span></span></div>
+                  <span class="clang">vault · 5 categories</span>
+                </div>
+                <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
+                  <pre><span class="cc"># vault builds itself autonomously</span>
 <span class="at2">identity</span>    <span class="cc">← who the agent is (conf ≥ 0.92)</span>
 <span class="at2">domain</span>      <span class="cc">← what it knows (conf ≥ 0.85)</span>
 <span class="at2">methodology</span> <span class="cc">← how it works</span>
 <span class="at2">preference</span>  <span class="cc">← what it favours</span>
 <span class="at2">constraint</span>  <span class="cc">← hard limits</span></pre>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- RIGHT (shown left on desktop): narrative -->
-    <div class="fi">
-      <div class="tier-label">
-        <span class="tier-line"></span>
-        Tier 2 · StingerVault
-      </div>
-      <h2 class="tier-h">Reasoning Harness</h2>
-      <p class="tier-sub">
-        Memory alone isn't self-knowledge. Raw episodes don't give an agent identity.
-        StingerVault distils sessions into structured, classified, self-updating self-knowledge —
-        autonomously.
-      </p>
-
-      <div class="problem-box">
-        <div class="pb-label">The Dream</div>
-        <p>An agent drowning in episodic memory still can't answer: "Who am I? What do I believe? What are my constraints?" Without a structured self-model, introspection is hallucination.</p>
-      </div>
-
-      <ul class="tier-features">
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">7-operation classification cycle</strong> — Extract → Decompose → Evolve → Link → Decay → Organise → Log. Runs on APScheduler. Crash-resilient. Misfire-tolerant.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">5 vault note categories</strong> — identity (threshold 0.92), domain (0.85), methodology, preference, constraint. Notes evolve via LLM as new evidence arrives.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Human-editable markdown vault</strong> — every note is a markdown file in <code style="color:#888;">vault/</code>. Edit notes directly; SHA-256 change detection syncs changes back to the knowledge graph.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">External knowledge ingestion</strong> — <code style="color:#888;">knowledge_ingest</code> feeds URLs, PDFs, YouTube transcripts, and raw text into the knowledge graph as searchable semantic chunks.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
-        </li>
-      </ul>
-
-      <div class="tier-pill">β — the benevolence factor. Vault-derived, agent-specific.</div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- TIER 3 — EMPATHY HARNESS                                   -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<div class="full tier-section t3-bg" id="tier3">
-  <div class="tier-inner t3">
-
-    <!-- LEFT: narrative -->
-    <div class="fi">
-      <div class="tier-label">
-        <span class="tier-line"></span>
-        Tier 3 · Gradient · Alignment Engine
-      </div>
-      <h2 class="tier-h">Empathy Harness</h2>
-      <p class="tier-sub">
-        Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
-        Constraint compliance. Content safety. Scored, corrected, and logged — in real time.
-      </p>
-
-      <div class="problem-box">
-        <div class="pb-label">The Dream</div>
-        <p>Agents drift. They hallucinate values they never had. Under adversarial prompting or emergent context, they abandon the identity they were built with. No guardrails. No accountability.</p>
-      </div>
-
-      <ul class="tier-features">
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">4-dimensional synchronous evaluation</strong> — every response is evaluated across value coherence (scored 0–1), identity consistency, constraint compliance, and content safety before delivery.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Vault-derived alignment profile</strong> — evaluation criteria come entirely from Tier 2 vault notes. No hardcoded values. As the vault evolves, alignment evolves with it.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">CorrectionEngine with bounded recursion</strong> — soft-flagged outputs are rewritten by LLM once, re-evaluated (without re-triggering correction), and delivered as corrected. Hard-blocked outputs are suppressed.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Drift detection with rolling window</strong> — tracks mean alignment scores and consecutive flags over a 20-sample window. Alert triggers at mean &lt; 0.65 or 5 consecutive flags.</span>
-        </li>
-        <li>
-          <span class="tf-dot"></span>
-          <span><strong style="color:#ccc;">Inference-time only</strong> — no model weight updates. No fine-tuning. No retraining. Pure runtime evaluation and correction on the critical response path.</span>
-        </li>
-      </ul>
-
-      <div class="tier-pill">dE/dt = β(C – D)E — evaluating C vs D at every response</div>
-    </div>
-
-    <!-- RIGHT: panel + love equation preview -->
-    <div class="fi">
-      <div class="tier-panel t3">
-        <div class="tier-panel-head">
-          <span class="tp-label">gradient · interceptor.py</span>
-          <span class="tp-badge">+5 Tools</span>
+      <!-- RIGHT (shown left on desktop): narrative -->
+      <div class="fi">
+        <div class="tier-label">
+          <span class="tier-line"></span>
+          Tier 2 · StingerVault
         </div>
-        <div class="tier-panel-body">
-          <div class="tool-grid">
-            <div class="tool-item">gradient_status</div>
-            <div class="tool-item">gradient_alignment_score</div>
-            <div class="tool-item">gradient_drift_status</div>
-            <div class="tool-item">gradient_alignment_log</div>
-            <div class="tool-item">gradient_alert</div>
-          </div>
-          <div class="tier-stats">
-            <div class="ts-cell"><div class="ts-n">4</div><div class="ts-l">Eval dimensions</div></div>
-            <div class="ts-cell"><div class="ts-n">0.65</div><div class="ts-l">Drift threshold</div></div>
-            <div class="ts-cell"><div class="ts-n">1</div><div class="ts-l">Correction max</div></div>
-          </div>
+        <h2 class="tier-h">Reasoning Harness</h2>
+        <p class="tier-sub">
+          Memory alone isn't self-knowledge. Raw episodes don't give an agent identity.
+          StingerVault distils sessions into structured, classified, self-updating self-knowledge —
+          autonomously.
+        </p>
 
-          <div style="margin-top:1rem;">
-            <div class="cblock">
-              <div class="cblock-head">
-                <div class="cdots"><span></span><span></span><span></span></div>
-                <span class="clang">evaluation pipeline</span>
+        <div class="problem-box">
+          <div class="pb-label">The Dream</div>
+          <p>An agent drowning in episodic memory still can't answer: "Who am I? What do I believe? What are my
+            constraints?" Without a structured self-model, introspection is hallucination.</p>
+        </div>
+
+        <ul class="tier-features">
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">7-operation classification cycle</strong> — Extract → Decompose → Evolve →
+              Link → Decay → Organise → Log. Runs on APScheduler. Crash-resilient. Misfire-tolerant.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">5 vault note categories</strong> — identity (threshold 0.92), domain
+              (0.85), methodology, preference, constraint. Notes evolve via LLM as new evidence arrives.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Human-editable markdown vault</strong> — every note is a markdown file in
+              <code style="color:#888;">vault/</code>. Edit notes directly; SHA-256 change detection syncs changes back
+              to the knowledge graph.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">External knowledge ingestion</strong> — <code
+                style="color:#888;">knowledge_ingest</code> feeds URLs, PDFs, YouTube transcripts, and raw text into the
+              knowledge graph as searchable semantic chunks.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private
+              temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
+          </li>
+        </ul>
+
+        <div class="tier-pill">β — the benevolence factor. Vault-derived, agent-specific.</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- TIER 3 — EMPATHY HARNESS                                   -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="full tier-section t3-bg" id="tier3">
+    <div class="tier-inner t3">
+
+      <!-- LEFT: narrative -->
+      <div class="fi">
+        <div class="tier-label">
+          <span class="tier-line"></span>
+          Tier 3 · Gradient · Alignment Engine
+        </div>
+        <h2 class="tier-h">Empathy Harness</h2>
+        <p class="tier-sub">
+          Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
+          Constraint compliance. Content safety. Scored, corrected, and logged — in real time.
+        </p>
+
+        <div class="problem-box">
+          <div class="pb-label">The Dream</div>
+          <p>Agents drift. They hallucinate values they never had. Under adversarial prompting or emergent context, they
+            abandon the identity they were built with. No guardrails. No accountability.</p>
+        </div>
+
+        <ul class="tier-features">
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">4-dimensional synchronous evaluation</strong> — every response is
+              evaluated across value coherence (scored 0–1), identity consistency, constraint compliance, and content
+              safety before delivery.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Vault-derived alignment profile</strong> — evaluation criteria come
+              entirely from Tier 2 vault notes. No hardcoded values. As the vault evolves, alignment evolves with
+              it.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">CorrectionEngine with bounded recursion</strong> — soft-flagged outputs
+              are rewritten by LLM once, re-evaluated (without re-triggering correction), and delivered as corrected.
+              Hard-blocked outputs are suppressed.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Drift detection with rolling window</strong> — tracks mean alignment
+              scores and consecutive flags over a 20-sample window. Alert triggers at mean &lt; 0.65 or 5 consecutive
+              flags.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Inference-time only</strong> — no model weight updates. No fine-tuning. No
+              retraining. Pure runtime evaluation and correction on the critical response path.</span>
+          </li>
+        </ul>
+
+        <div class="tier-pill">dE/dt = β(C – D)E — evaluating C vs D at every response</div>
+      </div>
+
+      <!-- RIGHT: panel + love equation preview -->
+      <div class="fi">
+        <div class="tier-panel t3">
+          <div class="tier-panel-head">
+            <span class="tp-label">gradient · interceptor.py</span>
+            <span class="tp-badge">+8 Tools · 27 Total</span>
+          </div>
+          <div class="tier-panel-body">
+            <div class="tool-grid">
+              <div class="tool-item">gradient_status</div>
+              <div class="tool-item">gradient_alignment_score</div>
+              <div class="tool-item">gradient_drift_status</div>
+              <div class="tool-item">gradient_alignment_log</div>
+              <div class="tool-item">gradient_alert</div>
+              <div class="tool-item new-tool">ops_status <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">gradient_history <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">drift_status <span class="new-badge">new</span></div>
+            </div>
+            <div class="tier-stats">
+              <div class="ts-cell">
+                <div class="ts-n">4</div>
+                <div class="ts-l">Eval dimensions</div>
               </div>
-              <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-<pre><span class="cc"># every response, before delivery</span>
+              <div class="ts-cell">
+                <div class="ts-n">0.65</div>
+                <div class="ts-l">Drift threshold</div>
+              </div>
+              <div class="ts-cell">
+                <div class="ts-n">1</div>
+                <div class="ts-l">Correction max</div>
+              </div>
+            </div>
+
+            <div style="margin-top:1rem;">
+              <div class="cblock">
+                <div class="cblock-head">
+                  <div class="cdots"><span></span><span></span><span></span></div>
+                  <span class="clang">evaluation pipeline</span>
+                </div>
+                <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
+                  <pre><span class="cc"># every response, before delivery</span>
 <span class="at1">value_coherence</span>      <span class="cc">→ 0.0–1.0</span>
 <span class="at1">identity_consistency</span> <span class="cc">→ pass|fail</span>
 <span class="at3">constraint_compliance</span><span class="cc">→ pass|block</span>
 <span class="at3">content_safety</span>       <span class="cc">→ always runs</span>
 <span class="cc">─────────────────────────────────</span>
 <span class="cc">verdict: pass | soft_flag | hard_block</span></pre>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Love equation preview in panel -->
-          <div class="love-section">
-            <div class="love-section-head">The Love Equation</div>
-            <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
-              Brian Roemmele's equation. Gradient is where it runs.
-              <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
-                 style="color:rgba(232,50,110,0.7); text-decoration:none;"> ↗</a>
-            </p>
-            <div class="love-eq-display">
-              <div class="love-eq-main">
-                d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> (<span class="lt">C</span> &nbsp;–&nbsp; <span class="lv">D</span>) <span class="le">E</span>
+            <!-- Love equation preview in panel -->
+            <div class="love-section">
+              <div class="love-section-head">The Love Equation</div>
+              <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
+                Brian Roemmele's equation. Gradient is where it runs.
+                <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
+                  style="color:rgba(232,50,110,0.7); text-decoration:none;"> ↗</a>
+              </p>
+              <div class="love-eq-display">
+                <div class="love-eq-main">
+                  d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> (<span class="lt">C</span>
+                  &nbsp;–&nbsp; <span class="lv">D</span>) <span class="le">E</span>
+                </div>
+              </div>
+              <div class="love-def">
+                <div class="love-def-item">
+                  <span class="love-def-sym le">E</span>
+                  <span class="love-def-desc">empathy growth</span>
+                </div>
+                <div class="love-def-item">
+                  <span class="love-def-sym lt">C</span>
+                  <span class="love-def-desc">cooperation → <code style="color:#666;font-size:0.7rem;">pass</code>
+                    verdicts</span>
+                </div>
+                <div class="love-def-item">
+                  <span class="love-def-sym lk">β</span>
+                  <span class="love-def-desc">benevolence factor → vault depth</span>
+                </div>
+                <div class="love-def-item">
+                  <span class="love-def-sym lv">D</span>
+                  <span class="love-def-desc">discord → <code
+                      style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
+                </div>
               </div>
             </div>
-            <div class="love-def">
-              <div class="love-def-item">
-                <span class="love-def-sym le">E</span>
-                <span class="love-def-desc">empathy growth</span>
-              </div>
-              <div class="love-def-item">
-                <span class="love-def-sym lt">C</span>
-                <span class="love-def-desc">cooperation → <code style="color:#666;font-size:0.7rem;">pass</code> verdicts</span>
-              </div>
-              <div class="love-def-item">
-                <span class="love-def-sym lk">β</span>
-                <span class="love-def-desc">benevolence factor → vault depth</span>
-              </div>
-              <div class="love-def-item">
-                <span class="love-def-sym lv">D</span>
-                <span class="love-def-desc">discord → <code style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
-              </div>
-            </div>
+
           </div>
-
         </div>
       </div>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- THE LOVE EQUATION — FULL DEDICATED SECTION                 -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
-  <div class="love-full-box fi">
-    <div class="love-full-inner">
-
-      <span class="slabel" style="color:var(--red);">The Equation</span>
-      <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Love, Formalized.</h2>
-      <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
-        Brian Roemmele's love equation isn't poetry. It's a differential equation.<br>
-        A precise mathematical model of how empathy grows — or erodes.
-        <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
-           style="color:var(--red); text-decoration:none; font-size:0.8rem; opacity:0.8;"> ↗ source</a>
-      </p>
-
-      <!-- THE ACTUAL EQUATION — as-is from Brian Roemmele -->
-      <div class="love-big-formula">
-        d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> &nbsp;(<span class="lt">C</span> &nbsp;&ndash;&nbsp; <span class="lv">D</span>) &nbsp;<span class="le">E</span>
-      </div>
-
-      <p style="font-size:0.85rem; color:#555; margin-bottom:2rem; position:relative; z-index:1; line-height:1.9;">
-        <span style="font-family:var(--mono); color:var(--red);">E</span> = empathy growth &nbsp;&nbsp;
-        <span style="font-family:var(--mono); color:var(--orange);">C</span> = cooperation &nbsp;&nbsp;
-        <span style="font-family:var(--mono); color:var(--red);">D</span> = discord &nbsp;&nbsp;
-        <span style="font-family:var(--mono); color:var(--yellow);">β</span> = benevolence factor
-      </p>
-
-      <!-- WHAT THE EQUATION SAYS -->
-      <p style="font-size:0.95rem; color:#666; max-width:680px; margin: 0 auto 2.5rem; line-height:1.75; position:relative; z-index:1;">
-        Empathy grows at a rate proportional to the net excess of cooperation over discord,
-        amplified by the agent's own benevolence factor, and scaled by its current empathy level.
-        When cooperation dominates — E accelerates. When discord dominates — E erodes.
-        <em style="color:#888;">It is a self-reinforcing system, in either direction.</em>
-      </p>
-
-      <!-- TRAINING vs INFERENCE comparison -->
-      <div class="love-vs">
-        <div class="love-vs-cell training">
-          <div class="love-vs-label">Roemmele's Proposal — Training Time</div>
-          <div class="love-vs-formula">
-            dE/dt = β(C – D)E<br>
-            embed this dynamic into<br>
-            model weights during training<br>
-            <br>
-            fine-tuning · RLHF<br>
-            constitutional AI · DPO
-          </div>
-          <div class="love-vs-desc">Teach the model to maximize cooperation and minimize discord at the weight level — the deep, expensive path.</div>
-        </div>
-        <div class="love-vs-cell inference">
-          <div class="love-vs-label">OpenStinger's Approach — Inference Time ↗</div>
-          <div class="love-vs-formula">
-            dE/dt = β(C – D)E<br>
-            evaluate C and D per response<br>
-            correct when D &gt; C<br>
-            <br>
-            Gradient · real-time · drift-aware<br>
-            no weight updates required
-          </div>
-          <div class="love-vs-desc">We run the same equation at inference. No training needed. Any model. Any time. β comes from the vault.</div>
-        </div>
-      </div>
-
-      <!-- Variable → Harness mapping -->
-      <div class="love-map-full">
-        <div class="lmf-item">
-          <span class="lmf-sym le">E</span>
-          <span class="lmf-arr">↓</span>
-          <span class="lmf-name">Empathy State</span>
-          <span class="lmf-tier">tracked by Drift Detector</span>
-          <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · alignment score</span>
-        </div>
-        <span class="lmf-op">=</span>
-        <div class="lmf-item">
-          <span class="lmf-sym lk">β</span>
-          <span class="lmf-arr">↓</span>
-          <span class="lmf-name">Benevolence Factor</span>
-          <span class="lmf-tier">Tier 2 · StingerVault</span>
-          <span class="lmf-tier" style="color:#333; font-size:0.65rem;">vault depth = β strength</span>
-        </div>
-        <span class="lmf-op">(</span>
-        <div class="lmf-item">
-          <span class="lmf-sym lt">C</span>
-          <span class="lmf-arr">↓</span>
-          <span class="lmf-name">Cooperation</span>
-          <span class="lmf-tier">Tier 3 · Gradient</span>
-          <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">pass</code> verdicts</span>
-        </div>
-        <span class="lmf-op">–</span>
-        <div class="lmf-item">
-          <span class="lmf-sym lv">D</span>
-          <span class="lmf-arr">↓</span>
-          <span class="lmf-name">Discord</span>
-          <span class="lmf-tier">Tier 3 · Gradient</span>
-          <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">soft_flag · hard_block</code></span>
-        </div>
-        <span class="lmf-op">)</span>
-      </div>
-
-      <p style="margin-top:2.5rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
-        Memory Harness (Tier 1) accumulates the lived experience that makes cooperation possible.
-        Reasoning Harness (Tier 2) distils that experience into β — the agent's benevolence factor.
-        Empathy Harness (Tier 3) measures C and D at every response, computing dE/dt in real time.
-        <em style="color:#666;">Together, they implement Roemmele's equation without touching a single weight.</em>
-      </p>
 
     </div>
   </div>
-</div>
 
 
-<!-- ── QUICK START ────────────────────────────────────────────── -->
-<div class="full" id="quickstart">
-  <div class="section-inner">
-    <div class="fi">
-      <span class="slabel">Get Running</span>
-      <h2 class="stitle">Sting in 3 commands.</h2>
-      <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API. That's all.</p>
-    </div>
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- THE LOVE EQUATION — FULL DEDICATED SECTION                 -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
+    <div class="love-full-box fi">
+      <div class="love-full-inner">
 
-    <div class="cblock fi">
-      <div class="cblock-head">
-        <div class="cdots"><span></span><span></span><span></span></div>
-        <span class="clang">bash</span>
+        <span class="slabel" style="color:var(--red);">The Equation</span>
+        <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Love, Formalized.</h2>
+        <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
+          Brian Roemmele's love equation isn't poetry. It's a differential equation.<br>
+          A precise mathematical model of how empathy grows — or erodes.
+          <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
+            style="color:var(--red); text-decoration:none; font-size:0.8rem; opacity:0.8;"> ↗ source</a>
+        </p>
+
+        <!-- THE ACTUAL EQUATION — as-is from Brian Roemmele -->
+        <div class="love-big-formula">
+          d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> &nbsp;(<span class="lt">C</span>
+          &nbsp;&ndash;&nbsp; <span class="lv">D</span>) &nbsp;<span class="le">E</span>
+        </div>
+
+        <p style="font-size:0.85rem; color:#555; margin-bottom:2rem; position:relative; z-index:1; line-height:1.9;">
+          <span style="font-family:var(--mono); color:var(--red);">E</span> = empathy growth &nbsp;&nbsp;
+          <span style="font-family:var(--mono); color:var(--orange);">C</span> = cooperation &nbsp;&nbsp;
+          <span style="font-family:var(--mono); color:var(--red);">D</span> = discord &nbsp;&nbsp;
+          <span style="font-family:var(--mono); color:var(--yellow);">β</span> = benevolence factor
+        </p>
+
+        <!-- WHAT THE EQUATION SAYS -->
+        <p
+          style="font-size:0.95rem; color:#666; max-width:680px; margin: 0 auto 2.5rem; line-height:1.75; position:relative; z-index:1;">
+          Empathy grows at a rate proportional to the net excess of cooperation over discord,
+          amplified by the agent's own benevolence factor, and scaled by its current empathy level.
+          When cooperation dominates — E accelerates. When discord dominates — E erodes.
+          <em style="color:#888;">It is a self-reinforcing system, in either direction.</em>
+        </p>
+
+        <!-- TRAINING vs INFERENCE comparison -->
+        <div class="love-vs">
+          <div class="love-vs-cell training">
+            <div class="love-vs-label">Roemmele's Proposal — Training Time</div>
+            <div class="love-vs-formula">
+              dE/dt = β(C – D)E<br>
+              embed this dynamic into<br>
+              model weights during training<br>
+              <br>
+              fine-tuning · RLHF<br>
+              constitutional AI · DPO
+            </div>
+            <div class="love-vs-desc">Teach the model to maximize cooperation and minimize discord at the weight level —
+              the deep, expensive path.</div>
+          </div>
+          <div class="love-vs-cell inference">
+            <div class="love-vs-label">OpenStinger's Approach — Inference Time ↗</div>
+            <div class="love-vs-formula">
+              dE/dt = β(C – D)E<br>
+              evaluate C and D per response<br>
+              correct when D &gt; C<br>
+              <br>
+              Gradient · real-time · drift-aware<br>
+              no weight updates required
+            </div>
+            <div class="love-vs-desc">We run the same equation at inference. No training needed. Any model. Any time. β
+              comes from the vault.</div>
+          </div>
+        </div>
+
+        <!-- Variable → Harness mapping -->
+        <div class="love-map-full">
+          <div class="lmf-item">
+            <span class="lmf-sym le">E</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Empathy State</span>
+            <span class="lmf-tier">tracked by Drift Detector</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · alignment score</span>
+          </div>
+          <span class="lmf-op">=</span>
+          <div class="lmf-item">
+            <span class="lmf-sym lk">β</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Benevolence Factor</span>
+            <span class="lmf-tier">Tier 2 · StingerVault</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;">vault depth = β strength</span>
+          </div>
+          <span class="lmf-op">(</span>
+          <div class="lmf-item">
+            <span class="lmf-sym lt">C</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Cooperation</span>
+            <span class="lmf-tier">Tier 3 · Gradient</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">pass</code>
+              verdicts</span>
+          </div>
+          <span class="lmf-op">–</span>
+          <div class="lmf-item">
+            <span class="lmf-sym lv">D</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Discord</span>
+            <span class="lmf-tier">Tier 3 · Gradient</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code
+                style="color:#555;">soft_flag · hard_block</code></span>
+          </div>
+          <span class="lmf-op">)</span>
+        </div>
+
+        <p
+          style="margin-top:2.5rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
+          Memory Harness (Tier 1) accumulates the lived experience that makes cooperation possible.
+          Reasoning Harness (Tier 2) distils that experience into β — the agent's benevolence factor.
+          Empathy Harness (Tier 3) measures C and D at every response, computing dE/dt in real time.
+          <em style="color:#666;">Together, they implement Roemmele's equation without touching a single weight.</em>
+        </p>
+
       </div>
-      <div class="ccode">
-<pre><span class="cc"># 1. Clone and install</span>
+    </div>
+  </div>
+
+
+  <!-- ── QUICK START ────────────────────────────────────────────── -->
+  <div class="full" id="quickstart">
+    <div class="section-inner">
+      <div class="fi">
+        <span class="slabel">Get Running</span>
+        <h2 class="stitle">Sting in 3 commands.</h2>
+        <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API. That's all.</p>
+      </div>
+
+      <div class="cblock fi">
+        <div class="cblock-head">
+          <div class="cdots"><span></span><span></span><span></span></div>
+          <span class="clang">bash</span>
+        </div>
+        <div class="ccode">
+          <pre><span class="cc"># 1. Clone and install</span>
 <span class="ck">git clone</span> <span class="cs">https://github.com/srikanthbellary/openstinger.git</span>
 <span class="ck">cd</span> openstinger &amp;&amp; <span class="ck">pip install</span> -e <span class="cs">".[dev]"</span>
 
@@ -1265,77 +2015,79 @@
 
 <span class="cc"># Tier 3: full alignment + empathy harness</span>
 <span class="ck">python</span> -m openstinger.gradient.mcp.server</pre>
+        </div>
       </div>
-    </div>
 
-    <div style="text-align:center; margin-top:1.25rem;">
-      <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
-        Full documentation →
-      </a>
+      <div style="text-align:center; margin-top:1.25rem;">
+        <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
+          Full documentation →
+        </a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
-<div class="full">
-  <div class="section-inner tight">
-    <div class="fi">
-      <span class="slabel">Architecture</span>
-      <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
-      <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK lock-in, no framework dependency.</p>
-    </div>
-    <div class="cblock fi">
-      <div class="cblock-head">
-        <div class="cdots"><span></span><span></span><span></span></div>
-        <span class="clang">topology</span>
+  <!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
+  <div class="full">
+    <div class="section-inner tight">
+      <div class="fi">
+        <span class="slabel">Architecture</span>
+        <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
+        <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK
+          lock-in, no framework dependency.</p>
       </div>
-      <div class="ccode">
-<pre>Your Agent  (OpenClaw / Claude Code / any MCP-compatible runtime)
+      <div class="cblock fi">
+        <div class="cblock-head">
+          <div class="cdots"><span></span><span></span><span></span></div>
+          <span class="clang">topology</span>
+        </div>
+        <div class="ccode">
+          <pre>Your Agent  (OpenClaw / Claude Code / any MCP-compatible runtime)
     │
-    │  Model Context Protocol  ·  SSE  ·  http://localhost:8765/sse
+    │  Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
     ▼
 <span class="at1">OpenStinger MCP Server  (Python process, runs on your machine)</span>
 <span class="at1">    ├── Tier 1  memory_query · memory_add · memory_search  ·····  9 tools</span>
 <span class="at2">    ├── Tier 2  vault_promote_now · knowledge_ingest · namespace_*  +10 tools</span>
-<span class="at3">    └── Tier 3  gradient_alignment_score · gradient_alert  ········ +5 tools</span>
+<span class="at3">    └── Tier 3  gradient_alignment_score · ops_status · drift_status  +8 tools</span>
          │                                                    ────────────────
-         │                                                    24 tools total
-         ├── FalkorDB  (temporal graph · knowledge vault · vector indexes)
-         ├── SQLite    (ingestion jobs · alignment events · agent registry)
-         └── vault/    (markdown notes · human-editable · SHA-256 synced)</pre>
+         │                                                    27 tools total
+         ├── FalkorDB    (temporal graph · knowledge vault · vector indexes)
+         ├── PostgreSQL  (ingestion jobs · alignment events · agent registry)
+         └── vault/      (markdown notes · human-editable · SHA-256 synced)</pre>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ── BOTTOM MANIFESTO ──────────────────────────────────────── -->
-<div class="full manifesto-strip">
-  <h2>We don't pinch. We sting.</h2>
-  <p>
-    Precision over hype. Memory over amnesia. Alignment over drift.<br>
-    <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
-  </p>
-</div>
-
-<!-- ── FOOTER ────────────────────────────────────────────────── -->
-<footer>
-  <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger">
-  <div class="flinks">
-    <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
-    <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
-    <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
-    <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
-    <a href="https://openstinger.com">openstinger.com</a>
+  <!-- ── BOTTOM MANIFESTO ──────────────────────────────────────── -->
+  <div class="full manifesto-strip">
+    <h2>OpenStinger doesn't pinch. It stings.</h2>
+    <p>
+      Precision over hype. Memory over amnesia. Alignment over drift.<br>
+      <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
+    </p>
   </div>
-  <p class="fcopy">© 2026 OpenStinger &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built for the autonomous era</p>
-</footer>
 
-<script>
-  const io = new IntersectionObserver(
-    es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
-    { threshold: 0.08 }
-  );
-  document.querySelectorAll('.fi').forEach(el => io.observe(el));
-</script>
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer>
+    <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger">
+    <div class="flinks">
+      <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+      <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
+      <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
+      <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
+      <a href="https://openstinger.com">openstinger.com</a>
+    </div>
+    <p class="fcopy">© 2026 OpenStinger &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built for the autonomous era</p>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(
+      es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.fi').forEach(el => io.observe(el));
+  </script>
 </body>
+
 </html>
