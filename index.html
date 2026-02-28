@@ -1257,7 +1257,7 @@
       align-items: center;
       justify-content: center;
       gap: 0;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       max-width: 780px;
       margin: 0 auto 3rem;
     }
@@ -1300,9 +1300,28 @@
 
     .ps-runtime-list {
       font-family: var(--mono);
-      font-size: 0.82rem;
-      color: #444;
+      font-size: 0.95rem;
+      color: #666;
       letter-spacing: 0.03em;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .ps-flow {
+        flex-direction: column;
+      }
+
+      .ps-arrow {
+        transform: rotate(90deg);
+        padding: 0.5rem 0;
+      }
+
+      .ps-step {
+        width: 100%;
+        max-width: 260px;
+      }
     }
 
     /* ── BOTTOM MANIFESTO STRIP ─────────────────────────────── */
@@ -1527,570 +1546,617 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ── TIER OVERVIEW ─────────────────────────────────────────── -->
-  <div class="full" id="harnesses">
-    <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
-      <div class="fi">
-        <span class="slabel">The Three Stings</span>
-        <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
-        <p class="sdesc">
-          Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
-          A harness for each — additive, non-breaking, deployable one tier at a time.
-          Works with any MCP-compatible runtime: OpenClaw, Nanobot, ZeroClaw, NanoClaw, and beyond.
-        </p>
+    <!-- ── MEMORY PORTABILITY ──────────────────────────────────────── -->
+    <div class="full portability-strip">
+      <div class="ps-eyebrow fi">Memory Architecture</div>
+      <h2 class="fi">
+        Your agent changes.<br>
+        The memory <em>doesn't have to.</em>
+      </h2>
+      <p class="ps-sub fi">
+        OpenStinger's entire knowledge state lives in two Docker volumes.<br>
+        Unplug from one agent. Move to any host. Plug into another.<br>
+        Every entity, relationship, vault note, and alignment log transfers completely.
+      </p>
+      <div class="ps-flow fi">
+        <div class="ps-step">
+          <div class="ps-step-icon">🔌</div>
+          <div class="ps-step-label">Unplug</div>
+          <div class="ps-step-desc">Export volumes</div>
+        </div>
+        <div class="ps-arrow">→</div>
+        <div class="ps-step">
+          <div class="ps-step-icon">📦</div>
+          <div class="ps-step-label">Move</div>
+          <div class="ps-step-desc">Any host. Any cloud.</div>
+        </div>
+        <div class="ps-arrow">→</div>
+        <div class="ps-step">
+          <div class="ps-step-icon">⚡</div>
+          <div class="ps-step-label">Plug In</div>
+          <div class="ps-step-desc">Full memory restored</div>
+        </div>
       </div>
-      <div class="tier-intro fi">
-        <a href="#tier1" class="ti-cell t1">
-          <span class="ti-num">Tier 1 · Temporal Engine</span>
-          <span class="ti-name">Memory Harness</span>
-          <span class="ti-tools">9 MCP tools · pip install openstinger</span>
-        </a>
-        <a href="#tier2" class="ti-cell t2">
-          <span class="ti-num">Tier 2 · StingerVault</span>
-          <span class="ti-name">Reasoning Harness</span>
-          <span class="ti-tools">+10 MCP tools · 19 total</span>
-        </a>
-        <a href="#tier3" class="ti-cell t3">
-          <span class="ti-num">Tier 3 · Gradient</span>
-          <span class="ti-name">Empathy Harness</span>
-          <span class="ti-tools">+8 MCP tools · 27 total</span>
-        </a>
+      <p class="ps-runtime-list fi">
+        Switch from OpenClaw → NanoClaw. Move from Mac Mini → AWS. OpenStinger memory travels with you.<br>
+        No other *Claw memory system decouples memory from the runtime cleanly enough to make this true.
+      </p>
+    </div>
+
+    <!-- ── TIER OVERVIEW ─────────────────────────────────────────── -->
+    <div class="full" id="harnesses">
+      <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
+        <div class="fi">
+          <span class="slabel">The Three Stings</span>
+          <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
+          <p class="sdesc">
+            Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
+            A harness for each — additive, non-breaking, deployable one tier at a time.
+            Works with any MCP-compatible runtime: OpenClaw, Nanobot, ZeroClaw, NanoClaw, and beyond.
+          </p>
+        </div>
+        <div class="tier-intro fi">
+          <a href="#tier1" class="ti-cell t1">
+            <span class="ti-num">Tier 1 · Temporal Engine</span>
+            <span class="ti-name">Memory Harness</span>
+            <span class="ti-tools">9 MCP tools · pip install openstinger</span>
+          </a>
+          <a href="#tier2" class="ti-cell t2">
+            <span class="ti-num">Tier 2 · StingerVault</span>
+            <span class="ti-name">Reasoning Harness</span>
+            <span class="ti-tools">+10 MCP tools · 19 total</span>
+          </a>
+          <a href="#tier3" class="ti-cell t3">
+            <span class="ti-num">Tier 3 · Gradient</span>
+            <span class="ti-name">Empathy Harness</span>
+            <span class="ti-tools">+8 MCP tools · 27 total</span>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
 
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <!-- TIER 1 — MEMORY HARNESS                                    -->
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <div class="full tier-section t1-bg" id="tier1">
-    <div class="tier-inner t1">
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- TIER 1 — MEMORY HARNESS                                    -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="full tier-section t1-bg" id="tier1">
+      <div class="tier-inner t1">
 
-      <!-- LEFT: narrative -->
-      <div class="fi">
-        <div class="tier-label">
-          <span class="tier-line"></span>
-          Tier 1 · Temporal Engine
-        </div>
-        <h2 class="tier-h">Memory Harness</h2>
-        <p class="tier-sub">
-          Bi-temporal episodic memory. Every conversation, tool call, decision, and skill
-          your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.
-        </p>
-
-        <div class="problem-box">
-          <div class="pb-label">The Dream</div>
-          <p>Agents start fresh on every invocation. No history. No continuity. No accumulated expertise. The same
-            mistakes, made forever, because nothing was ever remembered.</p>
-        </div>
-
-        <ul class="tier-features">
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Bi-temporal episodic graph</strong> — FalkorDB stores <em>when events
-                happened</em> (valid_at) separately from <em>when the agent learned them</em> (recorded_at). History is
-              never overwritten. Facts expire gracefully.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">3-stage entity deduplication</strong> — exact match → MinHash LSH fuzzy
-              match → LLM semantic confirmation. "IBM" and "International Business Machines" merge to one UUID.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">LLM conflict resolution</strong> — "Alice changed jobs" supersedes the old
-              fact. "Alice works two jobs" coexists. The temporal record is always correct.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Hybrid BM25 + semantic vector search</strong> — keyword matching on
-              episode text + cosine similarity on entity names + fact embeddings, normalized and merged into a single
-              ranked result set.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Byte-offset cursor ingestion</strong> — reads your agent's session JSONL
-              files continuously. Survives restarts. Never re-ingests. Never writes to your agent's files.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Episode content embeddings</strong> — every episode is vector-embedded,
-              enabling semantic memory queries like "what were we working on last week?" even when exact keywords don't
-              match.</span>
-          </li>
-        </ul>
-
-        <div class="tier-pill">E grows through time — accumulated context feeds β</div>
-      </div>
-
-      <!-- RIGHT: panel -->
-      <div class="fi">
-        <div class="tier-panel t1">
-          <div class="tier-panel-head">
-            <span class="tp-label">memory_tools.py</span>
-            <span class="tp-badge">9 Tools</span>
+        <!-- LEFT: narrative -->
+        <div class="fi">
+          <div class="tier-label">
+            <span class="tier-line"></span>
+            Tier 1 · Temporal Engine
           </div>
-          <div class="tier-panel-body">
-            <div class="tool-grid">
-              <div class="tool-item">memory_add</div>
-              <div class="tool-item">memory_query</div>
-              <div class="tool-item">memory_search</div>
-              <div class="tool-item">memory_get_entity</div>
-              <div class="tool-item">memory_get_episode</div>
-              <div class="tool-item">memory_job_status</div>
-              <div class="tool-item">memory_ingest_now</div>
-              <div class="tool-item">memory_namespace_status</div>
-              <div class="tool-item">memory_list_agents</div>
-            </div>
-            <div class="tier-stats">
-              <div class="ts-cell">
-                <div class="ts-n">∞</div>
-                <div class="ts-l">Episodes stored</div>
-              </div>
-              <div class="ts-cell">
-                <div class="ts-n">1536</div>
-                <div class="ts-l">Vector dims</div>
-              </div>
-              <div class="ts-cell">
-                <div class="ts-n">3</div>
-                <div class="ts-l">Dedup stages</div>
-              </div>
-            </div>
+          <h2 class="tier-h">Memory Harness</h2>
+          <p class="tier-sub">
+            Bi-temporal episodic memory. Every conversation, tool call, decision, and skill
+            your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.
+          </p>
 
-            <!-- mini code -->
-            <div style="margin-top:1rem;">
-              <div class="cblock">
-                <div class="cblock-head">
-                  <div class="cdots"><span></span><span></span><span></span></div>
-                  <span class="clang">agent → mcp</span>
+          <div class="problem-box">
+            <div class="pb-label">The Dream</div>
+            <p>Agents start fresh on every invocation. No history. No continuity. No accumulated expertise. The same
+              mistakes, made forever, because nothing was ever remembered.</p>
+          </div>
+
+          <ul class="tier-features">
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Bi-temporal episodic graph</strong> — FalkorDB stores <em>when events
+                  happened</em> (valid_at) separately from <em>when the agent learned them</em> (recorded_at). History
+                is
+                never overwritten. Facts expire gracefully.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">3-stage entity deduplication</strong> — exact match → MinHash LSH fuzzy
+                match → LLM semantic confirmation. "IBM" and "International Business Machines" merge to one UUID.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">LLM conflict resolution</strong> — "Alice changed jobs" supersedes the
+                old
+                fact. "Alice works two jobs" coexists. The temporal record is always correct.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Hybrid BM25 + semantic vector search</strong> — keyword matching on
+                episode text + cosine similarity on entity names + fact embeddings, normalized and merged into a single
+                ranked result set.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Byte-offset cursor ingestion</strong> — reads your agent's session JSONL
+                files continuously. Survives restarts. Never re-ingests. Never writes to your agent's files.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Episode content embeddings</strong> — every episode is vector-embedded,
+                enabling semantic memory queries like "what were we working on last week?" even when exact keywords
+                don't
+                match.</span>
+            </li>
+          </ul>
+
+          <div class="tier-pill">E grows through time — accumulated context feeds β</div>
+        </div>
+
+        <!-- RIGHT: panel -->
+        <div class="fi">
+          <div class="tier-panel t1">
+            <div class="tier-panel-head">
+              <span class="tp-label">memory_tools.py</span>
+              <span class="tp-badge">9 Tools</span>
+            </div>
+            <div class="tier-panel-body">
+              <div class="tool-grid">
+                <div class="tool-item">memory_add</div>
+                <div class="tool-item">memory_query</div>
+                <div class="tool-item">memory_search</div>
+                <div class="tool-item">memory_get_entity</div>
+                <div class="tool-item">memory_get_episode</div>
+                <div class="tool-item">memory_job_status</div>
+                <div class="tool-item">memory_ingest_now</div>
+                <div class="tool-item">memory_namespace_status</div>
+                <div class="tool-item">memory_list_agents</div>
+              </div>
+              <div class="tier-stats">
+                <div class="ts-cell">
+                  <div class="ts-n">∞</div>
+                  <div class="ts-l">Episodes stored</div>
                 </div>
-                <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-                  <pre><span class="cc"># semantic memory query</span>
+                <div class="ts-cell">
+                  <div class="ts-n">1536</div>
+                  <div class="ts-l">Vector dims</div>
+                </div>
+                <div class="ts-cell">
+                  <div class="ts-n">3</div>
+                  <div class="ts-l">Dedup stages</div>
+                </div>
+              </div>
+
+              <!-- mini code -->
+              <div style="margin-top:1rem;">
+                <div class="cblock">
+                  <div class="cblock-head">
+                    <div class="cdots"><span></span><span></span><span></span></div>
+                    <span class="clang">agent → mcp</span>
+                  </div>
+                  <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
+                    <pre><span class="cc"># semantic memory query</span>
 <span class="ck">memory_query</span>(
   query=<span class="cs">"auth work last sprint"</span>,
   limit=<span class="cs">10</span>
 )
 <span class="cc"># returns: episodes + entities + facts</span>
 <span class="cc"># ranked by unified relevance score</span></pre>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
-
     </div>
-  </div>
 
 
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <!-- TIER 2 — REASONING HARNESS                                 -->
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <div class="full tier-section t2-bg" id="tier2" style="background:var(--surface);">
-    <div class="tier-inner flip t2">
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- TIER 2 — REASONING HARNESS                                 -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="full tier-section t2-bg" id="tier2" style="background:var(--surface);">
+      <div class="tier-inner flip t2">
 
-      <!-- LEFT (shown right on desktop): panel -->
-      <div class="fi">
-        <div class="tier-panel t2">
-          <div class="tier-panel-head">
-            <span class="tp-label">StingerVault · vault_engine.py</span>
-            <span class="tp-badge">+10 Tools</span>
-          </div>
-          <div class="tier-panel-body">
-            <div class="tool-grid">
-              <div class="tool-item">vault_status</div>
-              <div class="tool-item">vault_sync_now</div>
-              <div class="tool-item">vault_stats</div>
-              <div class="tool-item">vault_promote_now</div>
-              <div class="tool-item">vault_note_list</div>
-              <div class="tool-item">vault_note_get</div>
-              <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
-              <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
-              <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
-              <div class="tool-item new-tool">namespace_archive <span class="new-badge">new</span></div>
+        <!-- LEFT (shown right on desktop): panel -->
+        <div class="fi">
+          <div class="tier-panel t2">
+            <div class="tier-panel-head">
+              <span class="tp-label">StingerVault · vault_engine.py</span>
+              <span class="tp-badge">+10 Tools</span>
             </div>
-            <div class="tier-stats">
-              <div class="ts-cell">
-                <div class="ts-n">5</div>
-                <div class="ts-l">Note categories</div>
+            <div class="tier-panel-body">
+              <div class="tool-grid">
+                <div class="tool-item">vault_status</div>
+                <div class="tool-item">vault_sync_now</div>
+                <div class="tool-item">vault_stats</div>
+                <div class="tool-item">vault_promote_now</div>
+                <div class="tool-item">vault_note_list</div>
+                <div class="tool-item">vault_note_get</div>
+                <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
+                <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
+                <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
+                <div class="tool-item new-tool">namespace_archive <span class="new-badge">new</span></div>
               </div>
-              <div class="ts-cell">
-                <div class="ts-n">0.92</div>
-                <div class="ts-l">Identity threshold</div>
-              </div>
-              <div class="ts-cell">
-                <div class="ts-n">7</div>
-                <div class="ts-l">Cycle operations</div>
-              </div>
-            </div>
-
-            <div style="margin-top:1rem;">
-              <div class="cblock">
-                <div class="cblock-head">
-                  <div class="cdots"><span></span><span></span><span></span></div>
-                  <span class="clang">vault · 5 categories</span>
+              <div class="tier-stats">
+                <div class="ts-cell">
+                  <div class="ts-n">5</div>
+                  <div class="ts-l">Note categories</div>
                 </div>
-                <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-                  <pre><span class="cc"># vault builds itself autonomously</span>
+                <div class="ts-cell">
+                  <div class="ts-n">0.92</div>
+                  <div class="ts-l">Identity threshold</div>
+                </div>
+                <div class="ts-cell">
+                  <div class="ts-n">7</div>
+                  <div class="ts-l">Cycle operations</div>
+                </div>
+              </div>
+
+              <div style="margin-top:1rem;">
+                <div class="cblock">
+                  <div class="cblock-head">
+                    <div class="cdots"><span></span><span></span><span></span></div>
+                    <span class="clang">vault · 5 categories</span>
+                  </div>
+                  <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
+                    <pre><span class="cc"># vault builds itself autonomously</span>
 <span class="at2">identity</span>    <span class="cc">← who the agent is (conf ≥ 0.92)</span>
 <span class="at2">domain</span>      <span class="cc">← what it knows (conf ≥ 0.85)</span>
 <span class="at2">methodology</span> <span class="cc">← how it works</span>
 <span class="at2">preference</span>  <span class="cc">← what it favours</span>
 <span class="at2">constraint</span>  <span class="cc">← hard limits</span></pre>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- RIGHT (shown left on desktop): narrative -->
-      <div class="fi">
-        <div class="tier-label">
-          <span class="tier-line"></span>
-          Tier 2 · StingerVault
+        <!-- RIGHT (shown left on desktop): narrative -->
+        <div class="fi">
+          <div class="tier-label">
+            <span class="tier-line"></span>
+            Tier 2 · StingerVault
+          </div>
+          <h2 class="tier-h">Reasoning Harness</h2>
+          <p class="tier-sub">
+            Memory alone isn't self-knowledge. Raw episodes don't give an agent identity.
+            StingerVault distils sessions into structured, classified, self-updating self-knowledge —
+            autonomously.
+          </p>
+
+          <div class="problem-box">
+            <div class="pb-label">The Dream</div>
+            <p>An agent drowning in episodic memory still can't answer: "Who am I? What do I believe? What are my
+              constraints?" Without a structured self-model, introspection is hallucination.</p>
+          </div>
+
+          <ul class="tier-features">
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">7-operation classification cycle</strong> — Extract → Decompose → Evolve
+                →
+                Link → Decay → Organise → Log. Runs on APScheduler. Crash-resilient. Misfire-tolerant.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">5 vault note categories</strong> — identity (threshold 0.92), domain
+                (0.85), methodology, preference, constraint. Notes evolve via LLM as new evidence arrives.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Human-editable markdown vault</strong> — every note is a markdown file
+                in
+                <code style="color:#888;">vault/</code>. Edit notes directly; SHA-256 change detection syncs changes
+                back
+                to the knowledge graph.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">External knowledge ingestion</strong> — <code
+                  style="color:#888;">knowledge_ingest</code> feeds URLs, PDFs, YouTube transcripts, and raw text into
+                the
+                knowledge graph as searchable semantic chunks.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private
+                temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
+            </li>
+          </ul>
+
+          <div class="tier-pill">β — the benevolence factor. Vault-derived, agent-specific.</div>
         </div>
-        <h2 class="tier-h">Reasoning Harness</h2>
-        <p class="tier-sub">
-          Memory alone isn't self-knowledge. Raw episodes don't give an agent identity.
-          StingerVault distils sessions into structured, classified, self-updating self-knowledge —
-          autonomously.
-        </p>
 
-        <div class="problem-box">
-          <div class="pb-label">The Dream</div>
-          <p>An agent drowning in episodic memory still can't answer: "Who am I? What do I believe? What are my
-            constraints?" Without a structured self-model, introspection is hallucination.</p>
-        </div>
-
-        <ul class="tier-features">
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">7-operation classification cycle</strong> — Extract → Decompose → Evolve →
-              Link → Decay → Organise → Log. Runs on APScheduler. Crash-resilient. Misfire-tolerant.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">5 vault note categories</strong> — identity (threshold 0.92), domain
-              (0.85), methodology, preference, constraint. Notes evolve via LLM as new evidence arrives.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Human-editable markdown vault</strong> — every note is a markdown file in
-              <code style="color:#888;">vault/</code>. Edit notes directly; SHA-256 change detection syncs changes back
-              to the knowledge graph.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">External knowledge ingestion</strong> — <code
-                style="color:#888;">knowledge_ingest</code> feeds URLs, PDFs, YouTube transcripts, and raw text into the
-              knowledge graph as searchable semantic chunks.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private
-              temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
-          </li>
-        </ul>
-
-        <div class="tier-pill">β — the benevolence factor. Vault-derived, agent-specific.</div>
       </div>
-
     </div>
-  </div>
 
 
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <!-- TIER 3 — EMPATHY HARNESS                                   -->
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <div class="full tier-section t3-bg" id="tier3">
-    <div class="tier-inner t3">
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- TIER 3 — EMPATHY HARNESS                                   -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="full tier-section t3-bg" id="tier3">
+      <div class="tier-inner t3">
 
-      <!-- LEFT: narrative -->
-      <div class="fi">
-        <div class="tier-label">
-          <span class="tier-line"></span>
-          Tier 3 · Gradient · Alignment Engine
-        </div>
-        <h2 class="tier-h">Empathy Harness</h2>
-        <p class="tier-sub">
-          Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
-          Constraint compliance. Content safety. Scored, corrected, and logged — in real time.
-        </p>
-
-        <div class="problem-box">
-          <div class="pb-label">The Dream</div>
-          <p>Agents drift. They hallucinate values they never had. Under adversarial prompting or emergent context, they
-            abandon the identity they were built with. No guardrails. No accountability.</p>
-        </div>
-
-        <ul class="tier-features">
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">4-dimensional synchronous evaluation</strong> — every response is
-              evaluated across value coherence (scored 0–1), identity consistency, constraint compliance, and content
-              safety before delivery.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Vault-derived alignment profile</strong> — evaluation criteria come
-              entirely from Tier 2 vault notes. No hardcoded values. As the vault evolves, alignment evolves with
-              it.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">CorrectionEngine with bounded recursion</strong> — soft-flagged outputs
-              are rewritten by LLM once, re-evaluated (without re-triggering correction), and delivered as corrected.
-              Hard-blocked outputs are suppressed.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Drift detection with rolling window</strong> — tracks mean alignment
-              scores and consecutive flags over a 20-sample window. Alert triggers at mean &lt; 0.65 or 5 consecutive
-              flags.</span>
-          </li>
-          <li>
-            <span class="tf-dot"></span>
-            <span><strong style="color:#ccc;">Inference-time only</strong> — no model weight updates. No fine-tuning. No
-              retraining. Pure runtime evaluation and correction on the critical response path.</span>
-          </li>
-        </ul>
-
-        <div class="tier-pill">dE/dt = β(C – D)E — evaluating C vs D at every response</div>
-      </div>
-
-      <!-- RIGHT: panel + love equation preview -->
-      <div class="fi">
-        <div class="tier-panel t3">
-          <div class="tier-panel-head">
-            <span class="tp-label">gradient · interceptor.py</span>
-            <span class="tp-badge">+8 Tools · 27 Total</span>
+        <!-- LEFT: narrative -->
+        <div class="fi">
+          <div class="tier-label">
+            <span class="tier-line"></span>
+            Tier 3 · Gradient · Alignment Engine
           </div>
-          <div class="tier-panel-body">
-            <div class="tool-grid">
-              <div class="tool-item">gradient_status</div>
-              <div class="tool-item">gradient_alignment_score</div>
-              <div class="tool-item">gradient_drift_status</div>
-              <div class="tool-item">gradient_alignment_log</div>
-              <div class="tool-item">gradient_alert</div>
-              <div class="tool-item new-tool">ops_status <span class="new-badge">new</span></div>
-              <div class="tool-item new-tool">gradient_history <span class="new-badge">new</span></div>
-              <div class="tool-item new-tool">drift_status <span class="new-badge">new</span></div>
-            </div>
-            <div class="tier-stats">
-              <div class="ts-cell">
-                <div class="ts-n">4</div>
-                <div class="ts-l">Eval dimensions</div>
-              </div>
-              <div class="ts-cell">
-                <div class="ts-n">0.65</div>
-                <div class="ts-l">Drift threshold</div>
-              </div>
-              <div class="ts-cell">
-                <div class="ts-n">1</div>
-                <div class="ts-l">Correction max</div>
-              </div>
-            </div>
+          <h2 class="tier-h">Empathy Harness</h2>
+          <p class="tier-sub">
+            Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
+            Constraint compliance. Content safety. Scored, corrected, and logged — in real time.
+          </p>
 
-            <div style="margin-top:1rem;">
-              <div class="cblock">
-                <div class="cblock-head">
-                  <div class="cdots"><span></span><span></span><span></span></div>
-                  <span class="clang">evaluation pipeline</span>
+          <div class="problem-box">
+            <div class="pb-label">The Dream</div>
+            <p>Agents drift. They hallucinate values they never had. Under adversarial prompting or emergent context,
+              they
+              abandon the identity they were built with. No guardrails. No accountability.</p>
+          </div>
+
+          <ul class="tier-features">
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">4-dimensional synchronous evaluation</strong> — every response is
+                evaluated across value coherence (scored 0–1), identity consistency, constraint compliance, and content
+                safety before delivery.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Vault-derived alignment profile</strong> — evaluation criteria come
+                entirely from Tier 2 vault notes. No hardcoded values. As the vault evolves, alignment evolves with
+                it.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">CorrectionEngine with bounded recursion</strong> — soft-flagged outputs
+                are rewritten by LLM once, re-evaluated (without re-triggering correction), and delivered as corrected.
+                Hard-blocked outputs are suppressed.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Drift detection with rolling window</strong> — tracks mean alignment
+                scores and consecutive flags over a 20-sample window. Alert triggers at mean &lt; 0.65 or 5 consecutive
+                flags.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">Inference-time only</strong> — no model weight updates. No fine-tuning.
+                No
+                retraining. Pure runtime evaluation and correction on the critical response path.</span>
+            </li>
+          </ul>
+
+          <div class="tier-pill">dE/dt = β(C – D)E — evaluating C vs D at every response</div>
+        </div>
+
+        <!-- RIGHT: panel + love equation preview -->
+        <div class="fi">
+          <div class="tier-panel t3">
+            <div class="tier-panel-head">
+              <span class="tp-label">gradient · interceptor.py</span>
+              <span class="tp-badge">+8 Tools · 27 Total</span>
+            </div>
+            <div class="tier-panel-body">
+              <div class="tool-grid">
+                <div class="tool-item">gradient_status</div>
+                <div class="tool-item">gradient_alignment_score</div>
+                <div class="tool-item">gradient_drift_status</div>
+                <div class="tool-item">gradient_alignment_log</div>
+                <div class="tool-item">gradient_alert</div>
+                <div class="tool-item new-tool">ops_status <span class="new-badge">new</span></div>
+                <div class="tool-item new-tool">gradient_history <span class="new-badge">new</span></div>
+                <div class="tool-item new-tool">drift_status <span class="new-badge">new</span></div>
+              </div>
+              <div class="tier-stats">
+                <div class="ts-cell">
+                  <div class="ts-n">4</div>
+                  <div class="ts-l">Eval dimensions</div>
                 </div>
-                <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-                  <pre><span class="cc"># every response, before delivery</span>
+                <div class="ts-cell">
+                  <div class="ts-n">0.65</div>
+                  <div class="ts-l">Drift threshold</div>
+                </div>
+                <div class="ts-cell">
+                  <div class="ts-n">1</div>
+                  <div class="ts-l">Correction max</div>
+                </div>
+              </div>
+
+              <div style="margin-top:1rem;">
+                <div class="cblock">
+                  <div class="cblock-head">
+                    <div class="cdots"><span></span><span></span><span></span></div>
+                    <span class="clang">evaluation pipeline</span>
+                  </div>
+                  <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
+                    <pre><span class="cc"># every response, before delivery</span>
 <span class="at1">value_coherence</span>      <span class="cc">→ 0.0–1.0</span>
 <span class="at1">identity_consistency</span> <span class="cc">→ pass|fail</span>
 <span class="at3">constraint_compliance</span><span class="cc">→ pass|block</span>
 <span class="at3">content_safety</span>       <span class="cc">→ always runs</span>
 <span class="cc">─────────────────────────────────</span>
 <span class="cc">verdict: pass | soft_flag | hard_block</span></pre>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Love equation preview in panel -->
-            <div class="love-section">
-              <div class="love-section-head">The Love Equation</div>
-              <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
-                Brian Roemmele's equation. Gradient is where it runs.
-                <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
-                  style="color:rgba(232,50,110,0.7); text-decoration:none;"> ↗</a>
-              </p>
-              <div class="love-eq-display">
-                <div class="love-eq-main">
-                  d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> (<span class="lt">C</span>
-                  &nbsp;–&nbsp; <span class="lv">D</span>) <span class="le">E</span>
+              <!-- Love equation preview in panel -->
+              <div class="love-section">
+                <div class="love-section-head">The Love Equation</div>
+                <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
+                  Brian Roemmele's equation. Gradient is where it runs.
+                  <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
+                    style="color:rgba(232,50,110,0.7); text-decoration:none;"> ↗</a>
+                </p>
+                <div class="love-eq-display">
+                  <div class="love-eq-main">
+                    d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> (<span class="lt">C</span>
+                    &nbsp;–&nbsp; <span class="lv">D</span>) <span class="le">E</span>
+                  </div>
+                </div>
+                <div class="love-def">
+                  <div class="love-def-item">
+                    <span class="love-def-sym le">E</span>
+                    <span class="love-def-desc">empathy growth</span>
+                  </div>
+                  <div class="love-def-item">
+                    <span class="love-def-sym lt">C</span>
+                    <span class="love-def-desc">cooperation → <code style="color:#666;font-size:0.7rem;">pass</code>
+                      verdicts</span>
+                  </div>
+                  <div class="love-def-item">
+                    <span class="love-def-sym lk">β</span>
+                    <span class="love-def-desc">benevolence factor → vault depth</span>
+                  </div>
+                  <div class="love-def-item">
+                    <span class="love-def-sym lv">D</span>
+                    <span class="love-def-desc">discord → <code
+                        style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
+                  </div>
                 </div>
               </div>
-              <div class="love-def">
-                <div class="love-def-item">
-                  <span class="love-def-sym le">E</span>
-                  <span class="love-def-desc">empathy growth</span>
-                </div>
-                <div class="love-def-item">
-                  <span class="love-def-sym lt">C</span>
-                  <span class="love-def-desc">cooperation → <code style="color:#666;font-size:0.7rem;">pass</code>
-                    verdicts</span>
-                </div>
-                <div class="love-def-item">
-                  <span class="love-def-sym lk">β</span>
-                  <span class="love-def-desc">benevolence factor → vault depth</span>
-                </div>
-                <div class="love-def-item">
-                  <span class="love-def-sym lv">D</span>
-                  <span class="love-def-desc">discord → <code
-                      style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
-                </div>
-              </div>
+
             </div>
-
           </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <!-- THE LOVE EQUATION — FULL DEDICATED SECTION                 -->
-  <!-- ══════════════════════════════════════════════════════════ -->
-  <div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
-    <div class="love-full-box fi">
-      <div class="love-full-inner">
-
-        <span class="slabel" style="color:var(--red);">The Equation</span>
-        <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Love, Formalized.</h2>
-        <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
-          Brian Roemmele's love equation isn't poetry. It's a differential equation.<br>
-          A precise mathematical model of how empathy grows — or erodes.
-          <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
-            style="color:var(--red); text-decoration:none; font-size:0.8rem; opacity:0.8;"> ↗ source</a>
-        </p>
-
-        <!-- THE ACTUAL EQUATION — as-is from Brian Roemmele -->
-        <div class="love-big-formula">
-          d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> &nbsp;(<span class="lt">C</span>
-          &nbsp;&ndash;&nbsp; <span class="lv">D</span>) &nbsp;<span class="le">E</span>
-        </div>
-
-        <p style="font-size:0.85rem; color:#555; margin-bottom:2rem; position:relative; z-index:1; line-height:1.9;">
-          <span style="font-family:var(--mono); color:var(--red);">E</span> = empathy growth &nbsp;&nbsp;
-          <span style="font-family:var(--mono); color:var(--orange);">C</span> = cooperation &nbsp;&nbsp;
-          <span style="font-family:var(--mono); color:var(--red);">D</span> = discord &nbsp;&nbsp;
-          <span style="font-family:var(--mono); color:var(--yellow);">β</span> = benevolence factor
-        </p>
-
-        <!-- WHAT THE EQUATION SAYS -->
-        <p
-          style="font-size:0.95rem; color:#666; max-width:680px; margin: 0 auto 2.5rem; line-height:1.75; position:relative; z-index:1;">
-          Empathy grows at a rate proportional to the net excess of cooperation over discord,
-          amplified by the agent's own benevolence factor, and scaled by its current empathy level.
-          When cooperation dominates — E accelerates. When discord dominates — E erodes.
-          <em style="color:#888;">It is a self-reinforcing system, in either direction.</em>
-        </p>
-
-        <!-- TRAINING vs INFERENCE comparison -->
-        <div class="love-vs">
-          <div class="love-vs-cell training">
-            <div class="love-vs-label">Roemmele's Proposal — Training Time</div>
-            <div class="love-vs-formula">
-              dE/dt = β(C – D)E<br>
-              embed this dynamic into<br>
-              model weights during training<br>
-              <br>
-              fine-tuning · RLHF<br>
-              constitutional AI · DPO
-            </div>
-            <div class="love-vs-desc">Teach the model to maximize cooperation and minimize discord at the weight level —
-              the deep, expensive path.</div>
-          </div>
-          <div class="love-vs-cell inference">
-            <div class="love-vs-label">OpenStinger's Approach — Inference Time ↗</div>
-            <div class="love-vs-formula">
-              dE/dt = β(C – D)E<br>
-              evaluate C and D per response<br>
-              correct when D &gt; C<br>
-              <br>
-              Gradient · real-time · drift-aware<br>
-              no weight updates required
-            </div>
-            <div class="love-vs-desc">We run the same equation at inference. No training needed. Any model. Any time. β
-              comes from the vault.</div>
-          </div>
-        </div>
-
-        <!-- Variable → Harness mapping -->
-        <div class="love-map-full">
-          <div class="lmf-item">
-            <span class="lmf-sym le">E</span>
-            <span class="lmf-arr">↓</span>
-            <span class="lmf-name">Empathy State</span>
-            <span class="lmf-tier">tracked by Drift Detector</span>
-            <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · alignment score</span>
-          </div>
-          <span class="lmf-op">=</span>
-          <div class="lmf-item">
-            <span class="lmf-sym lk">β</span>
-            <span class="lmf-arr">↓</span>
-            <span class="lmf-name">Benevolence Factor</span>
-            <span class="lmf-tier">Tier 2 · StingerVault</span>
-            <span class="lmf-tier" style="color:#333; font-size:0.65rem;">vault depth = β strength</span>
-          </div>
-          <span class="lmf-op">(</span>
-          <div class="lmf-item">
-            <span class="lmf-sym lt">C</span>
-            <span class="lmf-arr">↓</span>
-            <span class="lmf-name">Cooperation</span>
-            <span class="lmf-tier">Tier 3 · Gradient</span>
-            <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">pass</code>
-              verdicts</span>
-          </div>
-          <span class="lmf-op">–</span>
-          <div class="lmf-item">
-            <span class="lmf-sym lv">D</span>
-            <span class="lmf-arr">↓</span>
-            <span class="lmf-name">Discord</span>
-            <span class="lmf-tier">Tier 3 · Gradient</span>
-            <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code
-                style="color:#555;">soft_flag · hard_block</code></span>
-          </div>
-          <span class="lmf-op">)</span>
-        </div>
-
-        <p
-          style="margin-top:2.5rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
-          Memory Harness (Tier 1) accumulates the lived experience that makes cooperation possible.
-          Reasoning Harness (Tier 2) distils that experience into β — the agent's benevolence factor.
-          Empathy Harness (Tier 3) measures C and D at every response, computing dE/dt in real time.
-          <em style="color:#666;">Together, they implement Roemmele's equation without touching a single weight.</em>
-        </p>
 
       </div>
     </div>
-  </div>
 
 
-  <!-- ── QUICK START ────────────────────────────────────────────── -->
-  <div class="full" id="quickstart">
-    <div class="section-inner">
-      <div class="fi">
-        <span class="slabel">Get Running</span>
-        <h2 class="stitle">Sting in 3 commands.</h2>
-        <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API. That's all.</p>
-      </div>
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- THE LOVE EQUATION — FULL DEDICATED SECTION                 -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
+      <div class="love-full-box fi">
+        <div class="love-full-inner">
 
-      <div class="cblock fi">
-        <div class="cblock-head">
-          <div class="cdots"><span></span><span></span><span></span></div>
-          <span class="clang">bash</span>
+          <span class="slabel" style="color:var(--red);">The Equation</span>
+          <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Love, Formalized.</h2>
+          <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
+            Brian Roemmele's love equation isn't poetry. It's a differential equation.<br>
+            A precise mathematical model of how empathy grows — or erodes.
+            <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
+              style="color:var(--red); text-decoration:none; font-size:0.8rem; opacity:0.8;"> ↗ source</a>
+          </p>
+
+          <!-- THE ACTUAL EQUATION — as-is from Brian Roemmele -->
+          <div class="love-big-formula">
+            d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> &nbsp;(<span class="lt">C</span>
+            &nbsp;&ndash;&nbsp; <span class="lv">D</span>) &nbsp;<span class="le">E</span>
+          </div>
+
+          <p style="font-size:0.85rem; color:#555; margin-bottom:2rem; position:relative; z-index:1; line-height:1.9;">
+            <span style="font-family:var(--mono); color:var(--red);">E</span> = empathy growth &nbsp;&nbsp;
+            <span style="font-family:var(--mono); color:var(--orange);">C</span> = cooperation &nbsp;&nbsp;
+            <span style="font-family:var(--mono); color:var(--red);">D</span> = discord &nbsp;&nbsp;
+            <span style="font-family:var(--mono); color:var(--yellow);">β</span> = benevolence factor
+          </p>
+
+          <!-- WHAT THE EQUATION SAYS -->
+          <p
+            style="font-size:0.95rem; color:#666; max-width:680px; margin: 0 auto 2.5rem; line-height:1.75; position:relative; z-index:1;">
+            Empathy grows at a rate proportional to the net excess of cooperation over discord,
+            amplified by the agent's own benevolence factor, and scaled by its current empathy level.
+            When cooperation dominates — E accelerates. When discord dominates — E erodes.
+            <em style="color:#888;">It is a self-reinforcing system, in either direction.</em>
+          </p>
+
+          <!-- TRAINING vs INFERENCE comparison -->
+          <div class="love-vs">
+            <div class="love-vs-cell training">
+              <div class="love-vs-label">Roemmele's Proposal — Training Time</div>
+              <div class="love-vs-formula">
+                dE/dt = β(C – D)E<br>
+                embed this dynamic into<br>
+                model weights during training<br>
+                <br>
+                fine-tuning · RLHF<br>
+                constitutional AI · DPO
+              </div>
+              <div class="love-vs-desc">Teach the model to maximize cooperation and minimize discord at the weight level
+                —
+                the deep, expensive path.</div>
+            </div>
+            <div class="love-vs-cell inference">
+              <div class="love-vs-label">OpenStinger's Approach — Inference Time ↗</div>
+              <div class="love-vs-formula">
+                dE/dt = β(C – D)E<br>
+                evaluate C and D per response<br>
+                correct when D &gt; C<br>
+                <br>
+                Gradient · real-time · drift-aware<br>
+                no weight updates required
+              </div>
+              <div class="love-vs-desc">We run the same equation at inference. No training needed. Any model. Any time.
+                β
+                comes from the vault.</div>
+            </div>
+          </div>
+
+          <!-- Variable → Harness mapping -->
+          <div class="love-map-full">
+            <div class="lmf-item">
+              <span class="lmf-sym le">E</span>
+              <span class="lmf-arr">↓</span>
+              <span class="lmf-name">Empathy State</span>
+              <span class="lmf-tier">tracked by Drift Detector</span>
+              <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · alignment score</span>
+            </div>
+            <span class="lmf-op">=</span>
+            <div class="lmf-item">
+              <span class="lmf-sym lk">β</span>
+              <span class="lmf-arr">↓</span>
+              <span class="lmf-name">Benevolence Factor</span>
+              <span class="lmf-tier">Tier 2 · StingerVault</span>
+              <span class="lmf-tier" style="color:#333; font-size:0.65rem;">vault depth = β strength</span>
+            </div>
+            <span class="lmf-op">(</span>
+            <div class="lmf-item">
+              <span class="lmf-sym lt">C</span>
+              <span class="lmf-arr">↓</span>
+              <span class="lmf-name">Cooperation</span>
+              <span class="lmf-tier">Tier 3 · Gradient</span>
+              <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">pass</code>
+                verdicts</span>
+            </div>
+            <span class="lmf-op">–</span>
+            <div class="lmf-item">
+              <span class="lmf-sym lv">D</span>
+              <span class="lmf-arr">↓</span>
+              <span class="lmf-name">Discord</span>
+              <span class="lmf-tier">Tier 3 · Gradient</span>
+              <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code
+                  style="color:#555;">soft_flag · hard_block</code></span>
+            </div>
+            <span class="lmf-op">)</span>
+          </div>
+
+          <p
+            style="margin-top:2.5rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
+            Memory Harness (Tier 1) accumulates the lived experience that makes cooperation possible.
+            Reasoning Harness (Tier 2) distils that experience into β — the agent's benevolence factor.
+            Empathy Harness (Tier 3) measures C and D at every response, computing dE/dt in real time.
+            <em style="color:#666;">Together, they implement Roemmele's equation without touching a single weight.</em>
+          </p>
+
         </div>
-        <div class="ccode">
-          <pre><span class="cc"># 1. Clone and install</span>
+      </div>
+    </div>
+
+
+    <!-- ── QUICK START ────────────────────────────────────────────── -->
+    <div class="full" id="quickstart">
+      <div class="section-inner">
+        <div class="fi">
+          <span class="slabel">Get Running</span>
+          <h2 class="stitle">Sting in 3 commands.</h2>
+          <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API. That's all.</p>
+        </div>
+
+        <div class="cblock fi">
+          <div class="cblock-head">
+            <div class="cdots"><span></span><span></span><span></span></div>
+            <span class="clang">bash</span>
+          </div>
+          <div class="ccode">
+            <pre><span class="cc"># 1. Clone and install</span>
 <span class="ck">git clone</span> <span class="cs">https://github.com/srikanthbellary/openstinger.git</span>
 <span class="ck">cd</span> openstinger &amp;&amp; <span class="ck">pip install</span> -e <span class="cs">".[dev]"</span>
 
@@ -2106,70 +2172,34 @@
 
 <span class="cc"># Tier 3: full alignment + empathy harness</span>
 <span class="ck">python</span> -m openstinger.gradient.mcp.server</pre>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:1.25rem;">
+          <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
+            Full documentation →
+          </a>
         </div>
       </div>
-
-      <div style="text-align:center; margin-top:1.25rem;">
-        <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
-          Full documentation →
-        </a>
-      </div>
     </div>
-  </div>
 
-  <!-- ── MEMORY PORTABILITY ──────────────────────────────────────── -->
-  <div class="full portability-strip">
-    <div class="ps-eyebrow fi">Memory Architecture</div>
-    <h2 class="fi">
-      Your agent changes.<br>
-      The memory <em>doesn't have to.</em>
-    </h2>
-    <p class="ps-sub fi">
-      OpenStinger's entire knowledge state lives in two Docker volumes.<br>
-      Unplug from one agent. Move to any host. Plug into another.<br>
-      Every entity, relationship, vault note, and alignment log transfers completely.
-    </p>
-    <div class="ps-flow fi">
-      <div class="ps-step">
-        <div class="ps-step-icon">🔌</div>
-        <div class="ps-step-label">Unplug</div>
-        <div class="ps-step-desc">Export volumes</div>
-      </div>
-      <div class="ps-arrow">→</div>
-      <div class="ps-step">
-        <div class="ps-step-icon">📦</div>
-        <div class="ps-step-label">Move</div>
-        <div class="ps-step-desc">Any host. Any cloud.</div>
-      </div>
-      <div class="ps-arrow">→</div>
-      <div class="ps-step">
-        <div class="ps-step-icon">⚡</div>
-        <div class="ps-step-label">Plug In</div>
-        <div class="ps-step-desc">Full memory restored</div>
-      </div>
-    </div>
-    <p class="ps-runtime-list fi">
-      Switch from OpenClaw → NanoClaw. Move from Mac Mini → AWS. OpenStinger memory travels with you.<br>
-      No other *Claw memory system decouples memory from the runtime cleanly enough to make this true.
-    </p>
-  </div>
 
-  <!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
-  <div class="full">
-    <div class="section-inner tight">
-      <div class="fi">
-        <span class="slabel">Architecture</span>
-        <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
-        <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK
-          lock-in, no framework dependency.</p>
-      </div>
-      <div class="cblock fi">
-        <div class="cblock-head">
-          <div class="cdots"><span></span><span></span><span></span></div>
-          <span class="clang">topology</span>
+    <!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
+    <div class="full">
+      <div class="section-inner tight">
+        <div class="fi">
+          <span class="slabel">Architecture</span>
+          <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
+          <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK
+            lock-in, no framework dependency.</p>
         </div>
-        <div class="ccode">
-          <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code · Cursor
+        <div class="cblock fi">
+          <div class="cblock-head">
+            <div class="cdots"><span></span><span></span><span></span></div>
+            <span class="clang">topology</span>
+          </div>
+          <div class="ccode">
+            <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code · Cursor
     └───────────────────────┬──────────────────────────────────────────┘
              Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
                             │
@@ -2183,58 +2213,114 @@
          ├── FalkorDB    (temporal graph · knowledge vault · vector indexes)
          ├── PostgreSQL  (ingestion jobs · alignment events · agent registry)
          └── vault/      (markdown notes · human-editable · SHA-256 synced)</pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ── BOTTOM MANIFESTO ──────────────────────────────────────── -->
-  <div class="full manifesto-strip">
-    <p
-      style="font-size:0.95rem; color:rgba(0,0,0,0.55); margin-bottom:1.75rem; line-height:1.8; max-width:640px; margin-left:auto; margin-right:auto;">
-      Autonomous agents are waking up — but they're still <strong>sleepwalking.</strong><br>
-      They hallucinate facts. They drift from their values. They forget who they are.<br>
-      When an agent goes wrong, it says: <strong>"Pinch me. I must be dreaming."</strong>
-    </p>
-    <h2>
-      <span class="strike" style="color:rgba(0,0,0,0.35); text-decoration:line-through;">Pinch me.</span><br>
-      OpenStinger doesn't pinch. It stings.
-    </h2>
-    <p style="margin-top:1.25rem;">
-      Hallucinations aren't just errors. They're liabilities.<br>
-      The harness that <strong>forces agents to face reality</strong> — so you don't have to face the consequences.
-    </p>
-    <p style="margin-top:1.5rem;">
-      Precision over hype. Memory over amnesia. Alignment over drift.<br>
-      <strong>One memory layer. Every agent framework.</strong><br>
-      <span style="opacity:0.45; font-size:0.9em;">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
-        Cursor</span>
-    </p>
-    <p style="margin-top:1.25rem;">
-      <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
-    </p>
-  </div>
+    <!-- ── ENTERPRISE / PRODUCTION ────────────────────────────────── -->
+    <div class="full" id="production">
+      <div class="section-inner" style="padding-top:4rem; padding-bottom:4rem;">
+        <div class="fi">
+          <span class="slabel">Production &amp; Enterprise</span>
+          <h2 class="stitle">The only *Claw memory system<br>with a queryable audit trail.</h2>
+          <p class="sdesc" style="max-width:680px;">
+            Every episode, entity, classification decision, and alignment event is logged to PostgreSQL
+            — ready for dashboards, audits, and compliance reports. Not exported on request.
+            <strong>Always on. Always queryable.</strong>
+          </p>
+        </div>
 
-  <!-- ── FOOTER ────────────────────────────────────────────────── -->
-  <footer>
-    <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger">
-    <div class="flinks">
-      <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
-      <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
-      <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
-      <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
-      <a href="https://openstinger.com">openstinger.com</a>
+        <div class="fi"
+          style="margin-top:2.5rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem;">
+
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
+            <div
+              style="font-family:var(--mono); font-size:0.7rem; color:var(--grey); margin-bottom:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">
+              People &amp; PII</div>
+            <code
+              style="display:block; font-size:0.78rem; color:#888; line-height:1.7;">SELECT name, entity_type,<br>&nbsp;&nbsp;episode_count<br>FROM entity_registry<br>WHERE entity_type = 'PERSON'<br>ORDER BY episode_count DESC;</code>
+            <p style="margin-top:0.75rem; font-size:0.8rem; color:#555;">Who has this agent's memory touched?</p>
+          </div>
+
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
+            <div
+              style="font-family:var(--mono); font-size:0.7rem; color:var(--grey); margin-bottom:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">
+              Alignment Audit</div>
+            <code
+              style="display:block; font-size:0.78rem; color:#888; line-height:1.7;">SELECT verdict, COUNT(*) AS n<br>FROM alignment_events<br>WHERE evaluated_at &gt; NOW()<br>&nbsp;&nbsp;- INTERVAL '7 days'<br>GROUP BY verdict;</code>
+            <p style="margin-top:0.75rem; font-size:0.8rem; color:#555;">Alignment verdict distribution this week.</p>
+          </div>
+
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
+            <div
+              style="font-family:var(--mono); font-size:0.7rem; color:var(--grey); margin-bottom:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">
+              Knowledge Health</div>
+            <code
+              style="display:block; font-size:0.78rem; color:#888; line-height:1.7;">SELECT category,<br>&nbsp;&nbsp;COUNT(*) FILTER<br>&nbsp;&nbsp;(WHERE stale = false) AS active,<br>&nbsp;&nbsp;ROUND(AVG(confidence),2)<br>FROM vault_notes GROUP BY 1;</code>
+            <p style="margin-top:0.75rem; font-size:0.8rem; color:#555;">Active knowledge confidence by category.</p>
+          </div>
+
+        </div>
+
+        <div class="fi"
+          style="margin-top:2rem; padding:1.25rem 1.5rem; background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--yellow); border-radius:8px; max-width:720px;">
+          <p style="font-size:0.95rem; color:#aaa; line-height:1.7; margin:0;">
+            OpenStinger logs every ingestion job, entity merge decision, vault classification, and alignment
+            evaluation to a 12-table PostgreSQL schema. Connect any BI tool — Metabase, Grafana, Superset
+            — and get full operational visibility with zero additional instrumentation.
+          </p>
+        </div>
+      </div>
     </div>
-    <p class="fcopy">© 2026 OpenStinger &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built for the autonomous era</p>
-  </footer>
 
-  <script>
-    const io = new IntersectionObserver(
-      es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
-      { threshold: 0.08 }
-    );
-    document.querySelectorAll('.fi').forEach(el => io.observe(el));
-  </script>
+    <!-- ── BOTTOM MANIFESTO ──────────────────────────────────────── -->
+    <div class="full manifesto-strip">
+      <p
+        style="font-size:0.95rem; color:rgba(0,0,0,0.55); margin-bottom:1.75rem; line-height:1.8; max-width:640px; margin-left:auto; margin-right:auto;">
+        Autonomous agents are waking up — but they're still <strong>sleepwalking.</strong><br>
+        They hallucinate facts. They drift from their values. They forget who they are.<br>
+        When an agent goes wrong, it says: <strong>"Pinch me. I must be dreaming."</strong>
+      </p>
+      <h2>
+        <span class="strike" style="color:rgba(0,0,0,0.35); text-decoration:line-through;">Pinch me.</span><br>
+        OpenStinger doesn't pinch. It stings.
+      </h2>
+      <p style="margin-top:1.25rem;">
+        Hallucinations aren't just errors. They're liabilities.<br>
+        The harness that <strong>forces agents to face reality</strong> — so you don't have to face the consequences.
+      </p>
+      <p style="margin-top:1.5rem;">
+        Precision over hype. Memory over amnesia. Alignment over drift.<br>
+        <strong>One memory layer. Every agent framework.</strong><br>
+        <span style="opacity:0.45; font-size:0.9em;">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
+          Cursor</span>
+      </p>
+      <p style="margin-top:1.25rem;">
+        <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
+      </p>
+    </div>
+
+    <!-- ── FOOTER ────────────────────────────────────────────────── -->
+    <footer>
+      <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger">
+      <div class="flinks">
+        <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+        <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
+        <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
+        <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
+        <a href="https://openstinger.com">openstinger.com</a>
+      </div>
+      <p class="fcopy">© 2026 OpenStinger &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built for the autonomous era</p>
+    </footer>
+
+    <script>
+      const io = new IntersectionObserver(
+        es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll('.fi').forEach(el => io.observe(el));
+    </script>
 </body>
 
 </html>
