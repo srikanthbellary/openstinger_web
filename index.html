@@ -21,6 +21,10 @@
     content="While the world dreams of God Mode automation, the harnesses that sting agents back to reality exist — for every *Claw framework that speaks MCP.">
   <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
   <link rel="apple-touch-icon" href="openstinger_thumbnail_logo_v1.png">
+  <link rel="preload" as="image" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --black: #080808;
@@ -317,49 +321,6 @@
       }
     }
 
-    /* ── STING STRIP ────────────────────────────────────────── */
-    .sting-strip {
-      width: 100%;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 2rem;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .sting-setup {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: #666;
-      max-width: 680px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.7;
-    }
-
-    .sting-setup strong {
-      color: #aaa;
-      font-weight: 500;
-    }
-
-    .sting-moment {
-      font-size: clamp(1.6rem, 4vw, 2.8rem);
-      font-weight: 900;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.15;
-      letter-spacing: -0.025em;
-    }
-
-    .sting-moment .strike {
-      text-decoration: line-through;
-      color: rgba(0, 0, 0, 0.3);
-    }
-
-    .sting-moment .land {
-      color: #000;
-      font-weight: 900;
-    }
-
     /* ── HAMBURGER ───────────────────────────────────────────── */
     .hamburger {
       display: none;
@@ -571,12 +532,12 @@
       z-index: 1;
     }
 
-    .tier-inner.flip {
-      direction: rtl;
+    .tier-inner.flip > :first-child {
+      order: 2;
     }
 
-    .tier-inner.flip>* {
-      direction: ltr;
+    .tier-inner.flip > :last-child {
+      order: 1;
     }
 
     .tier-label {
@@ -1437,8 +1398,9 @@
         gap: 2.5rem;
       }
 
-      .tier-inner.flip {
-        direction: ltr;
+      .tier-inner.flip > :first-child,
+      .tier-inner.flip > :last-child {
+        order: unset;
       }
 
       .love-vs {
@@ -1451,6 +1413,19 @@
 
       .tier-intro {
         grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── REDUCED MOTION ─────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .fi {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .hero-scroll {
+        animation: none;
       }
     }
 
@@ -1597,8 +1572,8 @@
           <div class="stat-l">Audit Tables</div>
         </div>
         <div class="stat">
-          <div class="stat-n">0</div>
-          <div class="stat-l">Markdown SSOT</div>
+          <div class="stat-n">3</div>
+          <div class="stat-l">Memory Dedup Stages</div>
         </div>
         <div class="stat">
           <div class="stat-n">0</div>
