@@ -1209,6 +1209,102 @@
       color: var(--red);
     }
 
+    /* ── MEMORY PORTABILITY STRIP ─────────────────────────────── */
+    .portability-strip {
+      width: 100%;
+      background: #0c0c0c;
+      border-top: 2px solid var(--yellow);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .portability-strip .ps-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.25rem;
+    }
+
+    .portability-strip h2 {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      max-width: 760px;
+      margin: 0 auto 1rem;
+      line-height: 1.1;
+    }
+
+    .portability-strip h2 em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    .portability-strip .ps-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #666;
+      max-width: 620px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .ps-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 780px;
+      margin: 0 auto 3rem;
+    }
+
+    .ps-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.75rem;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .ps-step-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .ps-step-label {
+      font-size: 0.78rem;
+      font-family: var(--mono);
+      color: var(--grey);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ps-step-desc {
+      font-size: 0.88rem;
+      color: var(--white);
+      margin-top: 0.3rem;
+      font-weight: 600;
+    }
+
+    .ps-arrow {
+      font-size: 1.4rem;
+      color: var(--yellow);
+      padding: 0 0.75rem;
+      font-weight: 700;
+    }
+
+    .ps-runtime-list {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: #444;
+      letter-spacing: 0.03em;
+    }
+
     /* ── BOTTOM MANIFESTO STRIP ─────────────────────────────── */
     .manifesto-strip {
       background: var(--yellow);
@@ -2031,6 +2127,43 @@
         </a>
       </div>
     </div>
+  </div>
+
+  <!-- ── MEMORY PORTABILITY ──────────────────────────────────────── -->
+  <div class="full portability-strip">
+    <div class="ps-eyebrow fi">Memory Architecture</div>
+    <h2 class="fi">
+      Your agent changes.<br>
+      The memory <em>doesn't have to.</em>
+    </h2>
+    <p class="ps-sub fi">
+      OpenStinger's entire knowledge state lives in two Docker volumes.<br>
+      Unplug from one agent. Move to any host. Plug into another.<br>
+      Every entity, relationship, vault note, and alignment log transfers completely.
+    </p>
+    <div class="ps-flow fi">
+      <div class="ps-step">
+        <div class="ps-step-icon">🔌</div>
+        <div class="ps-step-label">Unplug</div>
+        <div class="ps-step-desc">Export volumes</div>
+      </div>
+      <div class="ps-arrow">→</div>
+      <div class="ps-step">
+        <div class="ps-step-icon">📦</div>
+        <div class="ps-step-label">Move</div>
+        <div class="ps-step-desc">Any host. Any cloud.</div>
+      </div>
+      <div class="ps-arrow">→</div>
+      <div class="ps-step">
+        <div class="ps-step-icon">⚡</div>
+        <div class="ps-step-label">Plug In</div>
+        <div class="ps-step-desc">Full memory restored</div>
+      </div>
+    </div>
+    <p class="ps-runtime-list fi">
+      Switch from OpenClaw → NanoClaw. Move from Mac Mini → AWS. OpenStinger memory travels with you.<br>
+      No other *Claw memory system decouples memory from the runtime cleanly enough to make this true.
+    </p>
   </div>
 
   <!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
