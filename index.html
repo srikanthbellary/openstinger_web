@@ -10,7 +10,7 @@
   <meta property="og:title" content="OpenStinger — One memory layer. Every agent framework.">
   <meta property="og:description"
     content="While the world dreams of God Mode automation, the harnesses that sting agents back to reality exist — for every *Claw framework that speaks MCP.">
-  <meta property="og:image" content="openstinger_thumbnail_logo_v1.png">
+  <meta property="og:image" content="social_card.png">
   <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
   <link rel="apple-touch-icon" href="openstinger_thumbnail_logo_v1.png">
   <style>
@@ -344,11 +344,37 @@
 
     .sting-moment .strike {
       text-decoration: line-through;
-      color: #444;
+      color: rgba(0, 0, 0, 0.3);
     }
 
     .sting-moment .land {
-      color: var(--yellow);
+      color: #000;
+      font-weight: 900;
+    }
+
+    /* ── HAMBURGER ───────────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--grey);
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .hamburger:hover span {
+      background: var(--white);
     }
 
     /* ── FULL-WIDTH WRAPPER ─────────────────────────────────── */
@@ -1423,6 +1449,30 @@
     @media (max-width:680px) {
       .nav-links {
         display: none;
+        position: fixed;
+        top: 52px;
+        left: 0;
+        right: 0;
+        background: #0c0c0c;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 0;
+        z-index: 999;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hamburger {
+        display: flex;
       }
 
       .hero h1 {
@@ -1469,8 +1519,11 @@
       <a href="#tier3" class="nav-tier t3">Empathy</a>
       <a href="#quickstart">Quick Start</a>
       <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
-      <a href="https://openstinger.com" class="nav-cta">openstinger.com ↗</a>
+      <a href="https://github.com/srikanthbellary/openstinger#readme" class="nav-cta">Docs ↗</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- ── HERO ─────────────────────────────────────────────────── -->
@@ -1514,7 +1567,6 @@
     </div>
   </section>
 
-  <!-- ── THE STING MOMENT ──────────────────────────────────────── -->
 
   <!-- ── STATS ─────────────────────────────────────────────────── -->
   <div class="full">
@@ -1533,12 +1585,12 @@
           <div class="stat-l">Tests Passing</div>
         </div>
         <div class="stat">
-          <div class="stat-n">1</div>
-          <div class="stat-l">Graph Backend</div>
+          <div class="stat-n">12</div>
+          <div class="stat-l">Audit Tables</div>
         </div>
         <div class="stat">
-          <div class="stat-n">1</div>
-          <div class="stat-l">Ops Backend</div>
+          <div class="stat-n">0</div>
+          <div class="stat-l">Markdown SSOT</div>
         </div>
         <div class="stat">
           <div class="stat-n">0</div>
@@ -2320,6 +2372,21 @@
         { threshold: 0.08 }
       );
       document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+      // Mobile hamburger
+      const ham = document.getElementById('hamburger');
+      const nav = document.querySelector('.nav-links');
+      if (ham && nav) {
+        ham.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          ham.setAttribute('aria-expanded', open);
+        });
+        // Close on nav link click
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          ham.setAttribute('aria-expanded', 'false');
+        }));
+      }
     </script>
 </body>
 
