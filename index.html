@@ -1512,7 +1512,7 @@
   <!-- ── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-grid"></div>
-    <div class="hero-badge fi">⚡ v0.6 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
+    <div class="hero-badge fi">⚡ v0.7 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
     <img src="logo.png" alt="OpenStinger" class="hero-logo fi">
     <h1 class="fi">
       OpenClaw gave agents <span class="y">hands.</span><br>
@@ -1530,7 +1530,7 @@
     <p class="hero-manifesto fi"
       style="margin-top:0.75rem; font-size:1.05rem; color:#aaa; letter-spacing:0.01em; line-height:1.7;">
       Works with <strong style="color:var(--white);">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
-        Cursor</strong><br>
+        Cursor · Qwen-Agent · DeerFlow · LangGraph</strong><br>
       — any runtime that speaks MCP. One endpoint. 27 tools. Zero lock-in.
     </p>
     <p class="hero-manifesto fi"
@@ -1616,6 +1616,11 @@
       <p class="ps-runtime-list fi">
         Switch from OpenClaw → NanoClaw. Move from Mac Mini → AWS. OpenStinger memory travels with you.<br>
         No other *Claw memory system decouples memory from the runtime cleanly enough to make this true.
+      </p>
+      <p class="ps-runtime-list fi" style="margin-top:1.5rem; color:#444; font-size:0.82rem;">
+        ABC Test (v0.7) — proven in production:<br>
+        <span style="color:#666;">Runtime A (OpenClaw) → Runtime B (Qwen/Llama) → Runtime C (DeerFlow/Grok)</span><br>
+        Full B→C→B circular memory propagation. Identity intact across every hop.
       </p>
     </div>
 
@@ -1799,6 +1804,7 @@
                 <div class="tool-item">vault_promote_now</div>
                 <div class="tool-item">vault_note_list</div>
                 <div class="tool-item">vault_note_get</div>
+                <div class="tool-item new-tool">vault_note_add <span class="new-badge">v0.7</span></div>
                 <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
                 <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
                 <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
@@ -1889,6 +1895,10 @@
               <span class="tf-dot"></span>
               <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private
                 temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
+            </li>
+            <li>
+              <span class="tf-dot"></span>
+              <span><strong style="color:#ccc;">AgentProfileIngester</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.7</span> — watches your agent's workspace for identity files (SKILL.md, SOUL.md, AGENTS.md). On boot, extracts identity, preferences, and constraints via LLM and seeds the vault automatically. Tracks SHA-256 hashes — syncs silently when files change. Zero manual intervention.</span>
             </li>
           </ul>
 
@@ -2195,8 +2205,8 @@
 <span class="ck">git clone</span> <span class="cs">https://github.com/srikanthbellary/openstinger.git</span>
 <span class="ck">cd</span> openstinger &amp;&amp; <span class="ck">pip install</span> -e <span class="cs">".[dev]"</span>
 
-<span class="cc"># 2. Configure — copy examples and fill in your API keys</span>
-<span class="ck">cp</span> .env.example .env &amp;&amp; <span class="ck">cp</span> config.yaml.example config.yaml
+<span class="cc"># 2. Configure interactively (prompts for provider, API key, agent name, profile dirs)</span>
+<span class="ck">openstinger-cli init</span>
 
 <span class="cc"># 3. Launch — FalkorDB + browser UI + Tier 1 MCP server</span>
 <span class="ck">docker compose up</span> -d
@@ -2234,8 +2244,8 @@
             <span class="clang">topology</span>
           </div>
           <div class="ccode">
-            <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code · Cursor
-    └───────────────────────┬──────────────────────────────────────────┘
+            <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code · Cursor · Qwen-Agent · DeerFlow · LangGraph
+    └────────────────────────────────────┬────────────────────────────────────────────────────┘
              Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
                             │
                             ▼
@@ -2329,7 +2339,7 @@
         Precision over hype. Memory over amnesia. Alignment over drift.<br>
         <strong>One memory layer. Every agent framework.</strong><br>
         <span style="opacity:0.45; font-size:0.9em;">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
-          Cursor</span>
+          Cursor · Qwen-Agent · DeerFlow · LangGraph</span>
       </p>
       <p style="margin-top:1.25rem;">
         <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
