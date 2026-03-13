@@ -1622,6 +1622,13 @@
         <span style="color:#666;">Runtime A (OpenClaw) → Runtime B (Qwen/Llama) → Runtime C (DeerFlow/Grok)</span><br>
         Full B→C→B circular memory propagation. Identity intact across every hop.
       </p>
+      <p class="ps-runtime-list fi" style="margin-top:1.25rem; color:#444; font-size:0.82rem;">
+        <span style="color:var(--orange); font-weight:700; font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em;">NEW v0.8</span>&nbsp;
+        Local embeddings via Ollama — <code style="font-size:0.78rem; color:#888;">nomic-embed-text</code> ·
+        <code style="font-size:0.78rem; color:#888;">mxbai-embed-large</code> · <code style="font-size:0.78rem; color:#888;">all-minilm</code><br>
+        <span style="color:#555;">No cloud API. No token cost. Full offline operation.
+        Run <code style="font-size:0.78rem;">openstinger-cli init</code> and select <code style="font-size:0.78rem;">"ollama"</code> when prompted for embedding provider.</span>
+      </p>
     </div>
 
     <!-- ── TIER OVERVIEW ─────────────────────────────────────────── -->
@@ -1640,7 +1647,7 @@
           <a href="#tier1" class="ti-cell t1">
             <span class="ti-num">Tier 1 · Temporal Engine</span>
             <span class="ti-name">Memory Harness</span>
-            <span class="ti-tools">9 MCP tools · pip install openstinger</span>
+            <span class="ti-tools">11 MCP tools · pip install openstinger</span>
           </a>
           <a href="#tier2" class="ti-cell t2">
             <span class="ti-num">Tier 2 · StingerVault</span>
@@ -2207,7 +2214,9 @@
 <span class="ck">git clone</span> <span class="cs">https://github.com/srikanthbellary/openstinger.git</span>
 <span class="ck">cd</span> openstinger &amp;&amp; <span class="ck">pip install</span> -e <span class="cs">".[dev]"</span>
 
-<span class="cc"># 2. Configure interactively (prompts for provider, API key, agent name, profile dirs)</span>
+<span class="cc"># 2. Configure interactively</span>
+<span class="cc">#    prompts: LLM provider · API key · agent name · embedding provider · profile dirs</span>
+<span class="cc">#    v0.8: select "ollama" for fully local embeddings (nomic-embed-text, mxbai-embed-large)</span>
 <span class="ck">openstinger-cli init</span>
 
 <span class="cc"># 3. Launch — FalkorDB + browser UI + Tier 1 MCP server</span>
