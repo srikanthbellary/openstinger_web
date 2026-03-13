@@ -1512,7 +1512,7 @@
   <!-- ── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-grid"></div>
-    <div class="hero-badge fi">⚡ v0.7 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
+    <div class="hero-badge fi">⚡ v0.8 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
     <img src="logo.png" alt="OpenStinger" class="hero-logo fi">
     <h1 class="fi">
       OpenClaw gave agents <span class="y">hands.</span><br>
@@ -1531,7 +1531,7 @@
       style="margin-top:0.75rem; font-size:1.05rem; color:#aaa; letter-spacing:0.01em; line-height:1.7;">
       Works with <strong style="color:var(--white);">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
         Cursor · Qwen-Agent · DeerFlow · LangGraph</strong><br>
-      — any runtime that speaks MCP. One endpoint. 28 tools. Zero lock-in.
+      — any runtime that speaks MCP. One endpoint. 30 tools. Zero lock-in.
     </p>
     <p class="hero-manifesto fi"
       style="margin-top:0.6rem; font-size:0.88rem; font-family:var(--mono); color:#666; letter-spacing:0.04em;">
@@ -1556,7 +1556,7 @@
     <div class="section-inner" style="padding-top:3.5rem; padding-bottom:2rem;">
       <div class="stats fi">
         <div class="stat">
-          <div class="stat-n">28</div>
+          <div class="stat-n">30</div>
           <div class="stat-l">MCP Tools</div>
         </div>
         <div class="stat">
@@ -1728,7 +1728,7 @@
           <div class="tier-panel t1">
             <div class="tier-panel-head">
               <span class="tp-label">memory_tools.py</span>
-              <span class="tp-badge">9 Tools</span>
+              <span class="tp-badge">11 Tools</span>
             </div>
             <div class="tier-panel-body">
               <div class="tool-grid">
@@ -1741,6 +1741,8 @@
                 <div class="tool-item">memory_ingest_now</div>
                 <div class="tool-item">memory_namespace_status</div>
                 <div class="tool-item">memory_list_agents</div>
+                <div class="tool-item new-tool">memory_delete <span class="new-badge">v0.8</span></div>
+                <div class="tool-item new-tool">memory_update <span class="new-badge">v0.8</span></div>
               </div>
               <div class="tier-stats">
                 <div class="ts-cell">
@@ -1975,7 +1977,7 @@
           <div class="tier-panel t3">
             <div class="tier-panel-head">
               <span class="tp-label">gradient · interceptor.py</span>
-              <span class="tp-badge">8 Tools · 28 Total</span>
+              <span class="tp-badge">8 Tools · 30 Total</span>
             </div>
             <div class="tier-panel-body">
               <div class="tool-grid">
@@ -2244,17 +2246,17 @@
             <span class="clang">topology</span>
           </div>
           <div class="ccode">
-            <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code · Cursor · Qwen-Agent · DeerFlow · LangGraph
-    └────────────────────────────────────┬────────────────────────────────────────────────────┘
-             Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
+            <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · DeerFlow · Qwen-Agent · LangGraph · Claude Code · Cursor
+    └──────────────────────────────────────┬──────────────────────────────────────────────────────┘
+                  Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
                             │
                             ▼
 <span class="at1">OpenStinger MCP Server  (Python process, runs on your machine)</span>
-<span class="at1">    ├── Tier 1  memory_query · memory_add · memory_search  ·····  9 tools</span>
+<span class="at1">    ├── Tier 1  memory_query · memory_add · memory_search  ····· 11 tools</span>
 <span class="at2">    ├── Tier 2  vault_promote_now · knowledge_ingest · namespace_*   11 tools</span>
 <span class="at3">    └── Tier 3  gradient_alignment_score · ops_status · drift_status  8 tools</span>
          │                                                    ────────────────
-         │                                                    28 tools total
+         │                                                    30 tools total
          ├── FalkorDB    (temporal graph · knowledge vault · vector indexes)
          ├── PostgreSQL  (ingestion jobs · alignment events · agent registry)
          └── vault/      (markdown notes · human-editable · SHA-256 synced)</pre>
