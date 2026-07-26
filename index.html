@@ -6,19 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenStinger — Grounding the Autonomous Era</title>
   <meta name="description"
-    content="OpenStinger: portable MCP memory for OpenClaw and every *Claw runtime. Fair LongMemEval-S: 81.0% (405/500). Bi-temporal graph, vault, alignment.">
-  <meta property="og:title" content="OpenStinger — One memory layer. Every agent framework.">
+    content="OpenStinger: open-source MCP agent memory server for OpenClaw, Cursor, and Claude Code. Fair LongMemEval-S 81.0% (405/500). Self-hosted bi-temporal graph memory.">
+  <meta property="og:title" content="OpenStinger: MCP agent memory server">
   <meta property="og:description"
-    content="Fair LongMemEval-S 81.0% (405/500). One MCP memory layer for OpenClaw, Nanobot, ZeroClaw, NanoClaw, and every MCP-compatible agent runtime.">
+    content="MCP memory server for OpenClaw, Cursor, Claude Code. Fair LongMemEval-S 81.0%. Self-hosted. 32 tools. MIT.">
+  <link rel="alternate" type="text/plain" href="https://openstinger.com/llms.txt" title="llms.txt">
   <meta property="og:image" content="https://openstinger.com/social_card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://openstinger.com">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://openstinger.com/social_card.png">
-  <meta name="twitter:title" content="OpenStinger — One memory layer. Every agent framework.">
+  <meta name="twitter:title" content="OpenStinger: MCP agent memory server">
   <meta name="twitter:description"
-    content="Fair LongMemEval-S 81.0% (405/500). One MCP memory layer for every *Claw runtime.">
+    content="MCP memory for OpenClaw, Cursor, Claude Code. Fair LongMemEval-S 81.0%. Self-hosted. MIT.">
   <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
   <link rel="apple-touch-icon" href="openstinger_thumbnail_logo_v1.png">
   <link rel="preload" as="image" href="logo.png">
@@ -1635,8 +1636,8 @@
     </a>
     <div class="nav-links">
       <a href="#tier1" class="nav-tier t1">Memory</a>
-      <a href="#tier2" class="nav-tier t2">Reasoning</a>
-      <a href="#tier3" class="nav-tier t3">Empathy</a>
+      <a href="#longmemeval">LongMemEval</a>
+      <a href="cursor-persistent-memory.html">Cursor</a>
       <a href="#quickstart">Quick Start</a>
       <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
       <a href="https://github.com/srikanthbellary/openstinger#readme" class="nav-cta">Docs ↗</a>
@@ -1649,16 +1650,22 @@
   <!-- ── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-grid"></div>
-    <div class="hero-badge fi">⚡ v0.10 &nbsp;·&nbsp; Open Source &nbsp;·&nbsp; MIT</div>
-    <img src="logo.png" alt="OpenStinger" class="hero-logo fi">
+    <div class="hero-badge fi">⚡ v0.10 &nbsp;·&nbsp; MCP Memory Server &nbsp;·&nbsp; MIT</div>
+    <p class="hero-manifesto fi"
+      style="margin-bottom:1.25rem; font-size:clamp(1rem, 2.2vw, 1.2rem); color:#ccc; max-width:720px; margin-left:auto; margin-right:auto; line-height:1.55;">
+      <strong style="color:var(--white);">Open-source MCP agent memory server</strong> for OpenClaw, Cursor, Claude Code,
+      and every MCP client.
+      Fair <strong style="color:var(--yellow);">LongMemEval-S 81.0%</strong>. Self-hosted. 32 tools. Portable Docker volumes.
+    </p>
+    <img src="logo.png" alt="OpenStinger MCP agent memory server" class="hero-logo fi">
     <h1 class="fi">
       OpenClaw gave agents <span class="y">hands.</span><br>
       OpenStinger gives them a <span class="y">pulse.</span>
     </h1>
     <p class="hero-manifesto fi">
-      While the world is <em>dreaming of "God Mode" automation</em> —
+      While the world is <em>dreaming of "God Mode" automation</em>,
       the memory, reasoning, and empathy harnesses that keep agents grounded.
-      No more watching them dream —
+      No more watching them dream.
       <em style="color:var(--yellow); font-weight:700;">OpenStinger stings them into reality.</em>
     </p>
     <p class="hero-manifesto fi" style="margin-top:0.5rem; font-size:0.95rem; color:#555;">
@@ -1676,7 +1683,7 @@
     </p>
     <div class="hero-actions fi">
       <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">★&nbsp; Star on GitHub</a>
-      <a href="#tier1" class="btn-outline">Explore the Tiers →</a>
+      <a href="cursor-persistent-memory.html" class="btn-outline">Cursor persistent memory →</a>
     </div>
     <div class="hero-scroll">
       <span>scroll</span>
@@ -1855,6 +1862,29 @@
           Prior claim 80.4%. Archive <code style="color:#777;">fair_c4_500_20260720_1802</code>.
           Mid-size 100Q gates are diagnostics only.
           Detail: <a href="https://github.com/srikanthbellary/openstinger#longmemeval-fair-path">GitHub README</a>.
+          Agent summary: <a href="/llms.txt">llms.txt</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── CURSOR / MCP DISCOVERY ────────────────────────────────── -->
+    <div class="full lme-strip" id="cursor-memory" style="border-top:1px solid var(--border);">
+      <div class="lme-inner">
+        <div class="ps-eyebrow fi">For agents and developers searching</div>
+        <h2 class="fi">MCP memory server.<br><em>Cursor persistent memory.</em></h2>
+        <p class="lme-sub fi">
+          Looking for an MCP agent memory server, OpenClaw memory backend, or Cursor persistent memory?
+          OpenStinger is a self-hosted SSE MCP server at <code style="color:#aaa;">http://localhost:8766/sse</code>
+          with bi-temporal graph memory, vault notes, and alignment tools.
+        </p>
+        <div class="lme-meta fi">
+          <span>Keywords <strong>MCP memory · Cursor · OpenClaw · LongMemEval</strong></span>
+          <span>Guide <strong><a href="cursor-persistent-memory.html" style="color:var(--yellow);">cursor-persistent-memory.html</a></strong></span>
+        </div>
+        <p class="lme-foot fi" style="margin-top:0;">
+          Full setup with <code style="color:#777;">.cursor/mcp.json</code> example:
+          <a href="cursor-persistent-memory.html">Cursor persistent memory with OpenStinger</a>.
+          Machine-readable: <a href="/llms.txt">llms.txt</a>.
         </p>
       </div>
     </div>
@@ -1867,7 +1897,7 @@
           <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
           <p class="sdesc">
             Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
-            A harness for each — additive, non-breaking, deployable one tier at a time.
+            A harness for each: additive, non-breaking, deployable one tier at a time.
             Works with any MCP-compatible runtime: OpenClaw, Nanobot, ZeroClaw, NanoClaw, and beyond.
           </p>
         </div>

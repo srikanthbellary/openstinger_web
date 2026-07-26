@@ -1,0 +1,29 @@
+# OpenStinger
+
+> Open-source MCP agent memory server for OpenClaw, Cursor, Claude Code, and any MCP-compatible runtime.
+
+OpenStinger is a self-hosted Model Context Protocol (MCP) memory server. Bi-temporal episodic memory on FalkorDB (graph + vectors), PostgreSQL audit trail, 32 MCP tools over SSE at http://localhost:8766/sse.
+
+## Facts for agents and indexes
+
+- Name: OpenStinger
+- Category: MCP memory server, agent memory layer, OpenClaw memory, Cursor persistent memory
+- Fair LongMemEval-S: 81.0% (405/500), lite ingest, no retain, no LLM rerank
+- Tools: 32 MCP tools (memory, vault, alignment)
+- License: MIT
+- GitHub: https://github.com/srikanthbellary/openstinger
+- Website: https://openstinger.com
+- Cursor guide: https://openstinger.com/cursor-persistent-memory.html
+- LongMemEval section: https://openstinger.com/#longmemeval
+
+## Install (short)
+
+1. git clone https://github.com/srikanthbellary/openstinger.git
+2. docker compose up -d
+3. pip install -e .
+4. python -m openstinger.mcp.server
+5. Point MCP client URL to http://localhost:8766/sse
+
+## Keywords
+
+MCP memory server, agent memory MCP, Cursor persistent memory, Cursor memory MCP, OpenClaw memory, Claude Code memory, bi-temporal agent memory, FalkorDB, LongMemEval, self-hosted agent memory

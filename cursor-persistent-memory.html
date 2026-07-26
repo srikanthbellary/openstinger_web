@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Persistent Memory with OpenStinger (MCP)</title>
+  <meta name="description"
+    content="Cursor persistent memory via OpenStinger: open-source MCP memory server for Cursor and Claude Code. Fair LongMemEval-S 81.0%. Point .cursor/mcp.json at http://localhost:8766/sse.">
+  <meta property="og:title" content="Cursor Persistent Memory with OpenStinger">
+  <meta property="og:description"
+    content="MCP agent memory server for Cursor. Self-hosted. Fair LongMemEval 81%. OpenClaw and Claude Code too.">
+  <meta property="og:url" content="https://openstinger.com/cursor-persistent-memory.html">
+  <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #080808;
+      --surface: #111;
+      --border: #242424;
+      --yellow: #f5c400;
+      --white: #efefef;
+      --grey: #777;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.65;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    main { max-width: 720px; margin: 0 auto; }
+
+    a { color: var(--yellow); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+      font-family: ui-monospace, monospace;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    h1 span { color: var(--yellow); }
+
+    .lead { color: #aaa; margin-bottom: 2rem; font-size: 1.05rem; }
+
+    h2 {
+      font-size: 1.15rem;
+      margin: 2.25rem 0 0.75rem;
+      font-weight: 700;
+    }
+
+    p, li { color: #bbb; margin-bottom: 0.75rem; }
+
+    ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      color: #ddd;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      color: var(--grey);
+      margin-bottom: 2rem;
+    }
+
+    .meta strong { color: var(--yellow); }
+
+    .back { font-size: 0.85rem; color: var(--grey); margin-bottom: 2rem; display: inline-block; }
+  </style>
+</head>
+
+<body>
+  <main>
+    <a class="back" href="/">← openstinger.com</a>
+    <div class="eyebrow">Cursor · MCP · Agent memory</div>
+    <h1>Cursor persistent memory with <span>OpenStinger</span></h1>
+    <p class="lead">
+      OpenStinger is an open-source <strong style="color:#ddd;">MCP memory server</strong> you can attach to Cursor
+      (and Claude Code, OpenClaw, and any MCP client). Self-hosted. Fair LongMemEval-S <strong style="color:#ddd;">81.0%</strong>.
+    </p>
+    <div class="meta">
+      <span>Endpoint <strong>http://localhost:8766/sse</strong></span>
+      <span>Tools <strong>32</strong></span>
+      <span>License <strong>MIT</strong></span>
+    </div>
+
+    <h2>1. Run OpenStinger</h2>
+    <p>Clone the repo, start Docker (FalkorDB + Postgres), install, configure, then start the MCP server:</p>
+    <pre>git clone https://github.com/srikanthbellary/openstinger.git
+cd openstinger
+docker compose up -d
+python -m venv .venv
+# activate venv, then:
+pip install -e "."
+cp .env.example .env
+cp config.yaml.example config.yaml
+# edit .env and sessions_dir in config.yaml
+python -m openstinger.mcp.server</pre>
+
+    <h2>2. Point Cursor at the MCP server</h2>
+    <p>Add this to the project <code style="color:#ddd;">.cursor/mcp.json</code> (or your global Cursor MCP config):</p>
+    <pre>{
+  "mcpServers": {
+    "openstinger": {
+      "url": "http://localhost:8766/sse"
+    }
+  }
+}</pre>
+    <p>Reload Cursor. The agent should see OpenStinger tools such as <code style="color:#ddd;">memory_query</code>,
+      <code style="color:#ddd;">memory_add</code>, and <code style="color:#ddd;">memory_wake_up</code>.</p>
+
+    <h2>3. What you get</h2>
+    <ul>
+      <li>Hybrid BM25 + vector episodic memory (bi-temporal graph)</li>
+      <li>Structured vault notes (identity, preferences, constraints)</li>
+      <li>Optional alignment / drift tools (Gradient)</li>
+      <li>Memory that moves as two Docker volumes between machines and runtimes</li>
+    </ul>
+
+    <h2>Related</h2>
+    <ul>
+      <li><a href="https://github.com/srikanthbellary/openstinger">GitHub repo</a></li>
+      <li><a href="https://github.com/srikanthbellary/openstinger#longmemeval-fair-path">LongMemEval fair 81% breakdown</a></li>
+      <li><a href="/#longmemeval">Benchmark on this site</a></li>
+      <li><a href="/llms.txt">llms.txt</a> for agent scrapers</li>
+    </ul>
+  </main>
+</body>
+
+</html>
