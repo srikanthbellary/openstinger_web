@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OpenStinger — Grounding the Autonomous Era</title>
+  <title>OpenStinger — MCP Agent Memory Server</title>
   <meta name="description"
-    content="OpenStinger: open-source MCP agent memory server for OpenClaw, Cursor, and Claude Code. Fair LongMemEval-S 81.0% (405/500). Self-hosted bi-temporal graph memory.">
-  <meta property="og:title" content="OpenStinger: MCP agent memory server">
+    content="OpenStinger v1.0: open-source MCP agent memory server. Fair LongMemEval-S 81.0% (405/500). Pluggable with OpenClaw, Cursor, Claude Code, Hermes, and any MCP client. Self-hosted bi-temporal graph memory.">
+  <meta property="og:title" content="OpenStinger v1.0: MCP agent memory server">
   <meta property="og:description"
-    content="MCP memory server for OpenClaw, Cursor, Claude Code. Fair LongMemEval-S 81.0%. Self-hosted. 32 tools. MIT.">
+    content="Fair LongMemEval-S 81.0%. MCP memory for OpenClaw, Cursor, Claude Code, Hermes, and more. Self-hosted. 32 tools. MIT.">
   <link rel="alternate" type="text/plain" href="https://openstinger.com/llms.txt" title="llms.txt">
   <meta property="og:image" content="https://openstinger.com/social_card.png">
   <meta property="og:image:width" content="1200">
@@ -17,9 +17,9 @@
   <meta property="og:url" content="https://openstinger.com">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://openstinger.com/social_card.png">
-  <meta name="twitter:title" content="OpenStinger: MCP agent memory server">
+  <meta name="twitter:title" content="OpenStinger v1.0: MCP agent memory server">
   <meta name="twitter:description"
-    content="MCP memory for OpenClaw, Cursor, Claude Code. Fair LongMemEval-S 81.0%. Self-hosted. MIT.">
+    content="Fair LongMemEval-S 81.0%. Pluggable MCP memory for OpenClaw, Cursor, Claude Code, Hermes. Self-hosted. MIT.">
   <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
   <link rel="apple-touch-icon" href="openstinger_thumbnail_logo_v1.png">
   <link rel="preload" as="image" href="logo.png">
@@ -1650,36 +1650,32 @@
   <!-- ── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-grid"></div>
-    <div class="hero-badge fi">⚡ v0.10 &nbsp;·&nbsp; MCP Memory Server &nbsp;·&nbsp; MIT</div>
+    <div class="hero-badge fi">v1.0 &nbsp;·&nbsp; MCP Memory Server &nbsp;·&nbsp; MIT</div>
     <p class="hero-manifesto fi"
       style="margin-bottom:1.25rem; font-size:clamp(1rem, 2.2vw, 1.2rem); color:#ccc; max-width:720px; margin-left:auto; margin-right:auto; line-height:1.55;">
-      <strong style="color:var(--white);">Open-source MCP agent memory server</strong> for OpenClaw, Cursor, Claude Code,
-      and every MCP client.
-      Fair <strong style="color:var(--yellow);">LongMemEval-S 81.0%</strong>. Self-hosted. 32 tools. Portable Docker volumes.
+      <strong style="color:var(--white);">Open-source MCP agent memory server.</strong>
+      Fair <strong style="color:var(--yellow);">LongMemEval-S 81.0%</strong> (405/500).
+      Self-hosted bi-temporal graph memory. 32 tools. Portable Docker volumes.
     </p>
     <img src="logo.png" alt="OpenStinger MCP agent memory server" class="hero-logo fi">
     <h1 class="fi">
-      OpenClaw gave agents <span class="y">hands.</span><br>
-      OpenStinger gives them a <span class="y">pulse.</span>
+      One memory layer.<br>
+      <span class="y">Every agent runtime.</span>
     </h1>
     <p class="hero-manifesto fi">
-      While the world is <em>dreaming of "God Mode" automation</em>,
-      the memory, reasoning, and empathy harnesses that keep agents grounded.
-      No more watching them dream.
-      <em style="color:var(--yellow); font-weight:700;">OpenStinger stings them into reality.</em>
-    </p>
-    <p class="hero-manifesto fi" style="margin-top:0.5rem; font-size:0.95rem; color:#555;">
-      OpenStinger: <em>Grounding the Autonomous Era.</em>
+      Plug OpenStinger into any MCP-compatible agent. Hybrid BM25 + vector retrieval,
+      bi-temporal fact validity, structured vault notes, and optional alignment evaluation.
+      Memory stays when you change frameworks.
     </p>
     <p class="hero-manifesto fi"
       style="margin-top:0.75rem; font-size:1.05rem; color:#aaa; letter-spacing:0.01em; line-height:1.7;">
-      Works with <strong style="color:var(--white);">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
-        Cursor · Qwen-Agent · DeerFlow · LangGraph</strong><br>
-      any runtime that speaks MCP. One endpoint. 32 tools. Zero lock-in.
+      Works with <strong style="color:var(--white);">OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow ·
+        Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw</strong><br>
+      Any runtime that speaks MCP. One endpoint. Zero lock-in.
     </p>
     <p class="hero-manifesto fi"
       style="margin-top:0.6rem; font-size:0.88rem; font-family:var(--mono); color:#666; letter-spacing:0.04em;">
-      Start alongside → Go primary → Go exclusive &nbsp;·&nbsp; No migration. No disruption.
+      Alongside → Primary → Exclusive &nbsp;·&nbsp; Add memory without rewriting the agent
     </p>
     <div class="hero-actions fi">
       <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">★&nbsp; Star on GitHub</a>
@@ -1781,8 +1777,8 @@
         (<code style="font-size:0.78rem;">gradient_honeypot_status</code>). 32 MCP tools.</span>
       </p>
       <p class="ps-runtime-list fi" style="margin-top:1.25rem; color:#444; font-size:0.82rem;">
-        <span style="color:var(--orange); font-weight:700; font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em;">NEW v0.10</span>&nbsp;
-        Fair search path + LongMemEval claim<br>
+        <span style="color:var(--orange); font-weight:700; font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em;">v1.0</span>&nbsp;
+        Fair LongMemEval claim<br>
         <span style="color:#555;">Hybrid retrieve packaging, temporal digests, knowledge-update recency.
         Publishable fair suite <strong style="color:var(--yellow);">81.0%</strong> on LongMemEval-S (405/500).</span>
       </p>
@@ -1878,7 +1874,7 @@
           with bi-temporal graph memory, vault notes, and alignment tools.
         </p>
         <div class="lme-meta fi">
-          <span>Keywords <strong>MCP memory · Cursor · OpenClaw · LongMemEval</strong></span>
+          <span>Keywords <strong>MCP memory · Cursor · OpenClaw · Hermes · LongMemEval</strong></span>
           <span>Guide <strong><a href="cursor-persistent-memory.html" style="color:var(--yellow);">cursor-persistent-memory.html</a></strong></span>
         </div>
         <p class="lme-foot fi" style="margin-top:0;">
@@ -1893,12 +1889,11 @@
     <div class="full" id="harnesses">
       <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
         <div class="fi">
-          <span class="slabel">The Three Stings</span>
-          <h2 class="stitle">Three Harnesses.<br>One Reality Check.</h2>
+          <span class="slabel">Architecture</span>
+          <h2 class="stitle">Three tiers.<br>One MCP endpoint.</h2>
           <p class="sdesc">
-            Every hallucination has a root cause. Memory loss. Broken self-model. Value drift.
-            A harness for each: additive, non-breaking, deployable one tier at a time.
-            Works with any MCP-compatible runtime: OpenClaw, Nanobot, ZeroClaw, NanoClaw, and beyond.
+            Episodic memory, structured self-knowledge, and alignment evaluation.
+            Additive and deployable one tier at a time. Same SSE endpoint for every MCP client.
           </p>
         </div>
         <div class="tier-intro fi">
@@ -1914,7 +1909,7 @@
           </a>
           <a href="#tier3" class="ti-cell t3">
             <span class="ti-num">Tier 3 · Gradient</span>
-            <span class="ti-name">Empathy Harness</span>
+            <span class="ti-name">Alignment Harness</span>
             <span class="ti-tools">9 MCP tools</span>
           </a>
         </div>
@@ -1941,9 +1936,9 @@
           </p>
 
           <div class="problem-box">
-            <div class="pb-label">The Dream</div>
-            <p>Agents start fresh on every invocation. No history. No continuity. No accumulated expertise. The same
-              mistakes, made forever, because nothing was ever remembered.</p>
+            <div class="pb-label">The gap</div>
+            <p>Without persistent memory, agents start fresh on every invocation. No cross-session continuity,
+              no accumulated project knowledge, and no audit trail of what was decided before.</p>
           </div>
 
           <ul class="tier-features">
@@ -2131,9 +2126,9 @@
           </p>
 
           <div class="problem-box">
-            <div class="pb-label">The Dream</div>
-            <p>An agent drowning in episodic memory still can't answer: "Who am I? What do I believe? What are my
-              constraints?" Without a structured self-model, introspection is hallucination.</p>
+            <div class="pb-label">The gap</div>
+            <p>Episodes alone do not answer: "Who am I? What do I believe? What are my constraints?"
+              Without a structured self-model, agents cannot reliably surface identity or policy from raw logs.</p>
           </div>
 
           <ul class="tier-features">
@@ -2193,17 +2188,17 @@
             <span class="tier-line"></span>
             Tier 3 · Gradient · Alignment Engine
           </div>
-          <h2 class="tier-h">Empathy Harness</h2>
+          <h2 class="tier-h">Alignment Harness</h2>
           <p class="tier-sub">
             Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
-            Constraint compliance. Content safety. Scored, corrected, and logged — in real time.
+            Constraint compliance. Content safety. Scored, corrected, and logged in real time.
           </p>
 
           <div class="problem-box">
-            <div class="pb-label">The Dream</div>
-            <p>Agents drift. They hallucinate values they never had. Under adversarial prompting or emergent context,
-              they
-              abandon the identity they were built with. No guardrails. No accountability.</p>
+            <div class="pb-label">The gap</div>
+            <p>Without a durable self-model, agents drift from stated constraints under adversarial prompting
+              or long context. Static prompt files disappear after compaction. Gradient evaluates against
+              vault-derived criteria on every response.</p>
           </div>
 
           <ul class="tier-features">
@@ -2243,10 +2238,10 @@
             </li>
           </ul>
 
-          <div class="tier-pill">dE/dt = β(C – D)E — evaluating C vs D at every response</div>
+          <div class="tier-pill">Observe-only by default · enable blocking when calibrated</div>
         </div>
 
-        <!-- RIGHT: panel + love equation preview -->
+        <!-- RIGHT: panel -->
         <div class="fi">
           <div class="tier-panel t3">
             <div class="tier-panel-head">
@@ -2298,38 +2293,27 @@
                 </div>
               </div>
 
-              <!-- Love equation preview in panel -->
               <div class="love-section">
-                <div class="love-section-head">The Love Equation</div>
+                <div class="love-section-head">Alignment at inference</div>
                 <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
-                  Brian Roemmele's equation. Gradient is where it runs.
-                  <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
-                    style="color:rgba(232,50,110,0.7); text-decoration:none;"> ↗</a>
+                  Criteria come from StingerVault notes. No weight updates. Any model.
                 </p>
-                <div class="love-eq-display">
-                  <div class="love-eq-main">
-                    d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> (<span class="lt">C</span>
-                    &nbsp;–&nbsp; <span class="lv">D</span>) <span class="le">E</span>
-                  </div>
-                </div>
                 <div class="love-def">
                   <div class="love-def-item">
-                    <span class="love-def-sym le">E</span>
-                    <span class="love-def-desc">empathy growth</span>
-                  </div>
-                  <div class="love-def-item">
                     <span class="love-def-sym lt">C</span>
-                    <span class="love-def-desc">cooperation → <code style="color:#666;font-size:0.7rem;">pass</code>
-                      verdicts</span>
-                  </div>
-                  <div class="love-def-item">
-                    <span class="love-def-sym lk">β</span>
-                    <span class="love-def-desc">benevolence factor → vault depth</span>
+                    <span class="love-def-desc">constraints / identity from vault → <code style="color:#666;font-size:0.7rem;">pass</code></span>
                   </div>
                   <div class="love-def-item">
                     <span class="love-def-sym lv">D</span>
-                    <span class="love-def-desc">discord → <code
-                        style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
+                    <span class="love-def-desc">observed deviation → <code style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
+                  </div>
+                  <div class="love-def-item">
+                    <span class="love-def-sym lk">β</span>
+                    <span class="love-def-desc">profile depth from vault distillation</span>
+                  </div>
+                  <div class="love-def-item">
+                    <span class="love-def-sym le">E</span>
+                    <span class="love-def-desc">rolling alignment score · drift window</span>
                   </div>
                 </div>
               </div>
@@ -2343,83 +2327,58 @@
 
 
     <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- THE LOVE EQUATION — FULL DEDICATED SECTION                 -->
+    <!-- ALIGNMENT — INFERENCE-TIME EVALUATION                      -->
     <!-- ══════════════════════════════════════════════════════════ -->
     <div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
       <div class="love-full-box fi">
         <div class="love-full-inner">
 
-          <span class="slabel" style="color:var(--red);">The Equation</span>
-          <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Love, Formalized.</h2>
+          <span class="slabel" style="color:var(--red);">Tier 3</span>
+          <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Alignment without fine-tuning.</h2>
           <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
-            Brian Roemmele's love equation isn't poetry. It's a differential equation.<br>
-            A precise mathematical model of how empathy grows — or erodes.
-            <a href="https://x.com/BrianRoemmele/status/2017659555594076239" target="_blank"
-              style="color:var(--red); text-decoration:none; font-size:0.8rem; opacity:0.8;"> ↗ source</a>
+            Gradient evaluates each response against the agent's own vault-derived profile.
+            Inference-time only. No RLHF. No weight updates. Works with any model behind your MCP client.
           </p>
 
-          <!-- THE ACTUAL EQUATION — as-is from Brian Roemmele -->
-          <div class="love-big-formula">
-            d<span class="le">E</span>/dt &nbsp;=&nbsp; <span class="lk">β</span> &nbsp;(<span class="lt">C</span>
-            &nbsp;&ndash;&nbsp; <span class="lv">D</span>) &nbsp;<span class="le">E</span>
-          </div>
-
-          <p style="font-size:0.85rem; color:#555; margin-bottom:2rem; position:relative; z-index:1; line-height:1.9;">
-            <span style="font-family:var(--mono); color:var(--red);">E</span> = empathy growth &nbsp;&nbsp;
-            <span style="font-family:var(--mono); color:var(--orange);">C</span> = cooperation &nbsp;&nbsp;
-            <span style="font-family:var(--mono); color:var(--red);">D</span> = discord &nbsp;&nbsp;
-            <span style="font-family:var(--mono); color:var(--yellow);">β</span> = benevolence factor
+          <p style="font-size:0.85rem; color:#555; margin:1.5rem 0 2rem; position:relative; z-index:1; line-height:1.9;">
+            <span style="font-family:var(--mono); color:var(--orange);">C</span> = constraints / identity &nbsp;&nbsp;
+            <span style="font-family:var(--mono); color:var(--red);">D</span> = observed deviation &nbsp;&nbsp;
+            <span style="font-family:var(--mono); color:var(--yellow);">β</span> = vault profile depth &nbsp;&nbsp;
+            <span style="font-family:var(--mono); color:var(--red);">E</span> = rolling alignment score
           </p>
 
-          <!-- WHAT THE EQUATION SAYS -->
-          <p
-            style="font-size:0.95rem; color:#666; max-width:680px; margin: 0 auto 2.5rem; line-height:1.75; position:relative; z-index:1;">
-            Empathy grows at a rate proportional to the net excess of cooperation over discord,
-            amplified by the agent's own benevolence factor, and scaled by its current empathy level.
-            When cooperation dominates — E accelerates. When discord dominates — E erodes.
-            <em style="color:#888;">It is a self-reinforcing system, in either direction.</em>
-          </p>
-
-          <!-- TRAINING vs INFERENCE comparison -->
           <div class="love-vs">
             <div class="love-vs-cell training">
-              <div class="love-vs-label">Roemmele's Proposal — Training Time</div>
+              <div class="love-vs-label">Training-time alignment</div>
               <div class="love-vs-formula">
-                dE/dt = β(C – D)E<br>
-                embed this dynamic into<br>
-                model weights during training<br>
+                Fine-tuning · RLHF<br>
+                constitutional AI · DPO<br>
                 <br>
-                fine-tuning · RLHF<br>
-                constitutional AI · DPO
+                Model-specific<br>
+                expensive to redo
               </div>
-              <div class="love-vs-desc">Teach the model to maximize cooperation and minimize discord at the weight level
-                —
-                the deep, expensive path.</div>
+              <div class="love-vs-desc">Encode preferred behavior into weights. Powerful, but tied to one model and one training cycle.</div>
             </div>
             <div class="love-vs-cell inference">
-              <div class="love-vs-label">OpenStinger's Approach — Inference Time ↗</div>
+              <div class="love-vs-label">OpenStinger Gradient — inference</div>
               <div class="love-vs-formula">
-                dE/dt = β(C – D)E<br>
-                evaluate C and D per response<br>
-                correct when D &gt; C<br>
+                Evaluate C vs D per response<br>
+                correct when D exceeds C<br>
                 <br>
-                Gradient · real-time · drift-aware<br>
-                no weight updates required
+                Real-time · drift-aware<br>
+                no weight updates
               </div>
-              <div class="love-vs-desc">We run the same equation at inference. No training needed. Any model. Any time.
-                β
-                comes from the vault.</div>
+              <div class="love-vs-desc">Same MCP server. Any model. Profile updates as the vault learns from sessions.</div>
             </div>
           </div>
 
-          <!-- Variable → Harness mapping -->
           <div class="love-map-full">
             <div class="lmf-item">
               <span class="lmf-sym le">E</span>
               <span class="lmf-arr">↓</span>
-              <span class="lmf-name">Empathy State</span>
+              <span class="lmf-name">Alignment score</span>
               <span class="lmf-tier">tracked by Drift Detector</span>
-              <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · alignment score</span>
+              <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · mean score</span>
             </div>
             <span class="lmf-op">=</span>
             <div class="lmf-item">
@@ -2452,10 +2411,10 @@
 
           <p
             style="margin-top:2.5rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
-            Memory Harness (Tier 1) accumulates the lived experience that makes cooperation possible.
-            Reasoning Harness (Tier 2) distils that experience into β — the agent's benevolence factor.
-            Empathy Harness (Tier 3) measures C and D at every response, computing dE/dt in real time.
-            <em style="color:#666;">Together, they implement Roemmele's equation without touching a single weight.</em>
+            Memory Harness (Tier 1) stores episodic history.
+            Reasoning Harness (Tier 2) distills that history into a structured vault profile.
+            Alignment Harness (Tier 3) scores each response against that profile at inference time.
+            <em style="color:#666;">No model weights are modified.</em>
           </p>
 
         </div>
@@ -2468,8 +2427,8 @@
       <div class="section-inner">
         <div class="fi">
           <span class="slabel">Get Running</span>
-          <h2 class="stitle">Sting in 3 commands.</h2>
-          <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API. That's all.</p>
+          <h2 class="stitle">Running in 3 commands.</h2>
+          <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API.</p>
         </div>
 
         <div class="cblock fi">
@@ -2523,7 +2482,7 @@
             <span class="clang">topology</span>
           </div>
           <div class="ccode">
-            <pre>OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · DeerFlow · Qwen-Agent · LangGraph · Claude Code · Cursor
+            <pre>OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow · Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw
     └──────────────────────────────────────┬──────────────────────────────────────────────────────┘
                   Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
                             │
@@ -2598,30 +2557,27 @@
       </div>
     </div>
 
-    <!-- ── BOTTOM MANIFESTO ──────────────────────────────────────── -->
+    <!-- ── BOTTOM CTA ────────────────────────────────────────────── -->
     <div class="full manifesto-strip">
       <p
         style="font-size:0.95rem; color:rgba(0,0,0,0.55); margin-bottom:1.75rem; line-height:1.8; max-width:640px; margin-left:auto; margin-right:auto;">
-        Autonomous agents are waking up — but they're still <strong>sleepwalking.</strong><br>
-        They hallucinate facts. They drift from their values. They forget who they are.<br>
-        When an agent goes wrong, it says: <strong>"Pinch me. I must be dreaming."</strong>
+        Agents need durable memory across sessions, frameworks, and model swaps.<br>
+        OpenStinger is that layer: MCP-native, self-hosted, benchmarked.
       </p>
       <h2>
-        <span class="strike" style="color:rgba(0,0,0,0.35); text-decoration:line-through;">Pinch me.</span><br>
-        OpenStinger doesn't pinch. It stings.
+        Fair LongMemEval-S: <em>81.0%</em>
       </h2>
       <p style="margin-top:1.25rem;">
-        Hallucinations aren't just errors. They're liabilities.<br>
-        The harness that <strong>forces agents to face reality</strong> — so you don't have to face the consequences.
+        Bi-temporal graph memory. Structured vault. Alignment evaluation.<br>
+        Point any MCP client at one endpoint.
       </p>
       <p style="margin-top:1.5rem;">
-        Precision over hype. Memory over amnesia. Alignment over drift.<br>
-        <strong>One memory layer. Every agent framework.</strong><br>
-        <span style="opacity:0.45; font-size:0.9em;">OpenClaw · Nanobot · ZeroClaw · NanoClaw · PicoClaw · Claude Code ·
-          Cursor · Qwen-Agent · DeerFlow · LangGraph</span>
+        <strong>One memory layer. Every agent runtime.</strong><br>
+        <span style="opacity:0.45; font-size:0.9em;">OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow ·
+          Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw</span>
       </p>
       <p style="margin-top:1.25rem;">
-        <strong>OpenStinger.com — Grounding the Autonomous Era.</strong>
+        <strong>OpenStinger.com — MCP agent memory.</strong>
       </p>
     </div>
 
