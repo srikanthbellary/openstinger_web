@@ -519,20 +519,23 @@
   function drawVolumePlates(ctx, box, present, T, fs, host) {
     const vols = ["volume · graph", "volume · audit"];
     const pad = 12;
-    const plateH = Math.min(28, (box.h - pad * 2 - 22) / 2);
-    const top = box.y + 16;
+    const plateH = Math.min(30, Math.max(20, (box.h - pad * 2 - 28) / 2));
+    const top = box.y + 14;
+    const strength = 0.28 + present * 0.72;
     ctx.font = "500 " + (fs - 1) + "px " + T.mono;
     ctx.textBaseline = "middle";
-    ctx.fillStyle = hexAlpha(T.white, 0.32);
+    ctx.fillStyle = hexAlpha(T.white, 0.28 + present * 0.2);
     ctx.fillText(fit(ctx, host, box.w - pad * 2), box.x + pad, box.y + box.h - 10);
     vols.forEach(function (v, i) {
       const y = top + (plateH + 8) * i;
-      ctx.globalAlpha = present ? 1 : 0.18;
-      ctx.strokeStyle = hexAlpha(T.yellow, present ? 0.45 : 0.15);
-      ctx.fillStyle = hexAlpha(T.yellow, present ? 0.07 : 0.02);
+      ctx.globalAlpha = strength;
+      ctx.strokeStyle = hexAlpha(T.yellow, 0.22 + present * 0.35);
+      ctx.fillStyle = hexAlpha(T.yellow, 0.04 + present * 0.08);
       fillStrokeRect(ctx, box.x + pad, y, box.w - pad * 2, plateH);
-      ctx.fillStyle = hexAlpha(T.white, present ? 0.78 : 0.28);
+      ctx.fillStyle = hexAlpha(T.white, 0.55 + present * 0.3);
       ctx.fillText(fit(ctx, v, box.w - pad * 2 - 12), box.x + pad + 8, y + plateH / 2);
+      ctx.fillStyle = T.yellow;
+      ctx.fillRect(box.x + box.w - pad - 12, y + plateH / 2 - 1.5, 3, 3);
       ctx.globalAlpha = 1;
     });
   }
@@ -569,9 +572,9 @@
       fillTracked(ctx, STAGES[i], box.x, box.y - 9, 0.55);
     });
 
-    const aPresent = reduced ? true : unplug < 0.85;
-    const midPresent = reduced ? true : move > 0.15 && move < 0.95;
-    const bPresent = reduced ? true : plugin > 0.35;
+    const aPresent = reduced ? 1 : Math.max(0.22, 1 - Math.max(0, unplug - 0.35));
+    const midPresent = reduced ? 1 : 0.22 + 0.78 * Math.max(0, Math.min(1, move));
+    const bPresent = reduced ? 1 : 0.22 + 0.78 * Math.max(0, Math.min(1, (plugin - 0.1) / 0.7));
     drawVolumePlates(ctx, boxes[0], aPresent, T, fs, "host A · runtime");
     drawVolumePlates(ctx, boxes[1], midPresent, T, fs, "any host · any cloud");
     drawVolumePlates(ctx, boxes[2], bPresent, T, fs, "host B · memory restored");
@@ -835,14 +838,14 @@
     },
     pipeline: {
       init: function () {
-        return { clock: 0, settled: false };
+        return { clock: 6.2, settled: true };
       },
       step: stepPipeline,
       draw: drawPipeline,
     },
     volumes: {
       init: function () {
-        return { clock: 0 };
+        return { clock: 5.2 };
       },
       step: stepVolumes,
       draw: drawVolumes,
@@ -856,7 +859,7 @@
     },
     tiers: {
       init: function () {
-        return { clock: 0 };
+        return { clock: 5.6 };
       },
       step: stepTiers,
       draw: drawTiers,
