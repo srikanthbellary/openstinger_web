@@ -12,94 +12,129 @@
     content="MCP agent memory server for Cursor. Self-hosted. Fair LongMemEval 81%. OpenClaw and Claude Code too.">
   <meta property="og:url" content="https://openstinger.com/cursor-persistent-memory.html">
   <link rel="icon" type="image/png" href="openstinger_thumbnail_logo_v1.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
   <style>
-    :root {
-      --black: #080808;
-      --surface: #111;
-      --border: #242424;
-      --yellow: #f5c400;
-      --white: #efefef;
-      --grey: #777;
+    .guide {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 6.5rem 1.25rem 4rem;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    .guide .back {
+      font-size: 0.82rem;
+      color: var(--grey);
+      text-decoration: none;
+      margin-bottom: 1.75rem;
+      display: inline-block;
+    }
 
-    body {
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--black);
+    .guide .back:hover {
       color: var(--white);
-      line-height: 1.65;
-      padding: 2rem 1.25rem 4rem;
     }
 
-    main { max-width: 720px; margin: 0 auto; }
-
-    a { color: var(--yellow); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 1rem;
-      font-family: ui-monospace, monospace;
-    }
-
-    h1 {
-      font-size: clamp(1.75rem, 4vw, 2.4rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
+    .guide h1 {
+      font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
       line-height: 1.15;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
-    h1 span { color: var(--yellow); }
+    .guide h1 span {
+      color: var(--yellow);
+    }
 
-    .lead { color: #aaa; margin-bottom: 2rem; font-size: 1.05rem; }
+    .guide .lead {
+      color: #aaa;
+      margin-bottom: 1.5rem;
+      font-size: 1.02rem;
+    }
 
-    h2 {
-      font-size: 1.15rem;
-      margin: 2.25rem 0 0.75rem;
+    .guide h2 {
+      font-size: 1.05rem;
+      margin: 2rem 0 0.65rem;
       font-weight: 700;
     }
 
-    p, li { color: #bbb; margin-bottom: 0.75rem; }
+    .guide p,
+    .guide li {
+      color: #bbb;
+      margin-bottom: 0.7rem;
+    }
 
-    ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .guide ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
 
-    pre {
+    .guide pre {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
+      padding: 1rem 1.05rem;
       overflow-x: auto;
-      font-size: 0.82rem;
+      font-family: var(--mono);
+      font-size: 0.8rem;
       color: #ddd;
-      margin: 1rem 0 1.5rem;
+      margin: 1rem 0 1.4rem;
     }
 
-    .meta {
+    .guide code {
+      font-family: var(--mono);
+      color: #ddd;
+    }
+
+    .guide a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+
+    .guide a:hover {
+      text-decoration: underline;
+    }
+
+    .guide .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem 1.25rem;
-      font-family: ui-monospace, monospace;
-      font-size: 0.72rem;
+      gap: 0.45rem 1.15rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
       color: var(--grey);
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
-    .meta strong { color: var(--yellow); }
-
-    .back { font-size: 0.85rem; color: var(--grey); margin-bottom: 2rem; display: inline-block; }
+    .guide .meta strong {
+      color: var(--yellow);
+    }
   </style>
 </head>
 
 <body>
-  <main>
+  <nav>
+    <a href="/">
+      <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger" class="nav-logo">
+    </a>
+    <div class="nav-links">
+      <a href="/#how">How it works</a>
+      <a href="/#tier1">Memory</a>
+      <a href="/#longmemeval">LongMemEval</a>
+      <a href="cursor-persistent-memory.html">Cursor</a>
+      <a href="/#quickstart">Quick Start</a>
+      <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+      <a href="https://github.com/srikanthbellary/openstinger#readme" class="nav-cta">Docs ↗</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main class="guide">
     <a class="back" href="/">← openstinger.com</a>
-    <div class="eyebrow">Cursor · MCP · Agent memory</div>
+    <div class="slabel">Cursor · MCP · Agent memory</div>
     <h1>Cursor persistent memory with <span>OpenStinger</span></h1>
     <p class="lead">
       OpenStinger is an open-source <strong style="color:#ddd;">MCP memory server</strong> you can attach to Cursor
@@ -125,7 +160,7 @@ cp config.yaml.example config.yaml
 python -m openstinger.mcp.server</pre>
 
     <h2>2. Point Cursor at the MCP server</h2>
-    <p>Add this to the project <code style="color:#ddd;">.cursor/mcp.json</code> (or your global Cursor MCP config):</p>
+    <p>Add this to the project <code>.cursor/mcp.json</code> (or your global Cursor MCP config):</p>
     <pre>{
   "mcpServers": {
     "openstinger": {
@@ -133,8 +168,8 @@ python -m openstinger.mcp.server</pre>
     }
   }
 }</pre>
-    <p>Reload Cursor. The agent should see OpenStinger tools such as <code style="color:#ddd;">memory_query</code>,
-      <code style="color:#ddd;">memory_add</code>, and <code style="color:#ddd;">memory_wake_up</code>.</p>
+    <p>Reload Cursor. The agent should see OpenStinger tools such as <code>memory_query</code>,
+      <code>memory_add</code>, and <code>memory_wake_up</code>.</p>
 
     <h2>3. What you get</h2>
     <ul>
@@ -152,6 +187,8 @@ python -m openstinger.mcp.server</pre>
       <li><a href="/llms.txt">llms.txt</a> for agent scrapers</li>
     </ul>
   </main>
+
+  <script src="js/ost.js"></script>
 </body>
 
 </html>

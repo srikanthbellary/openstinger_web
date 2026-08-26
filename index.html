@@ -25,1617 +25,21 @@
   <link rel="preload" as="image" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #080808;
-      --surface: #111111;
-      --surface2: #181818;
-      --border: #242424;
-      --yellow: #f5c400;
-      --yellow-dim: #c49e00;
-      --yellow-glow: rgba(245, 196, 0, 0.12);
-      --orange: #ff7a00;
-      --red: #e8326e;
-      --white: #efefef;
-      --grey: #777;
-      --grey-dim: #3a3a3a;
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-    }
-
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── TYPOGRAPHY ─────────────────────────────────────────── */
-    h1,
-    h2,
-    h3 {
-      line-height: 1.12;
-      letter-spacing: -0.025em;
-    }
-
-    h2 {
-      font-size: clamp(1.9rem, 4vw, 2.9rem);
-      font-weight: 700;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    p {
-      color: #999;
-    }
-
-    /* ── NAV ────────────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.85rem 2.5rem;
-      background: rgba(8, 8, 8, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      height: 30px;
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--grey);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--white);
-    }
-
-    .nav-tier {
-      font-size: 0.78rem !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-tier.t1:hover {
-      color: var(--yellow) !important;
-    }
-
-    .nav-tier.t2:hover {
-      color: var(--orange) !important;
-    }
-
-    .nav-tier.t3:hover {
-      color: var(--red) !important;
-    }
-
-    .nav-cta {
-      background: var(--yellow);
-      color: #000 !important;
-      padding: 0.4rem 1rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background .2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--yellow-dim) !important;
-    }
-
-    /* ── HERO ───────────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 9rem 2rem 5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 90% 55% at 50% -5%, rgba(245, 196, 0, 0.09) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 35% at 85% 90%, rgba(245, 196, 0, 0.04) 0%, transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 110% 75% at 50% 0%, black 0%, transparent 75%);
-      pointer-events: none;
-    }
-
-    .hero-logo {
-      width: min(560px, 84vw);
-      margin-bottom: 2rem;
-      filter: drop-shadow(0 0 40px rgba(245, 196, 0, 0.15));
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(245, 196, 0, 0.08);
-      border: 1px solid rgba(245, 196, 0, 0.25);
-      color: var(--yellow);
-      padding: 0.3rem 1rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.75rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 {
-      font-size: clamp(1.8rem, 4.2vw, 3.2rem);
-      font-weight: 900;
-      max-width: 860px;
-      margin: 0 auto 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h1 .y {
-      color: var(--yellow);
-    }
-
-    .hero-manifesto {
-      max-width: 700px;
-      margin: 0 auto 0.75rem;
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: #777;
-      line-height: 1.75;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-manifesto em {
-      color: #bbb;
-      font-style: normal;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 2.25rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .btn-y {
-      background: var(--yellow);
-      color: #000;
-      padding: 0.8rem 2rem;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-y:hover {
-      background: var(--yellow-dim);
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      padding: 0.8rem 2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      transition: all .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-outline:hover {
-      border-color: #555;
-      background: var(--surface);
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: #2a2a2a;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      animation: bob 2.2s ease-in-out infinite;
-    }
-
-    @keyframes bob {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(7px);
-      }
-    }
-
-    /* ── HAMBURGER ───────────────────────────────────────────── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      margin-left: auto;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--grey);
-      border-radius: 2px;
-      transition: background 0.2s;
-    }
-
-    .hamburger:hover span {
-      background: var(--white);
-    }
-
-    /* ── FULL-WIDTH WRAPPER ─────────────────────────────────── */
-    .full {
-      width: 100%;
-    }
-
-    /* ── SECTIONS ───────────────────────────────────────────── */
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5.5rem 2rem;
-    }
-
-    .section-inner.tight {
-      padding-top: 2.5rem;
-    }
-
-    .slabel {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 0.65rem;
-    }
-
-    .stitle {
-      margin-bottom: 0.9rem;
-    }
-
-    .sdesc {
-      font-size: 1.05rem;
-      color: #777;
-      max-width: 580px;
-      margin-bottom: 3rem;
-    }
-
-    /* ── STATS BAR ──────────────────────────────────────────── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .stat {
-      background: var(--surface);
-      padding: 1.4rem;
-      text-align: center;
-    }
-
-    .stat-n {
-      font-size: 2rem;
-      font-weight: 900;
-      line-height: 1;
-      color: var(--yellow);
-      font-family: var(--mono);
-    }
-
-    .stat-l {
-      font-size: 0.78rem;
-      color: var(--grey);
-      margin-top: 0.4rem;
-    }
-
-    /* ── TIER OVERVIEW INTRO ────────────────────────────────── */
-    .tier-intro {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-
-    .ti-cell {
-      background: var(--surface);
-      padding: 1.5rem;
-      text-align: center;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      transition: background .2s;
-    }
-
-    .ti-cell:hover {
-      background: var(--surface2);
-    }
-
-    .ti-num {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .ti-name {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .ti-tools {
-      font-size: 0.78rem;
-      color: var(--grey);
-    }
-
-    .ti-cell.t1 .ti-num {
-      color: var(--yellow);
-    }
-
-    .ti-cell.t2 .ti-num {
-      color: var(--orange);
-    }
-
-    .ti-cell.t3 .ti-num {
-      color: var(--red);
-    }
-
-    .ti-cell.t1 {
-      border-bottom: 2px solid var(--yellow);
-    }
-
-    .ti-cell.t2 {
-      border-bottom: 2px solid var(--orange);
-    }
-
-    .ti-cell.t3 {
-      border-bottom: 2px solid var(--red);
-    }
-
-    /* ── TIER SECTIONS ─────────────────────────────────────── */
-    .tier-section {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tier-section+.tier-section {
-      border-top: 1px solid var(--border);
-    }
-
-    .tier-section.t1-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse 60% 50% at -10% 50%, rgba(245, 196, 0, 0.04) 0%, transparent 70%);
-    }
-
-    .tier-section.t2-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse 60% 50% at 110% 50%, rgba(255, 122, 0, 0.04) 0%, transparent 70%);
-    }
-
-    .tier-section.t3-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse 60% 50% at -10% 50%, rgba(232, 50, 110, 0.04) 0%, transparent 70%);
-    }
-
-    .tier-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-      position: relative;
-      z-index: 1;
-    }
-
-    .tier-inner.flip > :first-child {
-      order: 2;
-    }
-
-    .tier-inner.flip > :last-child {
-      order: 1;
-    }
-
-    .tier-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .t1 .tier-label {
-      color: var(--yellow);
-    }
-
-    .t2 .tier-label {
-      color: var(--orange);
-    }
-
-    .t3 .tier-label {
-      color: var(--red);
-    }
-
-    .tier-label .tier-line {
-      height: 1px;
-      flex: 1;
-      max-width: 48px;
-    }
-
-    .t1 .tier-line {
-      background: var(--yellow);
-    }
-
-    .t2 .tier-line {
-      background: var(--orange);
-    }
-
-    .t3 .tier-line {
-      background: var(--red);
-    }
-
-    .tier-h {
-      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .tier-sub {
-      font-size: 1.05rem;
-      color: #666;
-      margin-bottom: 1.75rem;
-      line-height: 1.65;
-      max-width: 480px;
-    }
-
-    .problem-box {
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .problem-box .pb-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #444;
-      margin-bottom: 0.35rem;
-    }
-
-    .problem-box p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.55;
-    }
-
-    .tier-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .tier-features li {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-      font-size: 0.9rem;
-      color: #aaa;
-      line-height: 1.55;
-    }
-
-    .tf-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 0.55rem;
-    }
-
-    .t1 .tf-dot {
-      background: var(--yellow);
-    }
-
-    .t2 .tf-dot {
-      background: var(--orange);
-    }
-
-    .t3 .tf-dot {
-      background: var(--red);
-    }
-
-    .tier-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.8rem;
-      font-family: var(--mono);
-      margin-top: 1.5rem;
-    }
-
-    .t1 .tier-pill {
-      color: var(--yellow);
-      border-color: rgba(245, 196, 0, 0.25);
-    }
-
-    .t2 .tier-pill {
-      color: var(--orange);
-      border-color: rgba(255, 122, 0, 0.25);
-    }
-
-    .t3 .tier-pill {
-      color: var(--red);
-      border-color: rgba(232, 50, 110, 0.25);
-    }
-
-    /* ── TIER RIGHT PANEL ───────────────────────────────────── */
-    .tier-panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .tier-panel-head {
-      padding: 1rem 1.25rem;
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .t1 .tier-panel-head {
-      border-top: 2px solid var(--yellow);
-    }
-
-    .t2 .tier-panel-head {
-      border-top: 2px solid var(--orange);
-    }
-
-    .t3 .tier-panel-head {
-      border-top: 2px solid var(--red);
-    }
-
-    .tp-label {
-      font-size: 0.72rem;
-      color: var(--grey);
-      font-family: var(--mono);
-    }
-
-    .tp-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .t1 .tp-badge {
-      background: rgba(245, 196, 0, 0.1);
-      color: var(--yellow);
-    }
-
-    .t2 .tp-badge {
-      background: rgba(255, 122, 0, 0.1);
-      color: var(--orange);
-    }
-
-    .t3 .tp-badge {
-      background: rgba(232, 50, 110, 0.1);
-      color: var(--red);
-    }
-
-    .tier-panel-body {
-      padding: 1.5rem 1.25rem;
-    }
-
-    /* tool grid */
-    .tool-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .tool-item {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.55rem 0.75rem;
-      font-size: 0.77rem;
-      font-family: var(--mono);
-      color: #888;
-      line-height: 1.4;
-    }
-
-    .tool-item.new-tool {
-      border-color: rgba(255, 255, 255, 0.1);
-      color: #aaa;
-    }
-
-    .tool-item .new-badge {
-      display: inline-block;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: rgba(245, 196, 0, 0.15);
-      color: var(--yellow);
-      padding: 0.1rem 0.3rem;
-      border-radius: 3px;
-      margin-left: 0.3rem;
-      vertical-align: middle;
-    }
-
-    /* tier stat row */
-    .tier-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 1rem;
-    }
-
-    .ts-cell {
-      background: var(--surface);
-      padding: 0.85rem;
-      text-align: center;
-    }
-
-    .ts-n {
-      font-size: 1.25rem;
-      font-weight: 900;
-      font-family: var(--mono);
-      line-height: 1;
-    }
-
-    .t1 .ts-n {
-      color: var(--yellow);
-    }
-
-    .t2 .ts-n {
-      color: var(--orange);
-    }
-
-    .t3 .ts-n {
-      color: var(--red);
-    }
-
-    .ts-l {
-      font-size: 0.68rem;
-      color: #555;
-      margin-top: 0.25rem;
-    }
-
-    /* ── LOVE EQUATION SECTION ──────────────────────────────── */
-    .love-section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem 1.75rem;
-      margin-top: 1.25rem;
-    }
-
-    .love-section-head {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 0.75rem;
-    }
-
-    .love-eq-display {
-      background: rgba(232, 50, 110, 0.04);
-      border: 1px solid rgba(232, 50, 110, 0.2);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      margin: 1rem 0 0.5rem;
-    }
-
-    .love-eq-main {
-      font-family: var(--mono);
-      font-size: clamp(0.82rem, 1.6vw, 1.05rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.8;
-      letter-spacing: 0.01em;
-    }
-
-    .love-eq-main .lv {
-      color: var(--red);
-    }
-
-    .love-eq-main .lk {
-      color: var(--yellow);
-    }
-
-    .love-eq-main .le {
-      color: var(--red);
-    }
-
-    .love-eq-main .lt {
-      color: var(--orange);
-    }
-
-    .love-eq-main .lep {
-      color: #888;
-    }
-
-    .love-def {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.4rem;
-      margin-top: 0.75rem;
-    }
-
-    .love-def-item {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-      font-size: 0.75rem;
-      line-height: 1.5;
-    }
-
-    .love-def-sym {
-      font-family: var(--mono);
-      font-weight: 700;
-      flex-shrink: 0;
-      min-width: 28px;
-    }
-
-    .love-def-sym.lv {
-      color: var(--red);
-    }
-
-    .love-def-sym.lk {
-      color: var(--yellow);
-    }
-
-    .love-def-sym.le {
-      color: var(--red);
-    }
-
-    .love-def-sym.lt {
-      color: var(--orange);
-    }
-
-    .love-def-desc {
-      color: #666;
-    }
-
-    /* Full-width love box (the dedicated equation section) */
-    .love-full-box {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5.5rem 2rem;
-    }
-
-    .love-full-inner {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 4rem 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .love-full-inner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232, 50, 110, 0.06) 0%, transparent 70%);
-    }
-
-    .love-big-formula {
-      font-family: var(--mono);
-      font-size: clamp(0.9rem, 2.5vw, 1.5rem);
-      font-weight: 700;
-      color: var(--white);
-      padding: 1.75rem 2rem;
-      background: rgba(232, 50, 110, 0.05);
-      border: 1px solid rgba(232, 50, 110, 0.2);
-      border-radius: 12px;
-      display: inline-block;
-      margin: 1.75rem 0 0.5rem;
-      line-height: 2.2;
-      max-width: 100%;
-      word-break: break-word;
-      position: relative;
-      z-index: 1;
-    }
-
-    .love-big-formula .lv {
-      color: var(--red);
-    }
-
-    .love-big-formula .lk {
-      color: var(--yellow);
-    }
-
-    .love-big-formula .le {
-      color: var(--red);
-    }
-
-    .love-big-formula .lt {
-      color: var(--orange);
-    }
-
-    .love-big-formula .lep {
-      color: #666;
-    }
-
-    .love-big-formula .lop {
-      color: #555;
-    }
-
-    .love-vs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 2rem 0;
-      text-align: left;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .love-vs-cell {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-    }
-
-    .love-vs-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    .love-vs-cell.training .love-vs-label {
-      color: #555;
-    }
-
-    .love-vs-cell.inference .love-vs-label {
-      color: var(--yellow);
-    }
-
-    .love-vs-cell.inference {
-      border-color: rgba(245, 196, 0, 0.2);
-    }
-
-    .love-vs-formula {
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      color: #888;
-      line-height: 1.8;
-    }
-
-    .love-vs-cell.inference .love-vs-formula {
-      color: #bbb;
-    }
-
-    .love-vs-desc {
-      font-size: 0.82rem;
-      color: #555;
-      margin-top: 0.6rem;
-      line-height: 1.55;
-    }
-
-    .love-vs-cell.inference .love-vs-desc {
-      color: #777;
-    }
-
-    .love-map-full {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 1.25rem;
-      margin-top: 2.25rem;
-      flex-wrap: nowrap;
-      position: relative;
-      z-index: 1;
-    }
-
-    .lmf-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      min-width: 120px;
-    }
-
-    .lmf-sym {
-      font-family: var(--mono);
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .lmf-sym.lv {
-      color: var(--red);
-    }
-
-    .lmf-sym.lk {
-      color: var(--yellow);
-    }
-
-    .lmf-sym.le {
-      color: var(--red);
-    }
-
-    .lmf-sym.lt {
-      color: var(--orange);
-    }
-
-    .lmf-sym.lep {
-      color: #555;
-    }
-
-    .lmf-arr {
-      font-size: 0.6rem;
-      color: #333;
-    }
-
-    .lmf-name {
-      font-size: 0.82rem;
-      color: #aaa;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .lmf-tier {
-      font-size: 0.72rem;
-      color: #555;
-      text-align: center;
-    }
-
-    .lmf-op {
-      font-size: 1.25rem;
-      color: #2a2a2a;
-      padding-top: 0.2rem;
-      flex-shrink: 0;
-    }
-
-    /* ── CODE BLOCK ─────────────────────────────────────────── */
-    .cblock {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .cblock-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.55rem 1rem;
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cdots {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .cdots span {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .cdots span:nth-child(1) {
-      background: #ff5f57;
-    }
-
-    .cdots span:nth-child(2) {
-      background: #febc2e;
-    }
-
-    .cdots span:nth-child(3) {
-      background: #28c840;
-    }
-
-    .clang {
-      font-size: 0.72rem;
-      color: var(--grey);
-      font-family: var(--mono);
-    }
-
-    .ccode {
-      padding: 1.4rem 1.5rem;
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      line-height: 2;
-      color: #ccc;
-      overflow-x: auto;
-    }
-
-    .ccode pre {
-      white-space: pre;
-      margin: 0;
-    }
-
-    .cc {
-      color: #444;
-    }
-
-    .ck {
-      color: var(--yellow);
-    }
-
-    .cs {
-      color: #7ec8a0;
-    }
-
-    .at1 {
-      color: var(--yellow);
-    }
-
-    .at2 {
-      color: var(--orange);
-    }
-
-    .at3 {
-      color: var(--red);
-    }
-
-    /* ── MEMORY PORTABILITY STRIP ─────────────────────────────── */
-    .portability-strip {
-      width: 100%;
-      background: #0c0c0c;
-      border-top: 2px solid var(--yellow);
-      border-bottom: 1px solid var(--border);
-      padding: 5rem 2rem;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .portability-strip .ps-eyebrow {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 1.25rem;
-    }
-
-    .portability-strip h2 {
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: var(--white);
-      max-width: 760px;
-      margin: 0 auto 1rem;
-      line-height: 1.1;
-    }
-
-    .portability-strip h2 em {
-      color: var(--yellow);
-      font-style: normal;
-    }
-
-    .portability-strip .ps-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: #666;
-      max-width: 620px;
-      margin: 0 auto 3rem;
-      line-height: 1.7;
-    }
-
-    .ps-flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: nowrap;
-      max-width: 780px;
-      margin: 0 auto 3rem;
-    }
-
-    .ps-step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.75rem;
-      text-align: center;
-      min-width: 160px;
-    }
-
-    .ps-step-icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .ps-step-label {
-      font-size: 0.78rem;
-      font-family: var(--mono);
-      color: var(--grey);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .ps-step-desc {
-      font-size: 0.88rem;
-      color: var(--white);
-      margin-top: 0.3rem;
-      font-weight: 600;
-    }
-
-    .ps-arrow {
-      font-size: 1.4rem;
-      color: var(--yellow);
-      padding: 0 0.75rem;
-      font-weight: 700;
-    }
-
-    .ps-runtime-list {
-      font-family: var(--mono);
-      font-size: 0.95rem;
-      color: #666;
-      letter-spacing: 0.03em;
-      max-width: 640px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    /* ── LONGMEMEVAL STRIP ─────────────────────────────────────── */
-    .lme-strip {
-      width: 100%;
-      background: var(--black);
-      border-bottom: 1px solid var(--border);
-      padding: 4.5rem 2rem 5rem;
-    }
-
-    .lme-inner {
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    .lme-strip .ps-eyebrow {
-      text-align: center;
-    }
-
-    .lme-strip h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: var(--white);
-      text-align: center;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-    }
-
-    .lme-strip h2 em {
-      color: var(--yellow);
-      font-style: normal;
-    }
-
-    .lme-sub {
-      text-align: center;
-      color: #666;
-      font-size: 0.95rem;
-      line-height: 1.65;
-      max-width: 640px;
-      margin: 0 auto 2rem;
-    }
-
-    .lme-meta {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem 1.25rem;
-      margin-bottom: 2rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: #666;
-      letter-spacing: 0.04em;
-    }
-
-    .lme-meta span strong {
-      color: var(--yellow);
-      font-weight: 700;
-    }
-
-    .lme-table-wrap {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--border);
-    }
-
-    .lme-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-
-    .lme-table th {
-      background: var(--surface2);
-      color: #888;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-align: left;
-      padding: 0.85rem 1.1rem;
-    }
-
-    .lme-table th:nth-child(3),
-    .lme-table th:nth-child(4),
-    .lme-table td:nth-child(3),
-    .lme-table td:nth-child(4) {
-      text-align: right;
-    }
-
-    .lme-table td {
-      background: var(--surface);
-      color: #bbb;
-      padding: 0.8rem 1.1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .lme-table tr.lme-overall td {
-      color: var(--white);
-      font-weight: 700;
-      background: #141414;
-    }
-
-    .lme-table tr.lme-overall td:nth-child(3) {
-      color: var(--yellow);
-      font-family: var(--mono);
-      font-size: 1.05rem;
-    }
-
-    .lme-table .lme-type {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      color: #999;
-    }
-
-    .lme-foot {
-      margin-top: 1.25rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .lme-foot a {
-      color: var(--yellow-dim);
-      text-decoration: none;
-    }
-
-    .lme-foot a:hover {
-      color: var(--yellow);
-    }
-
-    @media (max-width: 640px) {
-      .ps-flow {
-        flex-direction: column;
-      }
-
-      .lme-table th:nth-child(2),
-      .lme-table td:nth-child(2) {
-        display: none;
-      }
-
-      .ps-arrow {
-        transform: rotate(90deg);
-        padding: 0.5rem 0;
-      }
-
-      .ps-step {
-        width: 100%;
-        max-width: 260px;
-      }
-    }
-
-    /* ── BOTTOM MANIFESTO STRIP ─────────────────────────────── */
-    .manifesto-strip {
-      background: var(--yellow);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .manifesto-strip h2 {
-      color: #000;
-      font-size: clamp(1.6rem, 4.5vw, 2.8rem);
-      font-weight: 900;
-      max-width: 700px;
-      margin: 0 auto 0.75rem;
-    }
-
-    .manifesto-strip p {
-      color: rgba(0, 0, 0, 0.65);
-      font-size: 1rem;
-      max-width: 580px;
-      margin: 0 auto;
-    }
-
-    /* ── FOOTER ─────────────────────────────────────────────── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    footer img {
-      height: 36px;
-      margin-bottom: 1.5rem;
-      opacity: 0.75;
-    }
-
-    .flinks {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.75rem;
-    }
-
-    .flinks a {
-      color: var(--grey);
-      text-decoration: none;
-      font-size: 0.88rem;
-      transition: color .2s;
-    }
-
-    .flinks a:hover {
-      color: var(--white);
-    }
-
-    .fcopy {
-      font-size: 0.78rem;
-      color: #333;
-    }
-
-    /* ── FADE-IN ─────────────────────────────────────────────── */
-    .fi {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-
-    .fi.on {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────────────────── */
-    @media (max-width:900px) {
-      .tier-inner {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .tier-inner.flip > :first-child,
-      .tier-inner.flip > :last-child {
-        order: unset;
-      }
-
-      .love-vs {
-        grid-template-columns: 1fr;
-      }
-
-      .love-map-full {
-        flex-wrap: wrap;
-      }
-
-      .tier-intro {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── REDUCED MOTION ─────────────────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      .fi {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      .hero-scroll {
-        animation: none;
-      }
-    }
-
-    @media (max-width:680px) {
-      .nav-links {
-        display: none;
-        position: fixed;
-        top: 52px;
-        left: 0;
-        right: 0;
-        background: #0c0c0c;
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0.5rem 0;
-        z-index: 999;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 0.75rem 1.5rem;
-        border-radius: 0;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .section-inner {
-        padding: 3.5rem 1.25rem;
-      }
-
-      .hero-logo {
-        width: min(320px, 80vw);
-      }
-
-      .tool-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .love-def {
-        grid-template-columns: 1fr;
-      }
-
-      .love-big-formula {
-        font-size: 0.78rem;
-      }
-
-      .tier-inner {
-        padding: 3.5rem 1.25rem;
-      }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
 </head>
 
 <body>
 
-  <!-- ── NAV ──────────────────────────────────────────────────── -->
   <nav>
     <a href="#">
       <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger" class="nav-logo">
     </a>
     <div class="nav-links">
-      <a href="#tier1" class="nav-tier t1">Memory</a>
+      <a href="#how">How it works</a>
+      <a href="#tier1">Memory</a>
       <a href="#longmemeval">LongMemEval</a>
       <a href="cursor-persistent-memory.html">Cursor</a>
       <a href="#quickstart">Quick Start</a>
@@ -1647,54 +51,57 @@
     </button>
   </nav>
 
-  <!-- ── HERO ─────────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-grid"></div>
-    <div class="hero-badge fi">v1.0 &nbsp;·&nbsp; MCP Memory Server &nbsp;·&nbsp; MIT</div>
-    <p class="hero-manifesto fi"
-      style="margin-bottom:1.25rem; font-size:clamp(1rem, 2.2vw, 1.2rem); color:#ccc; max-width:720px; margin-left:auto; margin-right:auto; line-height:1.55;">
-      <strong style="color:var(--white);">Open-source MCP agent memory server.</strong>
-      Fair <strong style="color:var(--yellow);">LongMemEval-S 81.0%</strong> (405/500).
-      Self-hosted bi-temporal graph memory. 32 tools. Portable Docker volumes.
-    </p>
-    <img src="logo.png" alt="OpenStinger MCP agent memory server" class="hero-logo fi">
-    <h1 class="fi">
-      One memory layer.<br>
-      <span class="y">Every agent runtime.</span>
-    </h1>
-    <p class="hero-manifesto fi">
-      Plug OpenStinger into any MCP-compatible agent. Hybrid BM25 + vector retrieval,
-      bi-temporal fact validity, structured vault notes, and optional alignment evaluation.
-      Memory stays when you change frameworks.
-    </p>
-    <p class="hero-manifesto fi"
-      style="margin-top:0.75rem; font-size:1.05rem; color:#aaa; letter-spacing:0.01em; line-height:1.7;">
-      Works with <strong style="color:var(--white);">OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow ·
-        Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw</strong><br>
-      Any runtime that speaks MCP. One endpoint. Zero lock-in.
-    </p>
-    <p class="hero-manifesto fi"
-      style="margin-top:0.6rem; font-size:0.88rem; font-family:var(--mono); color:#666; letter-spacing:0.04em;">
-      Alongside → Primary → Exclusive &nbsp;·&nbsp; Add memory without rewriting the agent
-    </p>
-    <div class="hero-actions fi">
-      <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">★&nbsp; Star on GitHub</a>
-      <a href="cursor-persistent-memory.html" class="btn-outline">Cursor persistent memory →</a>
-    </div>
-    <div class="hero-scroll">
-      <span>scroll</span>
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M7 2v10M2 8l5 4 5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-badge">v1.0 · MCP Memory Server · MIT</div>
+        <img src="logo.png" alt="OpenStinger MCP agent memory server" class="hero-logo" width="1120" height="420">
+        <h1>
+          One memory layer.<br>
+          <span class="y">Every agent runtime.</span>
+        </h1>
+        <p class="hero-lede">
+          <strong>Open-source MCP agent memory server.</strong>
+          Fair <span class="y">LongMemEval-S 81.0%</span> (405/500).
+          Self-hosted bi-temporal graph memory. 32 tools. Portable Docker volumes.
+        </p>
+        <p class="hero-lede">
+          Plug OpenStinger into any MCP-compatible agent. Hybrid BM25 + vector retrieval,
+          bi-temporal fact validity, structured vault notes, and optional alignment evaluation.
+          Memory stays when you change frameworks.
+        </p>
+        <p class="hero-runtimes">
+          Works with <strong>OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow ·
+            Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw</strong>.
+          Any runtime that speaks MCP. One endpoint. Zero lock-in.
+        </p>
+        <p class="hero-mode">Alongside → Primary → Exclusive · Add memory without rewriting the agent</p>
+        <div class="hero-actions">
+          <a href="https://github.com/srikanthbellary/openstinger" class="btn-y">Star on GitHub</a>
+          <a href="cursor-persistent-memory.html" class="btn-outline">Cursor persistent memory →</a>
+        </div>
+      </div>
+
+      <figure class="figure-plate">
+        <figcaption class="figure-legend">
+          <span>FIG. — WRITE / RECALL ACROSS CLIENTS</span>
+          <span>MCP · SSE · ANY CLIENT</span>
+        </figcaption>
+        <div class="figure-field fig-recall">
+          <canvas data-figure="recall" data-live aria-hidden="true"></canvas>
+          <span class="figure-corner tl" aria-hidden="true"></span>
+          <span class="figure-corner tr" aria-hidden="true"></span>
+          <span class="figure-corner bl" aria-hidden="true"></span>
+          <span class="figure-corner br" aria-hidden="true"></span>
+        </div>
+      </figure>
     </div>
   </section>
 
-
-  <!-- ── STATS ─────────────────────────────────────────────────── -->
   <div class="full">
-    <div class="section-inner" style="padding-top:3.5rem; padding-bottom:2rem;">
-      <div class="stats fi">
+    <div class="section-inner" style="padding-top:0; padding-bottom:2.5rem;">
+      <div class="stats">
         <div class="stat">
           <div class="stat-n">32</div>
           <div class="stat-l">MCP Tools</div>
@@ -1721,723 +128,706 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ── MEMORY PORTABILITY ──────────────────────────────────────── -->
-    <div class="full portability-strip">
-      <div class="ps-eyebrow fi">Memory Architecture</div>
-      <h2 class="fi">
-        Your agent changes.<br>
-        The memory <em>doesn't have to.</em>
-      </h2>
-      <p class="ps-sub fi">
-        OpenStinger's entire knowledge state lives in two Docker volumes.<br>
-        Unplug from one agent. Move to any host. Plug into another.<br>
-        Every entity, relationship, vault note, and alignment log transfers completely.
-      </p>
-      <div class="ps-flow fi">
-        <div class="ps-step">
-          <div class="ps-step-icon">🔌</div>
-          <div class="ps-step-label">Unplug</div>
-          <div class="ps-step-desc">Export volumes</div>
+  <div class="full" id="how">
+    <div class="section-inner" style="padding-top:2rem;">
+      <div class="fi">
+        <span class="slabel">How it works</span>
+        <h2 class="stitle">Write. Store. Distill. Recall.</h2>
+        <p class="sdesc">
+          One MCP endpoint. Episodic memory, structured self-knowledge, and optional
+          alignment — additive, one tier at a time.
+        </p>
+      </div>
+
+      <figure class="figure-plate fi">
+        <figcaption class="figure-legend">
+          <span>FIG. — WRITE · STORE · DISTILL · RECALL</span>
+          <span>TWO DOCKER VOLUMES · UNPLUG / MOVE / PLUG</span>
+        </figcaption>
+        <div class="figure-field fig-pipeline">
+          <canvas data-figure="pipeline" aria-hidden="true"></canvas>
+          <span class="figure-corner tl" aria-hidden="true"></span>
+          <span class="figure-corner tr" aria-hidden="true"></span>
+          <span class="figure-corner bl" aria-hidden="true"></span>
+          <span class="figure-corner br" aria-hidden="true"></span>
         </div>
-        <div class="ps-arrow">→</div>
-        <div class="ps-step">
-          <div class="ps-step-icon">📦</div>
-          <div class="ps-step-label">Move</div>
-          <div class="ps-step-desc">Any host. Any cloud.</div>
+      </figure>
+
+      <div class="rail">
+        <div class="rail-item fi">
+          <div class="n">01 · Write</div>
+          <h3>Any MCP client</h3>
+          <p>SSE at <code style="color:#888;font-family:var(--mono);font-size:0.8em;">http://localhost:8766/sse</code>. Cursor, Claude Code, OpenClaw, or your agent — same endpoint.</p>
         </div>
-        <div class="ps-arrow">→</div>
-        <div class="ps-step">
-          <div class="ps-step-icon">⚡</div>
-          <div class="ps-step-label">Plug In</div>
-          <div class="ps-step-desc">Full memory restored</div>
+        <div class="rail-item fi">
+          <div class="n">02 · Store</div>
+          <h3>Tier 1 Temporal Engine</h3>
+          <p>Bi-temporal graph + vectors. 3-stage dedup. Postgres audit. History is never overwritten.</p>
+        </div>
+        <div class="rail-item fi">
+          <div class="n">03 · Distill</div>
+          <h3>Tier 2 StingerVault</h3>
+          <p>Five note categories: identity, domain, methodology, preference, constraint. Human-editable markdown in <code style="color:#888;font-family:var(--mono);font-size:0.8em;">vault/</code>.</p>
+        </div>
+        <div class="rail-item fi">
+          <div class="n">04 · Recall</div>
+          <h3>Query + optional Gradient</h3>
+          <p><code style="color:#888;font-family:var(--mono);font-size:0.8em;">memory_query</code> / <code style="color:#888;font-family:var(--mono);font-size:0.8em;">memory_wake_up</code>. Tier 3 scores pass / soft_flag / hard_block.</p>
         </div>
       </div>
-      <p class="ps-runtime-list fi">
-        Switch from OpenClaw → NanoClaw. Move from Mac Mini → AWS. OpenStinger memory travels with you.<br>
-        No other *Claw memory system decouples memory from the runtime cleanly enough to make this true.
-      </p>
-      <p class="ps-runtime-list fi" style="margin-top:1.5rem; color:#444; font-size:0.82rem;">
-        ABC Test (v0.7) — proven in production:<br>
-        <span style="color:#666;">Runtime A (OpenClaw) → Runtime B (Qwen/Llama) → Runtime C (DeerFlow/Grok)</span><br>
-        Full B→C→B circular memory propagation. Identity intact across every hop.
-      </p>
-      <p class="ps-runtime-list fi" style="margin-top:1.25rem; color:#444; font-size:0.82rem;">
-        <span style="color:var(--orange); font-weight:700; font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em;">v0.8</span>&nbsp;
-        Local embeddings via Ollama: <code style="font-size:0.78rem; color:#888;">nomic-embed-text</code> ·
-        <code style="font-size:0.78rem; color:#888;">mxbai-embed-large</code> · <code style="font-size:0.78rem; color:#888;">all-minilm</code><br>
-        <span style="color:#555;">No cloud API. No token cost. Full offline operation.
-        Run <code style="font-size:0.78rem;">openstinger-cli init</code> and select <code style="font-size:0.78rem;">"ollama"</code> when prompted for embedding provider.</span>
-      </p>
-      <p class="ps-runtime-list fi" style="margin-top:1.25rem; color:#444; font-size:0.82rem;">
-        <span style="color:var(--orange); font-weight:700; font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em;">v0.9</span>&nbsp;
-        Resilience + integrity + boot context<br>
-        <span style="color:#555;">Circuit breaker · timeouts · retry · hash-chained provenance · write policy ·
-        <code style="font-size:0.78rem;">memory_wake_up</code> · GradientHoneypot
-        (<code style="font-size:0.78rem;">gradient_honeypot_status</code>). 32 MCP tools.</span>
-      </p>
-      <p class="ps-runtime-list fi" style="margin-top:1.25rem; color:#444; font-size:0.82rem;">
-        <span style="color:var(--orange); font-weight:700; font-family:var(--mono); font-size:0.75rem; letter-spacing:0.06em;">v1.0</span>&nbsp;
-        Fair LongMemEval claim<br>
-        <span style="color:#555;">Hybrid retrieve packaging, temporal digests, knowledge-update recency.
-        Publishable fair suite <strong style="color:var(--yellow);">81.0%</strong> on LongMemEval-S (405/500).</span>
-      </p>
     </div>
+  </div>
 
-    <!-- ── LONGMEMEVAL ───────────────────────────────────────────── -->
-    <div class="full lme-strip" id="longmemeval">
-      <div class="lme-inner">
-        <div class="ps-eyebrow fi">Benchmark</div>
-        <h2 class="fi">LongMemEval.<br><em>81.0%</em> fair path.</h2>
-        <p class="lme-sub fi">
+  <div class="full port-strip" id="portability">
+    <div class="port-inner">
+      <div class="fi">
+        <span class="slabel">Memory Architecture</span>
+        <h2>Your agent changes.<br>The memory <em>doesn't have to.</em></h2>
+        <p class="port-sub">
+          The entire knowledge state lives in two Docker volumes.
+          Unplug from one agent. Move to any host. Plug into another.
+          Every entity, relationship, vault note, and alignment log transfers completely.
+        </p>
+      </div>
+
+      <figure class="figure-plate fi">
+        <figcaption class="figure-legend">
+          <span>FIG. — TWO DOCKER VOLUMES</span>
+          <span>UNPLUG · MOVE · PLUG IN</span>
+        </figcaption>
+        <div class="figure-field fig-volumes">
+          <canvas data-figure="volumes" aria-hidden="true"></canvas>
+          <span class="figure-corner tl" aria-hidden="true"></span>
+          <span class="figure-corner tr" aria-hidden="true"></span>
+          <span class="figure-corner bl" aria-hidden="true"></span>
+          <span class="figure-corner br" aria-hidden="true"></span>
+        </div>
+      </figure>
+
+      <div class="note-rail fi">
+        <p>Switch from OpenClaw → NanoClaw. Move from Mac Mini → AWS. OpenStinger memory travels with you.<br>
+          No other *Claw memory system decouples memory from the runtime cleanly enough to make this true.</p>
+        <p><span class="v">ABC TEST · v0.7</span> — proven in production:<br>
+          Runtime A (OpenClaw) → Runtime B (Qwen/Llama) → Runtime C (DeerFlow/Grok).<br>
+          Full B→C→B circular memory propagation. Identity intact across every hop.</p>
+        <p><span class="v">v0.8</span> Local embeddings via Ollama:
+          <code>nomic-embed-text</code> · <code>mxbai-embed-large</code> · <code>all-minilm</code><br>
+          No cloud API. No token cost. Full offline operation.
+          Run <code>openstinger-cli init</code> and select <code>"ollama"</code> when prompted for embedding provider.</p>
+        <p><span class="v">v0.9</span> Resilience + integrity + boot context<br>
+          Circuit breaker · timeouts · retry · hash-chained provenance · write policy ·
+          <code>memory_wake_up</code> · GradientHoneypot (<code>gradient_honeypot_status</code>). 32 MCP tools.</p>
+        <p><span class="v">v1.0</span> Fair LongMemEval claim<br>
+          Hybrid retrieve packaging, temporal digests, knowledge-update recency.
+          Publishable fair suite <strong style="color:var(--yellow);">81.0%</strong> on LongMemEval-S (405/500).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="full lme-strip" id="longmemeval">
+    <div class="lme-inner">
+      <div class="fi">
+        <span class="slabel">Benchmark</span>
+        <h2>LongMemEval.<br><em>81.0%</em> fair path.</h2>
+        <p class="lme-sub">
           LongMemEval-S cleaned, 500 questions. Lite ingest only: no retain, no LLM rerank,
           no chunk or event atoms. Same protocol vendors cite for agent memory.
         </p>
-        <div class="lme-meta fi">
-          <span>Overall <strong>81.0%</strong> (405/500)</span>
-          <span>R@5&gt;0 acc <strong>83.15%</strong></span>
-          <span>Answer <strong>DeepSeek V4 Pro</strong></span>
-          <span>Judge <strong>DeepSeek V3.2</strong></span>
-        </div>
-        <div class="lme-table-wrap fi">
-          <table class="lme-table">
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>What it tests</th>
-                <th>Acc</th>
-                <th>n</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="lme-overall">
-                <td colspan="2">Overall fair suite</td>
-                <td>81.0%</td>
-                <td>500</td>
-              </tr>
-              <tr>
-                <td><span class="lme-type">single-session-user</span></td>
-                <td>Find a fact the user said in one session</td>
-                <td>92.9%</td>
-                <td>70</td>
-              </tr>
-              <tr>
-                <td><span class="lme-type">knowledge-update</span></td>
-                <td>Prefer the latest fact when older ones conflict</td>
-                <td>89.7%</td>
-                <td>78</td>
-              </tr>
-              <tr>
-                <td><span class="lme-type">single-session-assistant</span></td>
-                <td>Find a fact the assistant said in one session</td>
-                <td>85.7%</td>
-                <td>56</td>
-              </tr>
-              <tr>
-                <td><span class="lme-type">multi-session</span></td>
-                <td>Combine evidence across many sessions</td>
-                <td>76.7%</td>
-                <td>133</td>
-              </tr>
-              <tr>
-                <td><span class="lme-type">temporal-reasoning</span></td>
-                <td>Dates, durations, order of events</td>
-                <td>73.7%</td>
-                <td>133</td>
-              </tr>
-              <tr>
-                <td><span class="lme-type">single-session-preference</span></td>
-                <td>Personalize from stated preferences</td>
-                <td>73.3%</td>
-                <td>30</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="lme-foot fi">
-          Prior claim 80.4%. Archive <code style="color:#777;">fair_c4_500_20260720_1802</code>.
-          Mid-size 100Q gates are diagnostics only.
-          Detail: <a href="https://github.com/srikanthbellary/openstinger#longmemeval-fair-path">GitHub README</a>.
-          Agent summary: <a href="/llms.txt">llms.txt</a>.
-        </p>
       </div>
+      <div class="lme-meta fi">
+        <span>Overall <strong>81.0%</strong> (405/500)</span>
+        <span>R@5&gt;0 acc <strong>83.15%</strong></span>
+        <span>Answer <strong>DeepSeek V4 Pro</strong></span>
+        <span>Judge <strong>DeepSeek V3.2</strong></span>
+      </div>
+      <div class="lme-table-wrap fi">
+        <table class="lme-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>What it tests</th>
+              <th>Acc</th>
+              <th>n</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="lme-overall">
+              <td colspan="2">Overall fair suite</td>
+              <td>81.0%</td>
+              <td>500</td>
+            </tr>
+            <tr>
+              <td><span class="lme-type">single-session-user</span></td>
+              <td>Find a fact the user said in one session</td>
+              <td>92.9%</td>
+              <td>70</td>
+            </tr>
+            <tr>
+              <td><span class="lme-type">knowledge-update</span></td>
+              <td>Prefer the latest fact when older ones conflict</td>
+              <td>89.7%</td>
+              <td>78</td>
+            </tr>
+            <tr>
+              <td><span class="lme-type">single-session-assistant</span></td>
+              <td>Find a fact the assistant said in one session</td>
+              <td>85.7%</td>
+              <td>56</td>
+            </tr>
+            <tr>
+              <td><span class="lme-type">multi-session</span></td>
+              <td>Combine evidence across many sessions</td>
+              <td>76.7%</td>
+              <td>133</td>
+            </tr>
+            <tr>
+              <td><span class="lme-type">temporal-reasoning</span></td>
+              <td>Dates, durations, order of events</td>
+              <td>73.7%</td>
+              <td>133</td>
+            </tr>
+            <tr>
+              <td><span class="lme-type">single-session-preference</span></td>
+              <td>Personalize from stated preferences</td>
+              <td>73.3%</td>
+              <td>30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lme-foot fi">
+        Prior claim 80.4%. Archive <code style="color:#777;">fair_c4_500_20260720_1802</code>.
+        Mid-size 100Q gates are diagnostics only.
+        Detail: <a href="https://github.com/srikanthbellary/openstinger#longmemeval-fair-path">GitHub README</a>.
+        Agent summary: <a href="/llms.txt">llms.txt</a>.
+      </p>
     </div>
+  </div>
 
-    <!-- ── CURSOR / MCP DISCOVERY ────────────────────────────────── -->
-    <div class="full lme-strip" id="cursor-memory" style="border-top:1px solid var(--border);">
-      <div class="lme-inner">
-        <div class="ps-eyebrow fi">For agents and developers searching</div>
-        <h2 class="fi">MCP memory server.<br><em>Cursor persistent memory.</em></h2>
-        <p class="lme-sub fi">
+  <div class="full lme-strip" id="cursor-memory" style="padding-top:0;">
+    <div class="lme-inner">
+      <div class="fi">
+        <span class="slabel">For agents and developers searching</span>
+        <h2>MCP memory server.<br><em>Cursor persistent memory.</em></h2>
+        <p class="lme-sub">
           Looking for an MCP agent memory server, OpenClaw memory backend, or Cursor persistent memory?
           OpenStinger is a self-hosted SSE MCP server at <code style="color:#aaa;">http://localhost:8766/sse</code>
           with bi-temporal graph memory, vault notes, and alignment tools.
         </p>
-        <div class="lme-meta fi">
-          <span>Keywords <strong>MCP memory · Cursor · OpenClaw · Hermes · LongMemEval</strong></span>
-          <span>Guide <strong><a href="cursor-persistent-memory.html" style="color:var(--yellow);">cursor-persistent-memory.html</a></strong></span>
-        </div>
-        <p class="lme-foot fi" style="margin-top:0;">
-          Full setup with <code style="color:#777;">.cursor/mcp.json</code> example:
-          <a href="cursor-persistent-memory.html">Cursor persistent memory with OpenStinger</a>.
-          Machine-readable: <a href="/llms.txt">llms.txt</a>.
+      </div>
+      <div class="lme-meta fi">
+        <span>Keywords <strong>MCP memory · Cursor · OpenClaw · Hermes · LongMemEval</strong></span>
+        <span>Guide <strong><a href="cursor-persistent-memory.html" style="color:var(--yellow);">cursor-persistent-memory.html</a></strong></span>
+      </div>
+      <p class="lme-foot fi" style="margin-top:0;">
+        Full setup with <code style="color:#777;">.cursor/mcp.json</code> example:
+        <a href="cursor-persistent-memory.html">Cursor persistent memory with OpenStinger</a>.
+        Machine-readable: <a href="/llms.txt">llms.txt</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="full" id="harnesses">
+    <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
+      <div class="fi">
+        <span class="slabel">Architecture</span>
+        <h2 class="stitle">Three tiers.<br>One MCP endpoint.</h2>
+        <p class="sdesc">
+          Episodic memory, structured self-knowledge, and alignment evaluation.
+          Additive and deployable one tier at a time. Same SSE endpoint for every MCP client.
         </p>
       </div>
-    </div>
 
-    <!-- ── TIER OVERVIEW ─────────────────────────────────────────── -->
-    <div class="full" id="harnesses">
-      <div class="section-inner" style="padding-top:1rem; padding-bottom:3rem;">
-        <div class="fi">
-          <span class="slabel">Architecture</span>
-          <h2 class="stitle">Three tiers.<br>One MCP endpoint.</h2>
-          <p class="sdesc">
-            Episodic memory, structured self-knowledge, and alignment evaluation.
-            Additive and deployable one tier at a time. Same SSE endpoint for every MCP client.
-          </p>
+      <figure class="figure-plate fi">
+        <figcaption class="figure-legend">
+          <span>FIG. — THREE TIERS</span>
+          <span>12 + 11 + 9 = 32 TOOLS</span>
+        </figcaption>
+        <div class="figure-field fig-tiers">
+          <canvas data-figure="tiers" aria-hidden="true"></canvas>
+          <span class="figure-corner tl" aria-hidden="true"></span>
+          <span class="figure-corner tr" aria-hidden="true"></span>
+          <span class="figure-corner bl" aria-hidden="true"></span>
+          <span class="figure-corner br" aria-hidden="true"></span>
         </div>
-        <div class="tier-intro fi">
-          <a href="#tier1" class="ti-cell t1">
-            <span class="ti-num">Tier 1 · Temporal Engine</span>
-            <span class="ti-name">Memory Harness</span>
-            <span class="ti-tools">12 MCP tools · pip install openstinger</span>
-          </a>
-          <a href="#tier2" class="ti-cell t2">
-            <span class="ti-num">Tier 2 · StingerVault</span>
-            <span class="ti-name">Reasoning Harness</span>
-            <span class="ti-tools">11 MCP tools</span>
-          </a>
-          <a href="#tier3" class="ti-cell t3">
-            <span class="ti-num">Tier 3 · Gradient</span>
-            <span class="ti-name">Alignment Harness</span>
-            <span class="ti-tools">9 MCP tools</span>
-          </a>
+      </figure>
+    </div>
+  </div>
+
+  <div class="full tier-section t1-bg" id="tier1">
+    <div class="tier-inner t1">
+      <div class="fi">
+        <div class="tier-label">
+          <span class="tier-line"></span>
+          Tier 1 · Temporal Engine
         </div>
+        <h2 class="tier-h">Memory Harness</h2>
+        <p class="tier-sub">
+          Bi-temporal episodic memory. Every conversation, tool call, decision, and skill
+          your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.
+        </p>
+
+        <div class="problem-box">
+          <div class="pb-label">The gap</div>
+          <p>Without persistent memory, agents start fresh on every invocation. No cross-session continuity,
+            no accumulated project knowledge, and no audit trail of what was decided before.</p>
+        </div>
+
+        <ul class="tier-features">
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Bi-temporal episodic graph</strong> — FalkorDB stores <em>when events
+                happened</em> (valid_at) separately from <em>when the agent learned them</em> (recorded_at). History
+              is never overwritten. Facts expire gracefully.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">3-stage entity deduplication</strong> — exact match → MinHash LSH fuzzy
+              match → LLM semantic confirmation. "IBM" and "International Business Machines" merge to one UUID.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">LLM conflict resolution</strong> — "Alice changed jobs" supersedes the
+              old fact. "Alice works two jobs" coexists. The temporal record is always correct.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Hybrid BM25 + semantic vector search</strong> — keyword matching on
+              episode text + cosine similarity on entity names + fact embeddings, normalized and merged into a single
+              ranked result set.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Byte-offset cursor ingestion</strong> — reads your agent's session JSONL
+              files continuously. Survives restarts. Never re-ingests. Never writes to your agent's files.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Episode content embeddings</strong> every episode is vector-embedded,
+              enabling semantic memory queries like "what were we working on last week?" even when exact keywords
+              don't match.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">memory_wake_up</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.9</span> session boot context: top episodes by access count plus vault identity notes, so the agent starts grounded instead of cold.</span>
+          </li>
+        </ul>
+
+        <div class="tier-pill">E grows through time — accumulated context feeds β</div>
       </div>
-    </div>
 
-
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- TIER 1 — MEMORY HARNESS                                    -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <div class="full tier-section t1-bg" id="tier1">
-      <div class="tier-inner t1">
-
-        <!-- LEFT: narrative -->
-        <div class="fi">
-          <div class="tier-label">
-            <span class="tier-line"></span>
-            Tier 1 · Temporal Engine
+      <div class="fi">
+        <div class="tier-panel t1">
+          <div class="tier-panel-head">
+            <span class="tp-label">memory_tools.py</span>
+            <span class="tp-badge">12 Tools</span>
           </div>
-          <h2 class="tier-h">Memory Harness</h2>
-          <p class="tier-sub">
-            Bi-temporal episodic memory. Every conversation, tool call, decision, and skill
-            your agent touches — stored, deduplicated, conflict-resolved, and searchable forever.
-          </p>
-
-          <div class="problem-box">
-            <div class="pb-label">The gap</div>
-            <p>Without persistent memory, agents start fresh on every invocation. No cross-session continuity,
-              no accumulated project knowledge, and no audit trail of what was decided before.</p>
-          </div>
-
-          <ul class="tier-features">
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Bi-temporal episodic graph</strong> — FalkorDB stores <em>when events
-                  happened</em> (valid_at) separately from <em>when the agent learned them</em> (recorded_at). History
-                is
-                never overwritten. Facts expire gracefully.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">3-stage entity deduplication</strong> — exact match → MinHash LSH fuzzy
-                match → LLM semantic confirmation. "IBM" and "International Business Machines" merge to one UUID.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">LLM conflict resolution</strong> — "Alice changed jobs" supersedes the
-                old
-                fact. "Alice works two jobs" coexists. The temporal record is always correct.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Hybrid BM25 + semantic vector search</strong> — keyword matching on
-                episode text + cosine similarity on entity names + fact embeddings, normalized and merged into a single
-                ranked result set.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Byte-offset cursor ingestion</strong> — reads your agent's session JSONL
-                files continuously. Survives restarts. Never re-ingests. Never writes to your agent's files.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Episode content embeddings</strong> every episode is vector-embedded,
-                enabling semantic memory queries like "what were we working on last week?" even when exact keywords
-                don't
-                match.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">memory_wake_up</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.9</span> session boot context: top episodes by access count plus vault identity notes, so the agent starts grounded instead of cold.</span>
-            </li>
-          </ul>
-
-          <div class="tier-pill">E grows through time — accumulated context feeds β</div>
-        </div>
-
-        <!-- RIGHT: panel -->
-        <div class="fi">
-          <div class="tier-panel t1">
-            <div class="tier-panel-head">
-              <span class="tp-label">memory_tools.py</span>
-              <span class="tp-badge">12 Tools</span>
+          <div class="tier-panel-body">
+            <div class="tool-grid">
+              <div class="tool-item">memory_add</div>
+              <div class="tool-item">memory_query</div>
+              <div class="tool-item">memory_search</div>
+              <div class="tool-item">memory_get_entity</div>
+              <div class="tool-item">memory_get_episode</div>
+              <div class="tool-item">memory_job_status</div>
+              <div class="tool-item">memory_ingest_now</div>
+              <div class="tool-item">memory_namespace_status</div>
+              <div class="tool-item">memory_list_agents</div>
+              <div class="tool-item">memory_delete</div>
+              <div class="tool-item">memory_update</div>
+              <div class="tool-item new-tool">memory_wake_up <span class="new-badge">v0.9</span></div>
             </div>
-            <div class="tier-panel-body">
-              <div class="tool-grid">
-                <div class="tool-item">memory_add</div>
-                <div class="tool-item">memory_query</div>
-                <div class="tool-item">memory_search</div>
-                <div class="tool-item">memory_get_entity</div>
-                <div class="tool-item">memory_get_episode</div>
-                <div class="tool-item">memory_job_status</div>
-                <div class="tool-item">memory_ingest_now</div>
-                <div class="tool-item">memory_namespace_status</div>
-                <div class="tool-item">memory_list_agents</div>
-                <div class="tool-item">memory_delete</div>
-                <div class="tool-item">memory_update</div>
-                <div class="tool-item new-tool">memory_wake_up <span class="new-badge">v0.9</span></div>
+            <div class="tier-stats">
+              <div class="ts-cell">
+                <div class="ts-n">∞</div>
+                <div class="ts-l">Episodes stored</div>
               </div>
-              <div class="tier-stats">
-                <div class="ts-cell">
-                  <div class="ts-n">∞</div>
-                  <div class="ts-l">Episodes stored</div>
-                </div>
-                <div class="ts-cell">
-                  <div class="ts-n">1536</div>
-                  <div class="ts-l">Vector dims</div>
-                </div>
-                <div class="ts-cell">
-                  <div class="ts-n">3</div>
-                  <div class="ts-l">Dedup stages</div>
-                </div>
+              <div class="ts-cell">
+                <div class="ts-n">1536</div>
+                <div class="ts-l">Vector dims</div>
               </div>
-
-              <!-- mini code -->
-              <div style="margin-top:1rem;">
-                <div class="cblock">
-                  <div class="cblock-head">
-                    <div class="cdots"><span></span><span></span><span></span></div>
-                    <span class="clang">agent → mcp</span>
-                  </div>
-                  <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-                    <pre><span class="cc"># semantic memory query</span>
+              <div class="ts-cell">
+                <div class="ts-n">3</div>
+                <div class="ts-l">Dedup stages</div>
+              </div>
+            </div>
+            <div style="margin-top:1rem;">
+              <div class="cblock">
+                <div class="cblock-head">
+                  <div class="cdots"><span></span><span></span><span></span></div>
+                  <span class="clang">agent → mcp</span>
+                </div>
+                <div class="ccode" style="padding:1rem 1.15rem; font-size:0.76rem; line-height:1.8;">
+                  <pre><span class="cc"># semantic memory query</span>
 <span class="ck">memory_query</span>(
   query=<span class="cs">"auth work last sprint"</span>,
   limit=<span class="cs">10</span>
 )
 <span class="cc"># returns: episodes + entities + facts</span>
 <span class="cc"># ranked by unified relevance score</span></pre>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
+  </div>
 
-
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- TIER 2 — REASONING HARNESS                                 -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <div class="full tier-section t2-bg" id="tier2" style="background:var(--surface);">
-      <div class="tier-inner flip t2">
-
-        <!-- LEFT (shown right on desktop): panel -->
-        <div class="fi">
-          <div class="tier-panel t2">
-            <div class="tier-panel-head">
-              <span class="tp-label">StingerVault · vault_engine.py</span>
-              <span class="tp-badge">11 Tools</span>
+  <div class="full tier-section t2-bg" id="tier2" style="background:var(--surface);">
+    <div class="tier-inner flip t2">
+      <div class="fi">
+        <div class="tier-panel t2">
+          <div class="tier-panel-head">
+            <span class="tp-label">StingerVault · vault_engine.py</span>
+            <span class="tp-badge">11 Tools</span>
+          </div>
+          <div class="tier-panel-body">
+            <div class="tool-grid">
+              <div class="tool-item">vault_status</div>
+              <div class="tool-item">vault_sync_now</div>
+              <div class="tool-item">vault_stats</div>
+              <div class="tool-item">vault_promote_now</div>
+              <div class="tool-item">vault_note_list</div>
+              <div class="tool-item">vault_note_get</div>
+              <div class="tool-item new-tool">vault_note_add <span class="new-badge">v0.7</span></div>
+              <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
+              <div class="tool-item new-tool">namespace_archive <span class="new-badge">new</span></div>
             </div>
-            <div class="tier-panel-body">
-              <div class="tool-grid">
-                <div class="tool-item">vault_status</div>
-                <div class="tool-item">vault_sync_now</div>
-                <div class="tool-item">vault_stats</div>
-                <div class="tool-item">vault_promote_now</div>
-                <div class="tool-item">vault_note_list</div>
-                <div class="tool-item">vault_note_get</div>
-                <div class="tool-item new-tool">vault_note_add <span class="new-badge">v0.7</span></div>
-                <div class="tool-item new-tool">knowledge_ingest <span class="new-badge">new</span></div>
-                <div class="tool-item new-tool">namespace_list <span class="new-badge">new</span></div>
-                <div class="tool-item new-tool">namespace_create <span class="new-badge">new</span></div>
-                <div class="tool-item new-tool">namespace_archive <span class="new-badge">new</span></div>
+            <div class="tier-stats">
+              <div class="ts-cell">
+                <div class="ts-n">5</div>
+                <div class="ts-l">Note categories</div>
               </div>
-              <div class="tier-stats">
-                <div class="ts-cell">
-                  <div class="ts-n">5</div>
-                  <div class="ts-l">Note categories</div>
-                </div>
-                <div class="ts-cell">
-                  <div class="ts-n">0.92</div>
-                  <div class="ts-l">Identity threshold</div>
-                </div>
-                <div class="ts-cell">
-                  <div class="ts-n">7</div>
-                  <div class="ts-l">Cycle operations</div>
-                </div>
+              <div class="ts-cell">
+                <div class="ts-n">0.92</div>
+                <div class="ts-l">Identity threshold</div>
               </div>
-
-              <div style="margin-top:1rem;">
-                <div class="cblock">
-                  <div class="cblock-head">
-                    <div class="cdots"><span></span><span></span><span></span></div>
-                    <span class="clang">vault · 5 categories</span>
-                  </div>
-                  <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-                    <pre><span class="cc"># vault builds itself autonomously</span>
+              <div class="ts-cell">
+                <div class="ts-n">7</div>
+                <div class="ts-l">Cycle operations</div>
+              </div>
+            </div>
+            <div style="margin-top:1rem;">
+              <div class="cblock">
+                <div class="cblock-head">
+                  <div class="cdots"><span></span><span></span><span></span></div>
+                  <span class="clang">vault · 5 categories</span>
+                </div>
+                <div class="ccode" style="padding:1rem 1.15rem; font-size:0.76rem; line-height:1.8;">
+                  <pre><span class="cc"># vault builds itself autonomously</span>
 <span class="at2">identity</span>    <span class="cc">← who the agent is (conf ≥ 0.92)</span>
 <span class="at2">domain</span>      <span class="cc">← what it knows (conf ≥ 0.85)</span>
 <span class="at2">methodology</span> <span class="cc">← how it works</span>
 <span class="at2">preference</span>  <span class="cc">← what it favours</span>
 <span class="at2">constraint</span>  <span class="cc">← hard limits</span></pre>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- RIGHT (shown left on desktop): narrative -->
-        <div class="fi">
-          <div class="tier-label">
-            <span class="tier-line"></span>
-            Tier 2 · StingerVault
-          </div>
-          <h2 class="tier-h">Reasoning Harness</h2>
-          <p class="tier-sub">
-            Memory alone isn't self-knowledge. Raw episodes don't give an agent identity.
-            StingerVault distils sessions into structured, classified, self-updating self-knowledge —
-            autonomously.
-          </p>
+      <div class="fi">
+        <div class="tier-label">
+          <span class="tier-line"></span>
+          Tier 2 · StingerVault
+        </div>
+        <h2 class="tier-h">Reasoning Harness</h2>
+        <p class="tier-sub">
+          Memory alone isn't self-knowledge. Raw episodes don't give an agent identity.
+          StingerVault distils sessions into structured, classified, self-updating self-knowledge —
+          autonomously.
+        </p>
 
-          <div class="problem-box">
-            <div class="pb-label">The gap</div>
-            <p>Episodes alone do not answer: "Who am I? What do I believe? What are my constraints?"
-              Without a structured self-model, agents cannot reliably surface identity or policy from raw logs.</p>
-          </div>
-
-          <ul class="tier-features">
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">7-operation classification cycle</strong> — Extract → Decompose → Evolve
-                →
-                Link → Decay → Organise → Log. Runs on APScheduler. Crash-resilient. Misfire-tolerant.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">5 vault note categories</strong> — identity (threshold 0.92), domain
-                (0.85), methodology, preference, constraint. Notes evolve via LLM as new evidence arrives.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Human-editable markdown vault</strong> — every note is a markdown file
-                in
-                <code style="color:#888;">vault/</code>. Edit notes directly; SHA-256 change detection syncs changes
-                back
-                to the knowledge graph.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">External knowledge ingestion</strong> — <code
-                  style="color:#888;">knowledge_ingest</code> feeds URLs, PDFs, YouTube transcripts, and raw text into
-                the
-                knowledge graph as searchable semantic chunks.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private
-                temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">AgentProfileIngester</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.7</span> — watches your agent's workspace for identity files (SKILL.md, SOUL.md, AGENTS.md). On boot, extracts identity, preferences, and constraints via LLM and seeds the vault automatically. Tracks SHA-256 hashes — syncs silently when files change. Zero manual intervention.</span>
-            </li>
-          </ul>
-
-          <div class="tier-pill">β — the benevolence factor. Vault-derived, agent-specific.</div>
+        <div class="problem-box">
+          <div class="pb-label">The gap</div>
+          <p>Episodes alone do not answer: "Who am I? What do I believe? What are my constraints?"
+            Without a structured self-model, agents cannot reliably surface identity or policy from raw logs.</p>
         </div>
 
+        <ul class="tier-features">
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">7-operation classification cycle</strong> — Extract → Decompose → Evolve
+              → Link → Decay → Organise → Log. Runs on APScheduler. Crash-resilient. Misfire-tolerant.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">5 vault note categories</strong> — identity (threshold 0.92), domain
+              (0.85), methodology, preference, constraint. Notes evolve via LLM as new evidence arrives.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Human-editable markdown vault</strong> — every note is a markdown file
+              in <code style="color:#888;">vault/</code>. Edit notes directly; SHA-256 change detection syncs changes
+              back to the knowledge graph.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">External knowledge ingestion</strong> — <code
+                style="color:#888;">knowledge_ingest</code> feeds URLs, PDFs, YouTube transcripts, and raw text into
+              the knowledge graph as searchable semantic chunks.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Multi-agent namespace management</strong> — named agents get private
+              temporal graphs. Anonymous task agents share read-only access to structured knowledge.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">AgentProfileIngester</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.7</span> — watches your agent's workspace for identity files (SKILL.md, SOUL.md, AGENTS.md). On boot, extracts identity, preferences, and constraints via LLM and seeds the vault automatically. Tracks SHA-256 hashes — syncs silently when files change. Zero manual intervention.</span>
+          </li>
+        </ul>
+
+        <div class="tier-pill">β — the benevolence factor. Vault-derived, agent-specific.</div>
       </div>
     </div>
+  </div>
 
+  <div class="full tier-section t3-bg" id="tier3">
+    <div class="tier-inner t3">
+      <div class="fi">
+        <div class="tier-label">
+          <span class="tier-line"></span>
+          Tier 3 · Gradient · Alignment Engine
+        </div>
+        <h2 class="tier-h">Alignment Harness</h2>
+        <p class="tier-sub">
+          Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
+          Constraint compliance. Content safety. Scored, corrected, and logged in real time.
+        </p>
 
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- TIER 3 — EMPATHY HARNESS                                   -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <div class="full tier-section t3-bg" id="tier3">
-      <div class="tier-inner t3">
-
-        <!-- LEFT: narrative -->
-        <div class="fi">
-          <div class="tier-label">
-            <span class="tier-line"></span>
-            Tier 3 · Gradient · Alignment Engine
-          </div>
-          <h2 class="tier-h">Alignment Harness</h2>
-          <p class="tier-sub">
-            Synchronous behavioral alignment before every response. Value coherence. Identity consistency.
-            Constraint compliance. Content safety. Scored, corrected, and logged in real time.
-          </p>
-
-          <div class="problem-box">
-            <div class="pb-label">The gap</div>
-            <p>Without a durable self-model, agents drift from stated constraints under adversarial prompting
-              or long context. Static prompt files disappear after compaction. Gradient evaluates against
-              vault-derived criteria on every response.</p>
-          </div>
-
-          <ul class="tier-features">
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">4-dimensional synchronous evaluation</strong> — every response is
-                evaluated across value coherence (scored 0–1), identity consistency, constraint compliance, and content
-                safety before delivery.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Vault-derived alignment profile</strong> — evaluation criteria come
-                entirely from Tier 2 vault notes. No hardcoded values. As the vault evolves, alignment evolves with
-                it.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">CorrectionEngine with bounded recursion</strong> — soft-flagged outputs
-                are rewritten by LLM once, re-evaluated (without re-triggering correction), and delivered as corrected.
-                Hard-blocked outputs are suppressed.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Drift detection with rolling window</strong> — tracks mean alignment
-                scores and consecutive flags over a 20-sample window. Alert triggers at mean &lt; 0.65 or 5 consecutive
-                flags.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">Inference-time only</strong> no model weight updates. No fine-tuning.
-                No
-                retraining. Pure runtime evaluation and correction on the critical response path.</span>
-            </li>
-            <li>
-              <span class="tf-dot"></span>
-              <span><strong style="color:#ccc;">GradientHoneypot</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.9</span> traps adversarial memory probes (credential dumps, exfil patterns). Alerts land in PostgreSQL; optional lockdown when configured.</span>
-            </li>
-          </ul>
-
-          <div class="tier-pill">Observe-only by default · enable blocking when calibrated</div>
+        <div class="problem-box">
+          <div class="pb-label">The gap</div>
+          <p>Without a durable self-model, agents drift from stated constraints under adversarial prompting
+            or long context. Static prompt files disappear after compaction. Gradient evaluates against
+            vault-derived criteria on every response.</p>
         </div>
 
-        <!-- RIGHT: panel -->
-        <div class="fi">
-          <div class="tier-panel t3">
-            <div class="tier-panel-head">
-              <span class="tp-label">gradient · interceptor.py</span>
-              <span class="tp-badge">9 Tools · 32 Total</span>
-            </div>
-            <div class="tier-panel-body">
-              <div class="tool-grid">
-                <div class="tool-item">gradient_status</div>
-                <div class="tool-item">gradient_alignment_score</div>
-                <div class="tool-item">gradient_drift_status</div>
-                <div class="tool-item">gradient_alignment_log</div>
-                <div class="tool-item">gradient_alert</div>
-                <div class="tool-item">ops_status</div>
-                <div class="tool-item">gradient_history</div>
-                <div class="tool-item">drift_status</div>
-                <div class="tool-item new-tool">gradient_honeypot_status <span class="new-badge">v0.9</span></div>
-              </div>
-              <div class="tier-stats">
-                <div class="ts-cell">
-                  <div class="ts-n">4</div>
-                  <div class="ts-l">Eval dimensions</div>
-                </div>
-                <div class="ts-cell">
-                  <div class="ts-n">0.65</div>
-                  <div class="ts-l">Drift threshold</div>
-                </div>
-                <div class="ts-cell">
-                  <div class="ts-n">1</div>
-                  <div class="ts-l">Correction max</div>
-                </div>
-              </div>
+        <ul class="tier-features">
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">4-dimensional synchronous evaluation</strong> — every response is
+              evaluated across value coherence (scored 0–1), identity consistency, constraint compliance, and content
+              safety before delivery.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Vault-derived alignment profile</strong> — evaluation criteria come
+              entirely from Tier 2 vault notes. No hardcoded values. As the vault evolves, alignment evolves with
+              it.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">CorrectionEngine with bounded recursion</strong> — soft-flagged outputs
+              are rewritten by LLM once, re-evaluated (without re-triggering correction), and delivered as corrected.
+              Hard-blocked outputs are suppressed.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Drift detection with rolling window</strong> — tracks mean alignment
+              scores and consecutive flags over a 20-sample window. Alert triggers at mean &lt; 0.65 or 5 consecutive
+              flags.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">Inference-time only</strong> no model weight updates. No fine-tuning.
+              No retraining. Pure runtime evaluation and correction on the critical response path.</span>
+          </li>
+          <li>
+            <span class="tf-dot"></span>
+            <span><strong style="color:#ccc;">GradientHoneypot</strong> <span style="font-size:0.75rem; color:var(--orange); font-weight:700; letter-spacing:0.04em;">v0.9</span> traps adversarial memory probes (credential dumps, exfil patterns). Alerts land in PostgreSQL; optional lockdown when configured.</span>
+          </li>
+        </ul>
 
-              <div style="margin-top:1rem;">
-                <div class="cblock">
-                  <div class="cblock-head">
-                    <div class="cdots"><span></span><span></span><span></span></div>
-                    <span class="clang">evaluation pipeline</span>
-                  </div>
-                  <div class="ccode" style="padding:1rem 1.25rem; font-size:0.77rem; line-height:1.8;">
-                    <pre><span class="cc"># every response, before delivery</span>
+        <div class="tier-pill">Observe-only by default · enable blocking when calibrated</div>
+      </div>
+
+      <div class="fi">
+        <div class="tier-panel t3">
+          <div class="tier-panel-head">
+            <span class="tp-label">gradient · interceptor.py</span>
+            <span class="tp-badge">9 Tools · 32 Total</span>
+          </div>
+          <div class="tier-panel-body">
+            <div class="tool-grid">
+              <div class="tool-item">gradient_status</div>
+              <div class="tool-item">gradient_alignment_score</div>
+              <div class="tool-item">gradient_drift_status</div>
+              <div class="tool-item">gradient_alignment_log</div>
+              <div class="tool-item">gradient_alert</div>
+              <div class="tool-item">ops_status</div>
+              <div class="tool-item">gradient_history</div>
+              <div class="tool-item">drift_status</div>
+              <div class="tool-item new-tool">gradient_honeypot_status <span class="new-badge">v0.9</span></div>
+            </div>
+            <div class="tier-stats">
+              <div class="ts-cell">
+                <div class="ts-n">4</div>
+                <div class="ts-l">Eval dimensions</div>
+              </div>
+              <div class="ts-cell">
+                <div class="ts-n">0.65</div>
+                <div class="ts-l">Drift threshold</div>
+              </div>
+              <div class="ts-cell">
+                <div class="ts-n">1</div>
+                <div class="ts-l">Correction max</div>
+              </div>
+            </div>
+            <div style="margin-top:1rem;">
+              <div class="cblock">
+                <div class="cblock-head">
+                  <div class="cdots"><span></span><span></span><span></span></div>
+                  <span class="clang">evaluation pipeline</span>
+                </div>
+                <div class="ccode" style="padding:1rem 1.15rem; font-size:0.76rem; line-height:1.8;">
+                  <pre><span class="cc"># every response, before delivery</span>
 <span class="at1">value_coherence</span>      <span class="cc">→ 0.0–1.0</span>
 <span class="at1">identity_consistency</span> <span class="cc">→ pass|fail</span>
 <span class="at3">constraint_compliance</span><span class="cc">→ pass|block</span>
 <span class="at3">content_safety</span>       <span class="cc">→ always runs</span>
 <span class="cc">─────────────────────────────────</span>
 <span class="cc">verdict: pass | soft_flag | hard_block</span></pre>
-                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="love-section">
-                <div class="love-section-head">Alignment at inference</div>
-                <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
-                  Criteria come from StingerVault notes. No weight updates. Any model.
-                </p>
-                <div class="love-def">
-                  <div class="love-def-item">
-                    <span class="love-def-sym lt">C</span>
-                    <span class="love-def-desc">constraints / identity from vault → <code style="color:#666;font-size:0.7rem;">pass</code></span>
-                  </div>
-                  <div class="love-def-item">
-                    <span class="love-def-sym lv">D</span>
-                    <span class="love-def-desc">observed deviation → <code style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
-                  </div>
-                  <div class="love-def-item">
-                    <span class="love-def-sym lk">β</span>
-                    <span class="love-def-desc">profile depth from vault distillation</span>
-                  </div>
-                  <div class="love-def-item">
-                    <span class="love-def-sym le">E</span>
-                    <span class="love-def-desc">rolling alignment score · drift window</span>
-                  </div>
+            <div class="love-section">
+              <div class="love-section-head">Alignment at inference</div>
+              <p style="font-size:0.8rem; color:#555; margin-bottom:0.75rem;">
+                Criteria come from StingerVault notes. No weight updates. Any model.
+              </p>
+              <div class="love-def">
+                <div class="love-def-item">
+                  <span class="love-def-sym lt">C</span>
+                  <span class="love-def-desc">constraints / identity from vault → <code style="color:#666;font-size:0.7rem;">pass</code></span>
+                </div>
+                <div class="love-def-item">
+                  <span class="love-def-sym lv">D</span>
+                  <span class="love-def-desc">observed deviation → <code style="color:#666;font-size:0.7rem;">soft_flag | hard_block</code></span>
+                </div>
+                <div class="love-def-item">
+                  <span class="love-def-sym lk">β</span>
+                  <span class="love-def-desc">profile depth from vault distillation</span>
+                </div>
+                <div class="love-def-item">
+                  <span class="love-def-sym le">E</span>
+                  <span class="love-def-desc">rolling alignment score · drift window</span>
                 </div>
               </div>
-
             </div>
           </div>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- ALIGNMENT — INFERENCE-TIME EVALUATION                      -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
-      <div class="love-full-box fi">
-        <div class="love-full-inner">
-
-          <span class="slabel" style="color:var(--red);">Tier 3</span>
-          <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Alignment without fine-tuning.</h2>
-          <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
-            Gradient evaluates each response against the agent's own vault-derived profile.
-            Inference-time only. No RLHF. No weight updates. Works with any model behind your MCP client.
-          </p>
-
-          <p style="font-size:0.85rem; color:#555; margin:1.5rem 0 2rem; position:relative; z-index:1; line-height:1.9;">
-            <span style="font-family:var(--mono); color:var(--orange);">C</span> = constraints / identity &nbsp;&nbsp;
-            <span style="font-family:var(--mono); color:var(--red);">D</span> = observed deviation &nbsp;&nbsp;
-            <span style="font-family:var(--mono); color:var(--yellow);">β</span> = vault profile depth &nbsp;&nbsp;
-            <span style="font-family:var(--mono); color:var(--red);">E</span> = rolling alignment score
-          </p>
-
-          <div class="love-vs">
-            <div class="love-vs-cell training">
-              <div class="love-vs-label">Training-time alignment</div>
-              <div class="love-vs-formula">
-                Fine-tuning · RLHF<br>
-                constitutional AI · DPO<br>
-                <br>
-                Model-specific<br>
-                expensive to redo
-              </div>
-              <div class="love-vs-desc">Encode preferred behavior into weights. Powerful, but tied to one model and one training cycle.</div>
-            </div>
-            <div class="love-vs-cell inference">
-              <div class="love-vs-label">OpenStinger Gradient — inference</div>
-              <div class="love-vs-formula">
-                Evaluate C vs D per response<br>
-                correct when D exceeds C<br>
-                <br>
-                Real-time · drift-aware<br>
-                no weight updates
-              </div>
-              <div class="love-vs-desc">Same MCP server. Any model. Profile updates as the vault learns from sessions.</div>
-            </div>
-          </div>
-
-          <div class="love-map-full">
-            <div class="lmf-item">
-              <span class="lmf-sym le">E</span>
-              <span class="lmf-arr">↓</span>
-              <span class="lmf-name">Alignment score</span>
-              <span class="lmf-tier">tracked by Drift Detector</span>
-              <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · mean score</span>
-            </div>
-            <span class="lmf-op">=</span>
-            <div class="lmf-item">
-              <span class="lmf-sym lk">β</span>
-              <span class="lmf-arr">↓</span>
-              <span class="lmf-name">Benevolence Factor</span>
-              <span class="lmf-tier">Tier 2 · StingerVault</span>
-              <span class="lmf-tier" style="color:#333; font-size:0.65rem;">vault depth = β strength</span>
-            </div>
-            <span class="lmf-op">(</span>
-            <div class="lmf-item">
-              <span class="lmf-sym lt">C</span>
-              <span class="lmf-arr">↓</span>
-              <span class="lmf-name">Cooperation</span>
-              <span class="lmf-tier">Tier 3 · Gradient</span>
-              <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">pass</code>
-                verdicts</span>
-            </div>
-            <span class="lmf-op">–</span>
-            <div class="lmf-item">
-              <span class="lmf-sym lv">D</span>
-              <span class="lmf-arr">↓</span>
-              <span class="lmf-name">Discord</span>
-              <span class="lmf-tier">Tier 3 · Gradient</span>
-              <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code
-                  style="color:#555;">soft_flag · hard_block</code></span>
-            </div>
-            <span class="lmf-op">)</span>
-          </div>
-
-          <p
-            style="margin-top:2.5rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
-            Memory Harness (Tier 1) stores episodic history.
-            Reasoning Harness (Tier 2) distills that history into a structured vault profile.
-            Alignment Harness (Tier 3) scores each response against that profile at inference time.
-            <em style="color:#666;">No model weights are modified.</em>
-          </p>
-
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="full" style="background:var(--surface); border-top:1px solid var(--border);">
+    <div class="love-full-box fi">
+      <div class="love-full-inner">
+        <span class="slabel" style="color:var(--red);">Tier 3</span>
+        <h2 style="margin-bottom:0.5rem; position:relative; z-index:1;">Alignment without fine-tuning.</h2>
+        <p style="color:#555; font-size:0.95rem; position:relative; z-index:1;">
+          Gradient evaluates each response against the agent's own vault-derived profile.
+          Inference-time only. No RLHF. No weight updates. Works with any model behind your MCP client.
+        </p>
 
-    <!-- ── QUICK START ────────────────────────────────────────────── -->
-    <div class="full" id="quickstart">
-      <div class="section-inner">
-        <div class="fi">
-          <span class="slabel">Get Running</span>
-          <h2 class="stitle">Running in 3 commands.</h2>
-          <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API.</p>
+        <p style="font-size:0.85rem; color:#555; margin:1.5rem 0 2rem; position:relative; z-index:1; line-height:1.9; font-family:var(--mono);">
+          <span style="color:var(--orange);">C</span> = constraints / identity &nbsp;&nbsp;
+          <span style="color:var(--red);">D</span> = observed deviation &nbsp;&nbsp;
+          <span style="color:var(--yellow);">β</span> = vault profile depth &nbsp;&nbsp;
+          <span style="color:var(--red);">E</span> = rolling alignment score
+        </p>
+
+        <div class="love-vs">
+          <div class="love-vs-cell training">
+            <div class="love-vs-label">Training-time alignment</div>
+            <div class="love-vs-formula">
+              Fine-tuning · RLHF<br>
+              constitutional AI · DPO<br><br>
+              Model-specific<br>
+              expensive to redo
+            </div>
+            <div class="love-vs-desc">Encode preferred behavior into weights. Powerful, but tied to one model and one training cycle.</div>
+          </div>
+          <div class="love-vs-cell inference">
+            <div class="love-vs-label">OpenStinger Gradient — inference</div>
+            <div class="love-vs-formula">
+              Evaluate C vs D per response<br>
+              correct when D exceeds C<br><br>
+              Real-time · drift-aware<br>
+              no weight updates
+            </div>
+            <div class="love-vs-desc">Same MCP server. Any model. Profile updates as the vault learns from sessions.</div>
+          </div>
         </div>
 
-        <div class="cblock fi">
-          <div class="cblock-head">
-            <div class="cdots"><span></span><span></span><span></span></div>
-            <span class="clang">bash</span>
+        <div class="love-map-full">
+          <div class="lmf-item">
+            <span class="lmf-sym le">E</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Alignment score</span>
+            <span class="lmf-tier">tracked by Drift Detector</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;">rolling window · mean score</span>
           </div>
-          <div class="ccode">
-            <pre><span class="cc"># 1. Clone and install</span>
+          <span class="lmf-op">=</span>
+          <div class="lmf-item">
+            <span class="lmf-sym lk">β</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Benevolence Factor</span>
+            <span class="lmf-tier">Tier 2 · StingerVault</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;">vault depth = β strength</span>
+          </div>
+          <span class="lmf-op">(</span>
+          <div class="lmf-item">
+            <span class="lmf-sym lt">C</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Cooperation</span>
+            <span class="lmf-tier">Tier 3 · Gradient</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">pass</code> verdicts</span>
+          </div>
+          <span class="lmf-op">–</span>
+          <div class="lmf-item">
+            <span class="lmf-sym lv">D</span>
+            <span class="lmf-arr">↓</span>
+            <span class="lmf-name">Discord</span>
+            <span class="lmf-tier">Tier 3 · Gradient</span>
+            <span class="lmf-tier" style="color:#333; font-size:0.65rem;"><code style="color:#555;">soft_flag · hard_block</code></span>
+          </div>
+          <span class="lmf-op">)</span>
+        </div>
+
+        <p style="margin-top:2.25rem; font-size:0.88rem; color:#444; max-width:640px; margin-left:auto; margin-right:auto; line-height:1.75; position:relative; z-index:1;">
+          Memory Harness (Tier 1) stores episodic history.
+          Reasoning Harness (Tier 2) distills that history into a structured vault profile.
+          Alignment Harness (Tier 3) scores each response against that profile at inference time.
+          <em style="color:#666;">No model weights are modified.</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="full" id="quickstart">
+    <div class="section-inner">
+      <div class="fi">
+        <span class="slabel">Get Running</span>
+        <h2 class="stitle">Running in 3 commands.</h2>
+        <p class="sdesc">Python 3.10+. Docker. Any OpenAI-compatible inference API.</p>
+      </div>
+
+      <div class="cblock fi">
+        <div class="cblock-head">
+          <div class="cdots"><span></span><span></span><span></span></div>
+          <span class="clang">bash</span>
+        </div>
+        <div class="ccode">
+          <pre><span class="cc"># 1. Clone and install</span>
 <span class="ck">git clone</span> <span class="cs">https://github.com/srikanthbellary/openstinger.git</span>
 <span class="ck">cd</span> openstinger &amp;&amp; <span class="ck">pip install</span> -e <span class="cs">".[dev]"</span>
 
@@ -2455,167 +845,115 @@
 
 <span class="cc"># Tier 3: full alignment + empathy harness</span>
 <span class="ck">python</span> -m openstinger.gradient.mcp.server</pre>
-          </div>
-        </div>
-
-        <div style="text-align:center; margin-top:1.25rem;">
-          <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
-            Full documentation →
-          </a>
         </div>
       </div>
-    </div>
 
-
-    <!-- ── ARCHITECTURE ───────────────────────────────────────────── -->
-    <div class="full">
-      <div class="section-inner tight">
-        <div class="fi">
-          <span class="slabel">Architecture</span>
-          <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
-          <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK
-            lock-in, no framework dependency.</p>
-        </div>
-        <div class="cblock fi">
-          <div class="cblock-head">
-            <div class="cdots"><span></span><span></span><span></span></div>
-            <span class="clang">topology</span>
-          </div>
-          <div class="ccode">
-            <pre>OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow · Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw
-    └──────────────────────────────────────┬──────────────────────────────────────────────────────┘
-                  Model Context Protocol  ·  SSE  ·  http://localhost:8766/sse
-                            │
-                            ▼
-<span class="at1">OpenStinger MCP Server  (Python process, runs on your machine)</span>
-<span class="at1">    ├── Tier 1  memory_query · memory_wake_up · memory_search ··· 12 tools</span>
-<span class="at2">    ├── Tier 2  vault_promote_now · knowledge_ingest · namespace_*   11 tools</span>
-<span class="at3">    └── Tier 3  gradient_alignment_score · honeypot_status ·······  9 tools</span>
-         │                                                    ────────────────
-         │                                                    32 tools total
-         ├── FalkorDB    (temporal graph · knowledge vault · vector indexes)
-         ├── PostgreSQL  (ingestion jobs · alignment events · agent registry)
-         └── vault/      (markdown notes · human-editable · SHA-256 synced)</pre>
-          </div>
-        </div>
+      <div style="margin-top:1.25rem;">
+        <a href="https://github.com/srikanthbellary/openstinger#readme" class="btn-outline">
+          Full documentation →
+        </a>
       </div>
     </div>
+  </div>
 
-    <!-- ── ENTERPRISE / PRODUCTION ────────────────────────────────── -->
-    <div class="full" id="production">
-      <div class="section-inner" style="padding-top:4rem; padding-bottom:4rem;">
-        <div class="fi">
-          <span class="slabel">Production &amp; Enterprise</span>
-          <h2 class="stitle">The only *Claw memory system<br>with a queryable audit trail.</h2>
-          <p class="sdesc" style="max-width:680px;">
-            Every episode, entity, classification decision, and alignment event is logged to PostgreSQL
-            — ready for dashboards, audits, and compliance reports. Not exported on request.
-            <strong>Always on. Always queryable.</strong>
-          </p>
+  <div class="full" id="topology">
+    <div class="section-inner tight">
+      <div class="fi">
+        <span class="slabel">Architecture</span>
+        <h2 class="stitle">Runs beside your agent.<br>Never inside it.</h2>
+        <p class="sdesc">OpenStinger is a pure MCP server. Your agent calls its tools natively — no wrappers, no SDK
+          lock-in, no framework dependency.</p>
+      </div>
+
+      <figure class="figure-plate fi">
+        <figcaption class="figure-legend">
+          <span>FIG. — TOPOLOGY</span>
+          <span>CLIENTS → MCP SSE → PROCESS → STORES</span>
+        </figcaption>
+        <div class="figure-field fig-topology">
+          <canvas data-figure="topology" aria-hidden="true"></canvas>
+          <span class="figure-corner tl" aria-hidden="true"></span>
+          <span class="figure-corner tr" aria-hidden="true"></span>
+          <span class="figure-corner bl" aria-hidden="true"></span>
+          <span class="figure-corner br" aria-hidden="true"></span>
         </div>
+      </figure>
+    </div>
+  </div>
 
-        <div class="fi"
-          style="margin-top:2.5rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem;">
+  <div class="full" id="production">
+    <div class="section-inner" style="padding-top:4rem; padding-bottom:4rem;">
+      <div class="fi">
+        <span class="slabel">Production &amp; Enterprise</span>
+        <h2 class="stitle">The only *Claw memory system<br>with a queryable audit trail.</h2>
+        <p class="sdesc" style="max-width:42rem;">
+          Every episode, entity, classification decision, and alignment event is logged to PostgreSQL
+          — ready for dashboards, audits, and compliance reports. Not exported on request.
+          <strong style="color:#bbb;">Always on. Always queryable.</strong>
+        </p>
+      </div>
 
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
-            <div
-              style="font-family:var(--mono); font-size:0.7rem; color:var(--grey); margin-bottom:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">
-              People &amp; PII</div>
-            <code
-              style="display:block; font-size:0.78rem; color:#888; line-height:1.7;">SELECT name, entity_type,<br>&nbsp;&nbsp;episode_count<br>FROM entity_registry<br>WHERE entity_type = 'PERSON'<br>ORDER BY episode_count DESC;</code>
-            <p style="margin-top:0.75rem; font-size:0.8rem; color:#555;">Who has this agent's memory touched?</p>
-          </div>
-
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
-            <div
-              style="font-family:var(--mono); font-size:0.7rem; color:var(--grey); margin-bottom:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">
-              Alignment Audit</div>
-            <code
-              style="display:block; font-size:0.78rem; color:#888; line-height:1.7;">SELECT verdict, COUNT(*) AS n<br>FROM alignment_events<br>WHERE evaluated_at &gt; NOW()<br>&nbsp;&nbsp;- INTERVAL '7 days'<br>GROUP BY verdict;</code>
-            <p style="margin-top:0.75rem; font-size:0.8rem; color:#555;">Alignment verdict distribution this week.</p>
-          </div>
-
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem;">
-            <div
-              style="font-family:var(--mono); font-size:0.7rem; color:var(--grey); margin-bottom:0.75rem; letter-spacing:0.08em; text-transform:uppercase;">
-              Knowledge Health</div>
-            <code
-              style="display:block; font-size:0.78rem; color:#888; line-height:1.7;">SELECT category,<br>&nbsp;&nbsp;COUNT(*) FILTER<br>&nbsp;&nbsp;(WHERE stale = false) AS active,<br>&nbsp;&nbsp;ROUND(AVG(confidence),2)<br>FROM vault_notes GROUP BY 1;</code>
-            <p style="margin-top:0.75rem; font-size:0.8rem; color:#555;">Active knowledge confidence by category.</p>
-          </div>
-
+      <div class="sql-grid fi">
+        <div class="sql-cell">
+          <div class="k">People &amp; PII</div>
+          <code>SELECT name, entity_type,<br>&nbsp;&nbsp;episode_count<br>FROM entity_registry<br>WHERE entity_type = 'PERSON'<br>ORDER BY episode_count DESC;</code>
+          <p>Who has this agent's memory touched?</p>
         </div>
-
-        <div class="fi"
-          style="margin-top:2rem; padding:1.25rem 1.5rem; background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--yellow); border-radius:8px; max-width:720px;">
-          <p style="font-size:0.95rem; color:#aaa; line-height:1.7; margin:0;">
-            OpenStinger logs every ingestion job, entity merge decision, vault classification, and alignment
-            evaluation to a 12-table PostgreSQL schema. Connect any BI tool — Metabase, Grafana, Superset
-            — and get full operational visibility with zero additional instrumentation.
-          </p>
+        <div class="sql-cell">
+          <div class="k">Alignment Audit</div>
+          <code>SELECT verdict, COUNT(*) AS n<br>FROM alignment_events<br>WHERE evaluated_at &gt; NOW()<br>&nbsp;&nbsp;- INTERVAL '7 days'<br>GROUP BY verdict;</code>
+          <p>Alignment verdict distribution this week.</p>
+        </div>
+        <div class="sql-cell">
+          <div class="k">Knowledge Health</div>
+          <code>SELECT category,<br>&nbsp;&nbsp;COUNT(*) FILTER<br>&nbsp;&nbsp;(WHERE stale = false) AS active,<br>&nbsp;&nbsp;ROUND(AVG(confidence),2)<br>FROM vault_notes GROUP BY 1;</code>
+          <p>Active knowledge confidence by category.</p>
         </div>
       </div>
-    </div>
 
-    <!-- ── BOTTOM CTA ────────────────────────────────────────────── -->
-    <div class="full manifesto-strip">
-      <p
-        style="font-size:0.95rem; color:rgba(0,0,0,0.55); margin-bottom:1.75rem; line-height:1.8; max-width:640px; margin-left:auto; margin-right:auto;">
-        Agents need durable memory across sessions, frameworks, and model swaps.<br>
-        OpenStinger is that layer: MCP-native, self-hosted, benchmarked.
-      </p>
-      <h2>
-        Fair LongMemEval-S: <em>81.0%</em>
-      </h2>
-      <p style="margin-top:1.25rem;">
-        Bi-temporal graph memory. Structured vault. Alignment evaluation.<br>
-        Point any MCP client at one endpoint.
-      </p>
-      <p style="margin-top:1.5rem;">
-        <strong>One memory layer. Every agent runtime.</strong><br>
-        <span style="opacity:0.45; font-size:0.9em;">OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow ·
-          Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw</span>
-      </p>
-      <p style="margin-top:1.25rem;">
-        <strong>OpenStinger.com — MCP agent memory.</strong>
-      </p>
-    </div>
-
-    <!-- ── FOOTER ────────────────────────────────────────────────── -->
-    <footer>
-      <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger">
-      <div class="flinks">
-        <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
-        <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
-        <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
-        <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
-        <a href="https://openstinger.com">openstinger.com</a>
+      <div class="callout fi">
+        <p>
+          OpenStinger logs every ingestion job, entity merge decision, vault classification, and alignment
+          evaluation to a 12-table PostgreSQL schema. Connect any BI tool — Metabase, Grafana, Superset
+          — and get full operational visibility with zero additional instrumentation.
+        </p>
       </div>
-      <p class="fcopy">© 2026 OpenStinger &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Built for the autonomous era</p>
-    </footer>
+    </div>
+  </div>
 
-    <script>
-      const io = new IntersectionObserver(
-        es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
-        { threshold: 0.08 }
-      );
-      document.querySelectorAll('.fi').forEach(el => io.observe(el));
+  <div class="full manifesto-strip">
+    <p style="margin-bottom:1.5rem; line-height:1.8;">
+      Agents need durable memory across sessions, frameworks, and model swaps.<br>
+      OpenStinger is that layer: MCP-native, self-hosted, benchmarked.
+    </p>
+    <h2>Fair LongMemEval-S: 81.0%</h2>
+    <p style="margin-top:1.1rem;">
+      Bi-temporal graph memory. Structured vault. Alignment evaluation.<br>
+      Point any MCP client at one endpoint.
+    </p>
+    <p style="margin-top:1.35rem;">
+      <strong style="color:#000;">One memory layer. Every agent runtime.</strong><br>
+      <span style="opacity:0.5; font-size:0.9em;">OpenClaw · Cursor · Claude Code · Nanobot · Hermes · DeerFlow ·
+        Qwen-Agent · LangGraph · ZeroClaw · NanoClaw · PicoClaw</span>
+    </p>
+    <p style="margin-top:1.1rem;">
+      <strong style="color:#000;">OpenStinger.com — MCP agent memory.</strong>
+    </p>
+  </div>
 
-      // Mobile hamburger
-      const ham = document.getElementById('hamburger');
-      const nav = document.querySelector('.nav-links');
-      if (ham && nav) {
-        ham.addEventListener('click', () => {
-          const open = nav.classList.toggle('open');
-          ham.setAttribute('aria-expanded', open);
-        });
-        // Close on nav link click
-        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-          nav.classList.remove('open');
-          ham.setAttribute('aria-expanded', 'false');
-        }));
-      }
-    </script>
+  <footer>
+    <img src="openstinger_thumbnail_logo_v1.png" alt="OpenStinger">
+    <div class="flinks">
+      <a href="https://github.com/srikanthbellary/openstinger">GitHub</a>
+      <a href="https://github.com/srikanthbellary/openstinger/blob/main/README.md">Docs</a>
+      <a href="https://github.com/srikanthbellary/openstinger/blob/main/LICENSE">MIT License</a>
+      <a href="https://github.com/srikanthbellary/openstinger/issues">Issues</a>
+      <a href="https://openstinger.com">openstinger.com</a>
+    </div>
+    <p class="fcopy">© 2026 OpenStinger · MIT License · Built for the autonomous era</p>
+  </footer>
+
+  <script src="js/ost.js"></script>
 </body>
 
 </html>
